@@ -1,0 +1,36 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.sqlite
+*.sqlite-*
+*.dump.sql
+*.dump
+*.backup
+recovery-*
+# Local registry/media/backup directories (never ship live data)
+/data/
+/exports/
+/backups/
+/uploads/
+/local/
+/keys/
+/secrets/
+# Dependencies and generated output
+/vendor/
+/node_modules/
+/dist/
+/build/
+/coverage/
+.phpunit.cache/
+.phpunit.result.cache
+.php-cs-fixer.cache
+.phpstan.cache.php
+*.phar
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.log

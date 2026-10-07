@@ -1,0 +1,1 @@
+Portable player and club registry with public profiles, WordPress administration, replication, and one-way imports into LibreTT Desktop.
