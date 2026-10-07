@@ -4,6 +4,8 @@
 
 These describe future screens, not available installation instructions.
 
+First-milestone media is delivered from protected storage only after approval. Public snapshot import creates unpublished drafts with explicit identity mappings; it does not restore private approvals or confer source authority. See [storage/restore rules](STORAGE_AND_MIGRATIONS.md) and [readiness](PHASE_0_READINESS.md).
+
 ## Initial setup
 
 Activation creates an empty setup state. Choose “Create a new registry” or “Host a replica”. Creating a registry assigns a fresh identity; connecting a replica preserves the source identity. Start with one registry per installation.

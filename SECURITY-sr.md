@@ -2,6 +2,8 @@
 
 [English](SECURITY.md)
 
+Inženjerske odluke i ograničenja faze 0 su u [evidenciji spremnosti](docs/sr/PHASE_0_READINESS.md). Javna šema zahteva i [parser/semantičke provere](docs/sr/CONTRACT_VALIDATION.md); potpisani formati imaju [zasebne kasnije preglede](docs/sr/AUTHENTICATED_PUBLICATION.md).
+
 ## Podržane verzije
 
 Još nema izvršivog izdanja niti podržane produkcione verzije. Repozitorijum sadrži predlog dizajna, ne auditovane kontrole. Pre izdanja treba izabrati runtime verzije, implementirati zahteve modela pretnji i objaviti stvarnu matricu podrške.

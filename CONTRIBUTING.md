@@ -4,6 +4,8 @@
 
 Read [README](README.md), [the plan](docs/en/PLAN.md), [architecture](docs/en/ARCHITECTURE.md) and [AGENTS.md](AGENTS.md). The project has no executable implementation yet; design feedback and documented scenarios are welcome.
 
+Phase 0 engineering decisions and review limits are recorded in [readiness](docs/en/PHASE_0_READINESS.md). Public schema acceptance also requires [parser/semantic checks](docs/en/CONTRACT_VALIDATION.md); signed formats remain [separate later review gates](docs/en/AUTHENTICATED_PUBLICATION.md).
+
 ## Propose a change
 
 Describe the user problem, current/planned behavior, concrete examples and failure cases. Separate confirmed decisions from open questions. Record substantial architectural changes in docs/adr/ before implementing them. Never advertise an unimplemented feature as working.

@@ -47,6 +47,8 @@ Počni od [indeksa dokumentacije](docs/sr/INDEX.md).
 - [Arhitektonska odluka](docs/adr/0001-registry-foundation.md)
 - [Doprinos projektu](CONTRIBUTING-sr.md), [bezbednost](SECURITY-sr.md), [uputstva agentima](AGENTS.md)
 
+Dokumentaciona priprema faze 0 je završena: [spremnost i uslovi](docs/sr/PHASE_0_READINESS.md), [šema/primeri](docs/sr/CONTRACT_VALIDATION.md) i [pregledani ciljevi kompatibilnosti/alata](docs/sr/COMPATIBILITY_AND_TOOLING.md). Implementacija i runtime provere nisu počele.
+
 ## Razvoj
 
 Komande za instalaciju, build i testiranje još nisu određene. Alati, minimalne PHP/WordPress verzije, zahtevi baze i CI biće izabrani u prvoj implementacionoj etapi. Ovaj folder dokumentacije nije funkcionalan plugin.

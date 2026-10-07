@@ -1,7 +1,7 @@
 # ADR 0003: Public snapshot types, revisions and staged imports
 
 Date: 2026-10-07
-Status: Proposed; schema approval and implementation remain pending.
+Status: Accepted engineering baseline via ADR 0004; structural v1 schema supplied, implementation remains pending.
 
 ## Context
 
@@ -20,3 +20,7 @@ Bounded parsing must detect duplicate keys and enforce byte/depth/count limits b
 ## Open work
 
 Review field choices and limits, approve normative JSON Schema and interoperability fixtures, define concrete storage/migrations and parser tooling, review the deployment matrix and authenticated publication/recovery contracts. No API, import implementation or tests are delivered by this ADR.
+
+## Follow-up
+
+ADR 0004 adopts this engineering direction and records the completed Phase 0 artifacts and implementation/deployment gates. Earlier open-work lists describe the proposal at creation; current status is in the bilingual readiness record.

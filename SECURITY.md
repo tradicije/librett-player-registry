@@ -2,6 +2,8 @@
 
 [Srpski](SECURITY-sr.md)
 
+Phase 0 engineering decisions and review limits are recorded in [readiness](docs/en/PHASE_0_READINESS.md). Public schema acceptance also requires [parser/semantic checks](docs/en/CONTRACT_VALIDATION.md); signed formats remain [separate later review gates](docs/en/AUTHENTICATED_PUBLICATION.md).
+
 ## Supported versions
 
 There is no executable release or supported production version yet. This repository contains a proposed design, not audited security controls. Before any release, select supported runtimes, implement the threat-model requirements and publish the actual support matrix.

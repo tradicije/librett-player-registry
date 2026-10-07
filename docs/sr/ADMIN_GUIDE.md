@@ -4,6 +4,8 @@
 
 Ovo su budući ekrani, ne dostupno uputstvo za instalaciju.
 
+Mediji prve etape dolaze iz zaštićenog storage-a tek posle odobrenja. Uvoz javnog snimka pravi neobjavljene nacrte sa izričitim mapiranjem; ne vraća privatna odobrenja niti daje autoritet izvora. Pogledaj [skladište/restore](STORAGE_AND_MIGRATIONS.md) i [spremnost](PHASE_0_READINESS.md).
+
 ## Prvo podešavanje
 
 Aktivacija daje prazno stanje. Biraj „Napravi novi registar” ili „Hostuj repliku”. Nov registar dobija nov identitet; replika čuva identitet izvora. Početno jedan registar po instalaciji.

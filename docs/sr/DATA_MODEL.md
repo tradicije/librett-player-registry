@@ -6,6 +6,8 @@ Status: konceptualni model, ne završena šema/migracija.
 
 [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) predlaže konkretne javne tipove, granice, razdvajanje privatnih/javnih revizija i identitet pri uvozu nacrta. Razrađuje konceptualni opis ispod; potpisan feed i privatni restore ostaju otvoreni.
 
+Priložena [šema i pravila validacije](CONTRACT_VALIDATION.md) daju strukturnu javnu v1 osnovu. [Skladište/migracije](STORAGE_AND_MIGRATIONS.md) određuju privatne/javne zapise i transakcije; konkretan SQL DDL dolazi sa implementacijom.
+
 ## Identitet
 
 UUID registra ne zavisi od URL-a; pri autentifikovanoj replikaciji povezuje se sa zapamćenim podacima poverenja. Igrači/klubovi imaju UUID unutar registra. Spoljni identitet je (UUID registra, UUID zapisa); WordPress brojevi i javni slug-ovi nisu identifikatori. Ista imena ne znače iste osobe; različiti registri se ne spajaju prećutno.
@@ -29,7 +31,7 @@ Replika čuva ID-jeve registra/zapisa. Nov nezavisan registar dobija novi ID. Ne
 
 Lokalni SQL indeksi/ograničenja i transakcije idu kroz repositories; detalji se zaključuju pregledom šeme. Ne duplirati istu činjenicu u više promenljivih JSON blob-ova. Prenosivi izvoz je verzionski model, ne SQL dump.
 
-Predložena [politika objavljivanja](PUBLICATION_POLICY.md) određuje javna polja i odvaja radne zapise od odobrenih projekcija. Nov/fajlom uvezen zapis počinje kao neobjavljen; privatne izmene traže pregled objave. Javne revizije/checkpoint-i ne smeju otkriti broj privatnih izmena. Tačne storage i JSON šeme ostaju otvorene.
+Predložena [politika objavljivanja](PUBLICATION_POLICY.md) određuje javna polja i odvaja radne zapise od odobrenih projekcija. Nov/fajlom uvezen zapis počinje kao neobjavljen; privatne izmene traže pregled objave. Javne revizije/checkpoint-i ne smeju otkriti broj privatnih izmena. Konkretan SQL DDL ostaje otvoren; strukturni javni JSON ugovor dat je u fazi 0.
 
 ## Profili igrača
 

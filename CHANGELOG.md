@@ -6,6 +6,11 @@ Notable changes are recorded in English. No application release exists yet.
 
 ### Documentation
 
+- Completed the Phase 0 documentation/engineering baseline with a local JSON Schema 2020-12 for unsigned public snapshots and 11 synthetic acceptance/rejection documents; specified mandatory parser, semantic and contextual checks without claiming fixture execution.
+- Specified module interfaces and acyclic dependencies, private/public storage ownership, InnoDB transaction rules, protected media finalization/withdrawal, resumable migrations and explicit backup/uninstall behavior.
+- Reviewed official runtime/tooling sources and selected PHP 8.5, WordPress 7.1.3 single-site, MariaDB 10.11/MySQL 8.4 targets and maintained tooling families; recorded implementation spikes, exact-version resolution and runtime verification gates.
+- Recorded the separate authenticated-publication/authority-chain design review, accepted engineering ADR 0004 and bilingual Phase 0 readiness records; aligned prior ADR status, READMEs, plans, indexes, contribution/security policies and affected documentation. No plugin implementation, dependency install, runtime tests or production approval are included.
+
 - Added bilingual public snapshot contract draft 1 and ADR 0003 specifying strict field types, decimal-string counters, bounded graph validation, public/private revision separation, dependency withdrawal and atomic staged import identity/idempotence rules. Signed replication and private restore remain separate pending contracts.
 - Updated README links, documentation indexes, Phase 0 progress, protocol, data model and Desktop integration references; no schema approval, runtime implementation or executed tests are claimed.
 

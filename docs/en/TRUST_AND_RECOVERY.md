@@ -4,6 +4,8 @@
 
 Status: threat-model and protocol requirements; not implemented or audited.
 
+Phase 0 reviewed the candidate byte/chain/conflict rules in [authenticated publication design](AUTHENTICATED_PUBLICATION.md). This is a separate later-format proposal; it does not authenticate unsigned snapshots or replace the future crypto/security review.
+
 ## Identity and keys
 
 Registry UUID identifies a dataset, not its owner. Clients pin a recovery/public trust identity after verified bootstrap. Keep two authorities separate:

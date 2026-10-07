@@ -17,5 +17,12 @@ Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao impl
 11. [ADR 0002](../adr/0002-publication-policy-baseline.md)
 12. [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md)
 13. [ADR 0003](../adr/0003-public-snapshot-contract.md)
+14. [Šema i primeri interoperabilnosti](CONTRACT_VALIDATION.md)
+15. [Skladište, transakcije i migracije](STORAGE_AND_MIGRATIONS.md)
+16. [Interfejsi modula](MODULE_CONTRACTS.md)
+17. [Kompatibilnost i alati](COMPATIBILITY_AND_TOOLING.md)
+18. [Dizajn autentifikovane objave](AUTHENTICATED_PUBLICATION.md)
+19. [Završetak faze 0 i uslovi](PHASE_0_READINESS.md)
+20. [ADR 0004](../adr/0004-phase-0-engineering-baseline.md)
 
 Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.md), [licenca](../../LICENSE), [uputstva agentima](../../AGENTS.md), [changelog](../../CHANGELOG.md).

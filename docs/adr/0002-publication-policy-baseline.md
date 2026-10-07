@@ -1,7 +1,7 @@
 # ADR 0002: Explicit publication projection and review
 
 Date: 2026-10-07
-Status: Proposed; no implementation or legal authorization.
+Status: Accepted engineering baseline via ADR 0004; no implementation or legal authorization.
 
 ## Context
 
@@ -22,3 +22,7 @@ Publication needs a distinct transaction, public revision/checkpoint semantics a
 ## Still open
 
 Operator approval of catalogue scope and lawful publication policy, normative schema and limits, concrete capabilities, authorization evidence retention, media adapter/storage, revision model and safe import/restore behavior. This ADR does not complete Phase 0.
+
+## Follow-up
+
+ADR 0004 adopts this engineering direction and records the completed Phase 0 artifacts and implementation/deployment gates. Earlier open-work lists describe the proposal at creation; current status is in the bilingual readiness record.

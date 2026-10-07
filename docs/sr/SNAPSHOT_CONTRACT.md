@@ -2,11 +2,13 @@
 
 [English](../en/SNAPSHOT_CONTRACT.md)
 
-Status: predlog ugovora faze 0 za pregled, ne objavljen format ili odobrena normativna JSON Schema. `schema_version: 1` je kandidat oznake formata, ne verzija plugina. Nacrt određuje celovit javni snimak za prvi sajt; ne određuje potpisanu replikaciju, privatni backup ili administratorski restore.
+Status: inženjerska osnova faze 0 sa priloženom strukturnom JSON Schema; ne objavljen format. `schema_version: 1` je kandidat oznake formata, ne verzija plugina. Nacrt određuje celovit javni snimak za prvi sajt; ne određuje potpisanu replikaciju, privatni backup ili administratorski restore.
+
+Ažuriranje faze 0: usvojeno kao inženjerska osnova kroz [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). [Evidencija spremnosti](PHASE_0_READINESS.md) daje aktuelan status; [šema/primeri validacije](CONTRACT_VALIDATION.md) i [skladište](STORAGE_AND_MIGRATIONS.md) razrađuju dokument. To ne podrazumeva pravno odobrenje, runtime proveru ili odobren autentifikovan format.
 
 ## Tipovi i envelope
 
-UTF-8 JSON sa jednim objektom u korenu, bez duplih ključeva, sadržaja posle dokumenta ili nekonačnih brojeva. Nepoznata svojstva odbijaju se na svakom nivou; proširenja traže podržanu verziju šeme. Bez prećutnog pretvaranja tipova. UUID je kanonski string malim slovima sa crticama, bez nil vrednosti; novi ID-jevi su nasumični UUIDv4 kroz injektovan održavan generator. Uvezeni UUID-i se proveravaju i čuvaju kao poreklo, ne izvode ponovo iz imena ili URL-a.
+UTF-8 JSON sa jednim objektom u korenu, bez duplih ključeva, sadržaja posle dokumenta ili nekonačnih brojeva. Nepoznata svojstva odbijaju se na svakom nivou; proširenja traže podržanu verziju šeme. Bez prećutnog pretvaranja tipova. UUID je kanonski RFC-variant string verzije 1–8 malim slovima sa crticama, bez nil vrednosti; novi ID-jevi su nasumični UUIDv4 kroz injektovan održavan generator. Uvezeni UUID-i se proveravaju i čuvaju kao poreklo, ne izvode ponovo iz imena ili URL-a.
 
 Brojači su kanonski decimalni stringovi (`0` ili cifra različita od nule praćena ciframa), do 19 cifara i najviše 9223372036854775807. Porediti numerički, ne leksikografski; izbegava se gubitak preciznosti JavaScript brojeva. Javne revizije počinju od `"1"`, checkpoint od `"0"`. Prekoračenje brojača daje izričit neuspeh, bez vraćanja na početak. Stringovi su validan Unicode; ograničenja broje Unicode code point-e osim kada su navedeni bajtovi.
 
@@ -24,7 +26,7 @@ Sva svojstva envelope-a iz tabele su obavezna:
 | `publication_policy` | Objekat opisan ispod |
 | `players`, `clubs`, `memberships`, `media`, `tombstones` | Nizovi; prazni su dozvoljeni, nikada `null` |
 
-`publication_policy` ima tačno `version` (neprazan string, najviše 64), `purpose` (neprazan običan tekst, najviše 1000), `dataset_terms_url` i `media_terms_url` (HTTPS URL-ovi, najviše 2048) i `distribution_scope` (tačno `public-download`). To su izjave operatora, ne mašinski dokaz dozvola ili pravne usklađenosti. Izvoz je isključen dok nisu podešeni uslovi i odobrenja objave. URL je metapodatak; parser/uvoz ga ne preuzima automatski. Privatni dokazi i privatni brojači su zabranjeni.
+`publication_policy` ima tačno `version` (neprazan string, najviše 64), `purpose` (neprazan običan tekst, najviše 1000), `dataset_terms_url` i `media_terms_url` (HTTPS URL-ovi, najviše 2048) i `distribution_scope` (tačno `public-download`). Sva URL polja traže validan host/port, bez userinfo-a ili fragmenta. To su izjave operatora, ne mašinski dokaz dozvola ili pravne usklađenosti. Izvoz je isključen dok nisu podešeni uslovi i odobrenja objave. URL je metapodatak; parser/uvoz ga ne preuzima automatski. Privatni dokazi i privatni brojači su zabranjeni.
 
 ## Objavljeni zapisi
 
@@ -78,4 +80,4 @@ Prazan registar ima checkpoint `"0"`, prazne nizove i podešenu politiku. Prva o
 
 Pregled mora obuhvatiti duple JSON ključeve/UUID-e, nedostajuće reference, null neobavezna polja, nepoznata polja, nevalidan UTF-8, granice, velike brojače, dupla članstva, privatne podatke, ista imena/različite ID-jeve, ponovljen uvoz, isti request UUID/drugi payload, zastareo pregled, prekinut upis, povlačenje zavisnosti i očuvanje offline Desktop podataka. To su predloženi slučajevi, ne već izvršeni testovi ili interoperabilni primeri.
 
-Sledeće: pregled nacrta, normativna JSON Schema i izmišljeni interoperabilni primeri, privatno skladište/oporavak migracija, ograničen parser/alati i deployment matrica, zaseban pregled autentifikovanih envelope-a. Ne tvrdi se runtime kompatibilnost ili bezbednosna verifikacija.
+Faza 0 daje strukturnu šemu, izmišljene primere, skladište/migracije i pregledanu matricu/alate. Izvršenje parser/semantičkih provera i rešavanje zavisnosti pripadaju autorizovanoj fazi 1; autentifikovane šeme/crypto primeri ostaju kasniji uslovi. Ne tvrdi se runtime kompatibilnost ili bezbednosna verifikacija.

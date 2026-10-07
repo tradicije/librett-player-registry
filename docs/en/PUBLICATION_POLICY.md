@@ -2,7 +2,9 @@
 
 [Srpski](../sr/PUBLICATION_POLICY.md)
 
-Status: proposed design baseline, not an approved legal policy or implemented control. Exact JSON fields belong to the forthcoming schema. No real dataset is authorized by this document.
+Status: adopted engineering design baseline, not an approved legal policy or implemented control. Exact JSON fields are specified in the bundled snapshot schema. No real dataset is authorized by this document.
+
+Phase 0 update: adopted as the engineering baseline through [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). The [readiness record](PHASE_0_READINESS.md) gives current status; [schema/validation examples](CONTRACT_VALIDATION.md) and [storage rules](STORAGE_AND_MIGRATIONS.md) refine this document. No legal authorization, runtime verification or authenticated format approval is implied.
 
 ## First catalogue
 
@@ -53,7 +55,7 @@ Changes to approved public values or newly selected fields require explicit publ
 | Purge | No personal fields in deletion events; maintain only necessary removal metadata | Delete personal data/media according to retention policy |
 | Republish | Explicit new approval and newer public revision; never reuse a purged identity for another person | Record decision; cannot be triggered by a stale import |
 
-Publication states are separate from administrative retention. Exact storage enums and revision counters await schema design. Public projections must not leak the number of private edits. Shared media remains accessible only if another approved public projection legitimately references it. Protected originals and derivatives need an adapter design that avoids exposing an unpublished Media Library URL; a hidden profile alone does not protect an attachment.
+Publication states are separate from administrative retention. Private storage enums await concrete DDL; public counters/revisions are specified in the snapshot contract. Public projections must not leak the number of private edits. Shared media remains accessible only if another approved public projection legitimately references it. Protected originals and derivatives need an adapter design that avoids exposing an unpublished Media Library URL; a hidden profile alone does not protect an attachment.
 
 Withdrawal cannot erase copies already downloaded by Desktop or third parties. Desktop retains local profiles and tournament snapshots while recording upstream withdrawal. Neither stale imports nor policy edits automatically republish withdrawn records.
 

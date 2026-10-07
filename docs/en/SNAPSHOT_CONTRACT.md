@@ -2,11 +2,13 @@
 
 [Srpski](../sr/SNAPSHOT_CONTRACT.md)
 
-Status: proposed Phase 0 contract for review, not a shipped format or approved normative JSON Schema. `schema_version: 1` is a candidate format identifier, not a plugin release. This draft specifies a full public snapshot for the single-site milestone; it does not specify signed replication, private backup or administrative restore.
+Status: Phase 0 engineering baseline with a bundled structural JSON Schema; not a shipped format. `schema_version: 1` is a candidate format identifier, not a plugin release. This draft specifies a full public snapshot for the single-site milestone; it does not specify signed replication, private backup or administrative restore.
+
+Phase 0 update: adopted as the engineering baseline through [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). The [readiness record](PHASE_0_READINESS.md) gives current status; [schema/validation examples](CONTRACT_VALIDATION.md) and [storage rules](STORAGE_AND_MIGRATIONS.md) refine this document. No legal authorization, runtime verification or authenticated format approval is implied.
 
 ## Types and envelope
 
-UTF-8 JSON with one object root, no duplicate object keys, trailing content or non-finite numbers. Reject unknown properties at every object level; extensions require a supported schema version. No implicit coercion. UUIDs are lowercase canonical hyphenated non-nil UUID strings; generated IDs are random UUIDv4 through an injected maintained generator. Existing imported UUIDs are validated and preserved as provenance, not regenerated from names or URLs.
+UTF-8 JSON with one object root, no duplicate object keys, trailing content or non-finite numbers. Reject unknown properties at every object level; extensions require a supported schema version. No implicit coercion. UUIDs are lowercase canonical hyphenated non-nil RFC-variant UUID strings (versions 1–8); generated IDs are random UUIDv4 through an injected maintained generator. Existing imported UUIDs are validated and preserved as provenance, not regenerated from names or URLs.
 
 Counters are canonical decimal strings (`0` or a nonzero digit followed by digits), at most 19 digits and no greater than 9223372036854775807. Compare numerically, never lexically; this avoids JavaScript number precision loss. Public entity revisions start at `"1"`; snapshot checkpoint starts at `"0"`. Counter exhaustion fails explicitly without wrapping. Strings must be valid Unicode; limits below count Unicode code points except byte limits.
 
@@ -24,7 +26,7 @@ Every envelope property in this table is required:
 | `publication_policy` | Object described below |
 | `players`, `clubs`, `memberships`, `media`, `tombstones` | Arrays; empty arrays allowed, never `null` |
 
-`publication_policy` contains exactly `version` (nonblank string, maximum 64), `purpose` (nonblank plain text, maximum 1000), `dataset_terms_url` and `media_terms_url` (HTTPS URLs, maximum 2048), and `distribution_scope` (exact string `public-download`). These are operator declarations, not machine proof of permission or legal compliance. Export is disabled until terms and publication approvals are configured. URLs are metadata; parsing/import never fetches them automatically. Private approval evidence and private counters are forbidden.
+`publication_policy` contains exactly `version` (nonblank string, maximum 64), `purpose` (nonblank plain text, maximum 1000), `dataset_terms_url` and `media_terms_url` (HTTPS URLs, maximum 2048), and `distribution_scope` (exact string `public-download`). All URL fields require a valid host/port, with no userinfo or fragment. These are operator declarations, not machine proof of permission or legal compliance. Export is disabled until terms and publication approvals are configured. URLs are metadata; parsing/import never fetches them automatically. Private approval evidence and private counters are forbidden.
 
 ## Published records
 
@@ -78,4 +80,4 @@ An empty registry has checkpoint `"0"`, empty arrays and configured policy. Firs
 
 Required review cases include duplicate JSON keys/UUIDs, dangling references, null optional fields, unknown fields, invalid UTF-8, limits exceeded, large counters, duplicate memberships, forbidden private data, same names/different IDs, repeated import, changed payload under the same request UUID, stale preview, interrupted commit, dependency withdrawal and offline Desktop preservation. These are proposed cases, not tests or interoperable fixtures already executed.
 
-Next: approve this draft, author normative JSON Schema and synthetic interoperability fixtures, specify private storage/migration rollback, confirm bounded parser/tooling and deployment matrix, and review authenticated envelopes separately. No runtime compatibility or security verification is claimed.
+Phase 0 supplies the structural schema, synthetic examples, storage/migration rules and reviewed matrix/tool selections. Parser/semantic execution and actual dependency resolution belong to authorized Phase 1 verification; authenticated schemas/crypto fixtures remain later gates. No runtime compatibility or security verification is claimed.

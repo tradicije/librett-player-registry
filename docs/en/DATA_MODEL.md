@@ -6,6 +6,8 @@ Status: conceptual model, not a finalized migration/schema.
 
 The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) proposes concrete public types, limits, private/public revision separation and staged import identity rules. It refines the conceptual discussion below; signed feed and private restore contracts remain open.
 
+The bundled [schema and validation rules](CONTRACT_VALIDATION.md) now provide the structural public v1 baseline. [Storage/migration ownership](STORAGE_AND_MIGRATIONS.md) defines private/public records and transaction boundaries; concrete SQL DDL belongs to implementation.
+
 ## Identity
 
 A registry UUID is independent of its URL and paired with pinned trust metadata when authenticated replication is introduced. Players/clubs have UUIDs unique within the registry. External identity is (registry UUID, entity UUID); WordPress numeric keys and public slugs are not identifiers. Same names never imply same people; different registry identities never silently merge.
@@ -29,7 +31,7 @@ An imported replica preserves registry/entity IDs. A newly created independent r
 
 Use local SQL indexes/constraints and transactions through repositories; finalize details in schema review. Avoid duplicating a fact in several mutable JSON blobs. Portable export is a versioned model, not a SQL dump.
 
-The proposed [publication policy](PUBLICATION_POLICY.md) defines the public allowlist and separates editable records from approved projections. New/file-imported records start unpublished; private edits require publication review. Public revision/checkpoint metadata must not reveal private edit counts. Exact storage and JSON schemas remain open.
+The proposed [publication policy](PUBLICATION_POLICY.md) defines the public allowlist and separates editable records from approved projections. New/file-imported records start unpublished; private edits require publication review. Public revision/checkpoint metadata must not reveal private edit counts. Concrete SQL DDL remains open; the structural public JSON contract is supplied in Phase 0.
 
 ## Player profiles
 

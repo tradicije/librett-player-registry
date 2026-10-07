@@ -47,6 +47,8 @@ Start with the [documentation index](docs/en/INDEX.md).
 - [Architecture decision](docs/adr/0001-registry-foundation.md)
 - [Contributing](CONTRIBUTING.md), [security policy](SECURITY.md), [agent instructions](AGENTS.md)
 
+Phase 0 documentation preparation is complete: [readiness and entry gates](docs/en/PHASE_0_READINESS.md), [schema/examples](docs/en/CONTRACT_VALIDATION.md), and [reviewed compatibility/tool targets](docs/en/COMPATIBILITY_AND_TOOLING.md). Implementation and runtime verification have not started.
+
 ## Development
 
 There are no installation/build/test commands yet. Tooling, minimum PHP/WordPress versions, database requirements and CI will be selected in the first implementation milestone. Do not install this documentation folder as a working plugin.

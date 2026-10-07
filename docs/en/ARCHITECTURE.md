@@ -2,6 +2,8 @@
 
 [Srpski](../sr/ARCHITECTURE.md)
 
+Module interface ownership and the acyclic dependency graph are specified in [module contracts](MODULE_CONTRACTS.md); transactions and migrations in [storage](STORAGE_AND_MIGRATIONS.md). These refine the conceptual module list below.
+
 ## Non-monolithic design
 
 One installable plugin does not mean one application-wide class or an inseparable implementation. Build independently organized modules with explicit public interfaces, isolated responsibilities and acyclic dependencies. A thin composition root wires them together; WordPress hooks call adapters, which call application use cases.

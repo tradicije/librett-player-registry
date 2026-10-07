@@ -17,5 +17,12 @@ All documents describe planned behavior unless explicitly marked implemented. Th
 11. [ADR 0002](../adr/0002-publication-policy-baseline.md)
 12. [Snapshot contract — draft 1](SNAPSHOT_CONTRACT.md)
 13. [ADR 0003](../adr/0003-public-snapshot-contract.md)
+14. [Schema and interoperability examples](CONTRACT_VALIDATION.md)
+15. [Storage, transactions and migrations](STORAGE_AND_MIGRATIONS.md)
+16. [Module interfaces](MODULE_CONTRACTS.md)
+17. [Compatibility and tooling](COMPATIBILITY_AND_TOOLING.md)
+18. [Authenticated publication design](AUTHENTICATED_PUBLICATION.md)
+19. [Phase 0 completion and entry gates](PHASE_0_READINESS.md)
+20. [ADR 0004](../adr/0004-phase-0-engineering-baseline.md)
 
 Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SECURITY.md), [license](../../LICENSE), [agent instructions](../../AGENTS.md), [changelog](../../CHANGELOG.md).

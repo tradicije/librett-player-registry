@@ -6,6 +6,8 @@ Ovo nije implementiran API. Nazivi/polja su predlog; normativna šema i interope
 
 [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) predlaže konkretne javne tipove, granice, razdvajanje privatnih/javnih revizija i identitet pri uvozu nacrta. Razrađuje konceptualni opis ispod; potpisan feed i privatni restore ostaju otvoreni.
 
+Nepotpisan snimak v1 ima priloženu [šemu i ugovor validacije](CONTRACT_VALIDATION.md). Kasniji potpisani formati pregledani su odvojeno u [autentifikovanoj objavi](AUTHENTICATED_PUBLICATION.md); unsigned v1 ne prihvata non-null generaciju. REST endpoint-i/status mapiranje dolaze sa implementacijom, nisu objavljen API.
+
 ## Transport i pronalaženje
 
 WordPress adapter može izložiti `librett-registry/v1` preko REST API-ja. Prenosivi ugovor opisuje operacije, ne obaveznu `/wp-json/` putanju. Link/fajl povezivanja navodi adrese endpoint-a, UUID registra, naziv, verzije šeme/protokola, javni obim i podatke poverenja kada budu uključeni.

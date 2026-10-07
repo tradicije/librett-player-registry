@@ -6,6 +6,8 @@ Nothing in this document is a shipped API. Names and fields are proposed; approv
 
 The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) proposes concrete public types, limits, private/public revision separation and staged import identity rules. It refines the conceptual discussion below; signed feed and private restore contracts remain open.
 
+Unsigned snapshot v1 has a bundled [schema and validation contract](CONTRACT_VALIDATION.md). Later signed formats are reviewed separately in [authenticated publication](AUTHENTICATED_PUBLICATION.md); no non-null authority generation is accepted by unsigned v1. REST endpoint names/status mapping remain implementation contracts, not shipped APIs.
+
 ## Transport and discovery
 
 A WordPress adapter may expose `librett-registry/v1` under its REST API. The portable contract describes operations, not a mandatory `/wp-json/` URL. A connection URL/file advertises explicit endpoint addresses, registry UUID, display name, schema/protocol version, publication scope and trust metadata when enabled.

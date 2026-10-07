@@ -4,6 +4,8 @@
 
 Pročitaj [README](README-sr.md), [plan](docs/sr/PLAN.md), [arhitekturu](docs/sr/ARCHITECTURE.md) i [AGENTS.md](AGENTS.md). Još nema izvršive implementacije; predlozi dizajna i dokumentovani scenariji su dobrodošli.
 
+Inženjerske odluke i ograničenja faze 0 su u [evidenciji spremnosti](docs/sr/PHASE_0_READINESS.md). Javna šema zahteva i [parser/semantičke provere](docs/sr/CONTRACT_VALIDATION.md); potpisani formati imaju [zasebne kasnije preglede](docs/sr/AUTHENTICATED_PUBLICATION.md).
+
 ## Predloži promenu
 
 Opiši problem korisnika, trenutno/planirano ponašanje, konkretne primere i neuspešne slučajeve. Razdvoji potvrđene odluke od otvorenih pitanja. Veće arhitektonske promene zabeleži u docs/adr/ pre implementacije. Ne predstavljaj neimplementiranu funkciju kao funkcionalnu.

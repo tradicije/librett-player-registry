@@ -10,7 +10,7 @@ Jedan modularan dodatak podržava prazan nezavisan registar ili repliku, javne p
 
 ## Trenutni rad
 
-Faza 0 je u toku. [Politika objavljivanja](PUBLICATION_POLICY.md) i [ADR 0002](../adr/0002-publication-policy-baseline.md) predlažu obim prvog kataloga, dozvoljena polja i tok odobrenja; nisu odobreni niti implementirani. [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) i [ADR 0003](../adr/0003-public-snapshot-contract.md) sada predlažu javne tipove, granice, revizije i uvoz nacrta. Sledeće: pregled obe osnove, normativna JSON Schema i interoperabilni primeri, privatno skladište/oporavak migracija, zatim provera runtime matrice i izbor alata. Ugovori poverenja ostaju obaveza pregleda faze 0 pre proverene replikacije. Nisu dodate implementacione zavisnosti ili testovi.
+Dokumentaciona priprema faze 0 je završena; pogledaj [evidenciju spremnosti](PHASE_0_READINESS.md) i [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). Politika objave, nepotpisana strukturna JSON šema/primeri, skladište/migracije, interfejsi modula i pregledani runtime/alati čine inženjersku osnovu. Runtime/zavisnosti/izvršenje primera pripadaju implementaciji; odobrenje stvarnih podataka i pregled bezbednosti autentifikovanih formata ostaju deployment/feature uslovi. Nema aplikacionog koda, zavisnosti ili testova. Sledeći je bootstrap faze 1 iz [ugovora modula](MODULE_CONTRACTS.md), kada implementacija bude zatražena.
 
 ## Faza 0 — ugovori i tehnička osnova
 
@@ -84,4 +84,4 @@ Istovremeno izmenjivi glavni sajtovi, automatski izbor lidera, spajanje identite
 
 ## Izvori i otvorene odluke
 
-[PHP podrška](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/). Tačne API šeme, ograničenja, runtime podrška, javni/privatni pristup, pakovanje medija i postupak upravljanja ključevima ostaju predlozi do pregleda.
+[PHP podrška](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/). Struktura/granice nepotpisanog snimka v1, prvi javni katalog i inženjerski ciljevi dati su osnovom faze 0. Konkretne REST rute, instalirane zavisnosti/parser, proverena runtime podrška, privatno pakovanje medija i normativni signed/key-ceremony formati pripadaju implementaciji ili kasnijim etapama; pogledaj uslove spremnosti.

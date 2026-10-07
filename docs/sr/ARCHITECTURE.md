@@ -2,6 +2,8 @@
 
 [English](../en/ARCHITECTURE.md)
 
+Vlasništvo interfejsa i graf bez ciklusa određuju [ugovori modula](MODULE_CONTRACTS.md), a transakcije/migracije [skladište](STORAGE_AND_MIGRATIONS.md). Razrađuju konceptualnu listu ispod.
+
 ## Bez monolitnog dizajna
 
 Jedan dodatak za instalaciju ne znači jednu ogromnu klasu niti nerazdvojivu implementaciju. Moduli imaju izričite javne interfejse, jasne odgovornosti i zavisnosti bez ciklusa. Tanak composition root povezuje module; WordPress hook-ovi pozivaju adaptere, a oni aplikacione use case-ove.

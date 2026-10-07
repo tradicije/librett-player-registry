@@ -10,7 +10,7 @@ One modular plugin supports an empty independent registry or a replica, public p
 
 ## Current work
 
-Phase 0 is in progress. The [publication policy](PUBLICATION_POLICY.md) and [ADR 0002](../adr/0002-publication-policy-baseline.md) propose the first catalogue scope, allowed fields and approval lifecycle; they are not approved or implemented. The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) and [ADR 0003](../adr/0003-public-snapshot-contract.md) now propose public types, limits, revisions and staged imports. Next: review both baselines, produce normative JSON Schema and interoperability examples, specify private storage/migration rollback, then verify the runtime matrix and select tooling. Trust contracts remain a Phase 0 review requirement before verified replication. No implementation dependencies or tests have been added.
+Phase 0 documentation preparation is complete; see the [readiness record](PHASE_0_READINESS.md) and [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). Publication rules, unsigned structural JSON Schema/examples, storage/migrations, module interfaces and reviewed runtime/tool targets are recorded as the engineering baseline. Runtime/dependency/fixture execution remains implementation-time work, and real-data approval and authenticated-format security review remain deployment/feature gates. No application code, dependencies or tests have been added. Next is the Phase 1 bootstrap slice described in [module contracts](MODULE_CONTRACTS.md), when implementation is requested.
 
 ## Phase 0 — contracts and technical foundation
 
@@ -84,4 +84,4 @@ Concurrent editable primaries, automatic leader election, cross-registry identit
 
 ## Sources and open decisions
 
-[PHP support](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/). Exact API schemas, limits, supported runtimes, public/private catalogue access, media packaging and key ceremony remain proposed until reviewed.
+[PHP support](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/). Unsigned snapshot v1 structure/limits, first public catalogue and engineering targets are recorded in the Phase 0 baseline. Concrete REST routing, installed dependency/parser configuration, tested runtime support, portable private media packaging and normative signed/key-ceremony formats remain implementation or later feature work; see the readiness gates.

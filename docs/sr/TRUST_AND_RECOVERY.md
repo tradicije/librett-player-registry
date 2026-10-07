@@ -4,6 +4,8 @@
 
 Status: model pretnji i zahtevi protokola; nije implementirano niti auditovano.
 
+Faza 0 pregledala je kandidata bajtova/lanca/sukoba u [dizajnu autentifikovane objave](AUTHENTICATED_PUBLICATION.md). To je zaseban predlog kasnijeg formata; ne autentifikuje unsigned snimke i ne zamenjuje budući crypto/bezbednosni pregled.
+
 ## Identitet i ključevi
 
 UUID registra označava bazu, ne vlasnika. Klijenti pamte recovery/javni identitet poverenja nakon proverenog povezivanja. Razdvojiti:

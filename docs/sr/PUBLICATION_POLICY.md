@@ -2,7 +2,9 @@
 
 [English](../en/PUBLICATION_POLICY.md)
 
-Status: predložena osnova dizajna, ne odobrena pravna politika niti implementirana kontrola. Tačna JSON polja pripadaju budućoj šemi. Ovaj dokument ne odobrava korišćenje stvarne baze.
+Status: usvojena inženjerska osnova dizajna, ne odobrena pravna politika niti implementirana kontrola. Tačna JSON polja određuje priložena šema snimka. Ovaj dokument ne odobrava korišćenje stvarne baze.
+
+Ažuriranje faze 0: usvojeno kao inženjerska osnova kroz [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). [Evidencija spremnosti](PHASE_0_READINESS.md) daje aktuelan status; [šema/primeri validacije](CONTRACT_VALIDATION.md) i [skladište](STORAGE_AND_MIGRATIONS.md) razrađuju dokument. To ne podrazumeva pravno odobrenje, runtime proveru ili odobren autentifikovan format.
 
 ## Prvi katalog
 
@@ -53,7 +55,7 @@ Izmena odobrenih javnih vrednosti ili izbor novih polja zahteva izričit pregled
 | Purge | Događaji brisanja nemaju lična polja; ostaju samo potrebni metapodaci uklanjanja | Lični podaci/mediji brišu se prema pravilima čuvanja |
 | Ponovna objava | Novo izričito odobrenje i novija javna revizija; purged identitet se ne dodeljuje drugoj osobi | Beleži odluku; zastareo uvoz je ne može pokrenuti |
 
-Stanje objave odvojeno je od administrativnog čuvanja. Tačni storage enum-i i brojači revizija čekaju dizajn šeme. Javna projekcija ne sme otkriti broj privatnih izmena. Deljen medij ostaje dostupan samo ako ga legitimno referencira druga odobrena javna projekcija. Zaštićeni originali i izvedene slike traže adapter koji ne otkriva neobjavljen Media Library URL; skriven profil ne štiti attachment.
+Stanje objave odvojeno je od administrativnog čuvanja. Privatni storage enum-i čekaju konkretan DDL; javni brojači/revizije određeni su ugovorom snimka. Javna projekcija ne sme otkriti broj privatnih izmena. Deljen medij ostaje dostupan samo ako ga legitimno referencira druga odobrena javna projekcija. Zaštićeni originali i izvedene slike traže adapter koji ne otkriva neobjavljen Media Library URL; skriven profil ne štiti attachment.
 
 Povlačenje ne može obrisati kopije koje su Desktop ili treća lica već preuzeli. Desktop čuva lokalne profile i istorijske snimke turnira uz podatak o povlačenju izvora. Zastareo uvoz ili izmena politike ne objavljuju povučene zapise automatski.
 
