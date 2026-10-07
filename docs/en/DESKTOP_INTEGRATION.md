@@ -4,6 +4,8 @@
 
 Status: planned; the registry integration is not currently implemented in Desktop.
 
+The proposed [snapshot contract](SNAPSHOT_CONTRACT.md) uses decimal-string counters, omitted optional fields and explicit source identity. Parse counters without precision loss; omitted fields never clear local values. The unsigned draft cannot authenticate authority or establish reliable remote freshness.
+
 ## User workflow
 
 In Players, add “Update Player Registry” and JSON import/export workflows. Configure a source URL or trusted connection file; an initial default may point to librett.org but must be replaceable. The same registry may later live on stoni.rs or another organization’s site. A public registry does not require a player account; private sources need a separate read-only authorization design.

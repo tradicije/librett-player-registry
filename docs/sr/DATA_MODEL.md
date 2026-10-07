@@ -4,6 +4,8 @@
 
 Status: konceptualni model, ne završena šema/migracija.
 
+[Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) predlaže konkretne javne tipove, granice, razdvajanje privatnih/javnih revizija i identitet pri uvozu nacrta. Razrađuje konceptualni opis ispod; potpisan feed i privatni restore ostaju otvoreni.
+
 ## Identitet
 
 UUID registra ne zavisi od URL-a; pri autentifikovanoj replikaciji povezuje se sa zapamćenim podacima poverenja. Igrači/klubovi imaju UUID unutar registra. Spoljni identitet je (UUID registra, UUID zapisa); WordPress brojevi i javni slug-ovi nisu identifikatori. Ista imena ne znače iste osobe; različiti registri se ne spajaju prećutno.
@@ -37,7 +39,7 @@ Tačan datum rođenja, kontakti, dokumenti i profili maloletnika nisu javni po d
 
 ## Revizije i brisanje
 
-Glavne izmene proveravaju očekivanu reviziju i atomski upisuju zapis, audit i javnu promenu. Sukob zahteva ponovno učitavanje/pregled. Globalni feed sequence vezan je za generaciju autoriteta; oporavak starog checkpoint-a ne sme dati isti logički change ID drugom sadržaju.
+Izmene nacrta na glavnom registru proveravaju očekivanu privatnu edit reviziju i atomski upisuju nacrt i audit. Odobrena objava dodatno proverava javnu reviziju i atomski upisuje javnu projekciju i događaje javnih promena. Sukob zahteva ponovno učitavanje/pregled. Globalni feed sequence vezan je za generaciju autoriteta; oporavak starog checkpoint-a ne sme dati isti logički change ID drugom sadržaju.
 
 Arhiviranje skriva/označava zapis prema politici objave. Povlačenje uklanja javnu projekciju i šalje minimalan tombstone. Purge uklanja lična polja/medije prema retention pravilima; događaj brisanja ne nosi obrisane lične podatke. Replika uklanja objavu, dok desktop beleži povlačenje bez brisanja istorije turnira.
 

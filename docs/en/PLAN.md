@@ -10,7 +10,7 @@ One modular plugin supports an empty independent registry or a replica, public p
 
 ## Current work
 
-Phase 0 is in progress. The [publication policy](PUBLICATION_POLICY.md) and [ADR 0002](../adr/0002-publication-policy-baseline.md) propose the first catalogue scope, allowed fields and approval lifecycle; they are not approved or implemented. Next: review this baseline, define the normative data/JSON schema and transaction/revision rules, then verify the runtime matrix and select tooling. Trust contracts remain a Phase 0 review requirement before verified replication. No implementation dependencies or tests have been added.
+Phase 0 is in progress. The [publication policy](PUBLICATION_POLICY.md) and [ADR 0002](../adr/0002-publication-policy-baseline.md) propose the first catalogue scope, allowed fields and approval lifecycle; they are not approved or implemented. The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) and [ADR 0003](../adr/0003-public-snapshot-contract.md) now propose public types, limits, revisions and staged imports. Next: review both baselines, produce normative JSON Schema and interoperability examples, specify private storage/migration rollback, then verify the runtime matrix and select tooling. Trust contracts remain a Phase 0 review requirement before verified replication. No implementation dependencies or tests have been added.
 
 ## Phase 0 — contracts and technical foundation
 

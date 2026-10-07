@@ -40,6 +40,7 @@ Start with the [documentation index](docs/en/INDEX.md).
 - [Data model and lifecycle](docs/en/DATA_MODEL.md)
 - [Publication policy proposal](docs/en/PUBLICATION_POLICY.md)
 - [Proposed protocol](docs/en/PROTOCOL.md)
+- [Snapshot contract — draft 1](docs/en/SNAPSHOT_CONTRACT.md)
 - [Desktop integration](docs/en/DESKTOP_INTEGRATION.md)
 - [Trust and recovery](docs/en/TRUST_AND_RECOVERY.md)
 - [Administrator workflows](docs/en/ADMIN_GUIDE.md)

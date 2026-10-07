@@ -4,6 +4,8 @@
 
 Status: conceptual model, not a finalized migration/schema.
 
+The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) proposes concrete public types, limits, private/public revision separation and staged import identity rules. It refines the conceptual discussion below; signed feed and private restore contracts remain open.
+
 ## Identity
 
 A registry UUID is independent of its URL and paired with pinned trust metadata when authenticated replication is introduced. Players/clubs have UUIDs unique within the registry. External identity is (registry UUID, entity UUID); WordPress numeric keys and public slugs are not identifiers. Same names never imply same people; different registry identities never silently merge.
@@ -37,7 +39,7 @@ Do not publish exact birth dates, contact details, identity documents or minor p
 
 ## Revisions and deletion
 
-Primary mutations check expected entity revision and commit record, audit and public change projection atomically. Revision conflicts require reload/review. Global feed sequence is scoped to authority generation; recovered older checkpoints must not reissue the same logical change identifier with new contents.
+Primary draft mutations check expected private edit revision and commit the draft and audit atomically. Approved publication mutations additionally check the public revision and atomically commit the public projection and public change events. Revision conflicts require reload/review. Global feed sequence is scoped to authority generation; recovered older checkpoints must not reissue the same logical change identifier with new contents.
 
 Archive hides or marks records according to publication policy. Withdrawal removes the public projection and emits a minimal tombstone. A purge removes personal fields/media according to retention policy; deletion events must not carry deleted PII. A replica applies removal, while Desktop marks upstream withdrawal without deleting tournament history.
 

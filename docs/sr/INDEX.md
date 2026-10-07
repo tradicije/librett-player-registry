@@ -15,5 +15,7 @@ Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao impl
 9. [ADR 0001](../adr/0001-registry-foundation.md)
 10. [Predlog politike objavljivanja](PUBLICATION_POLICY.md)
 11. [ADR 0002](../adr/0002-publication-policy-baseline.md)
+12. [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md)
+13. [ADR 0003](../adr/0003-public-snapshot-contract.md)
 
 Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.md), [licenca](../../LICENSE), [uputstva agentima](../../AGENTS.md), [changelog](../../CHANGELOG.md).

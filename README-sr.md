@@ -40,6 +40,7 @@ Počni od [indeksa dokumentacije](docs/sr/INDEX.md).
 - [Model podataka i životni ciklus](docs/sr/DATA_MODEL.md)
 - [Predlog politike objavljivanja](docs/sr/PUBLICATION_POLICY.md)
 - [Predlog protokola](docs/sr/PROTOCOL.md)
+- [Ugovor snimka — nacrt 1](docs/sr/SNAPSHOT_CONTRACT.md)
 - [Desktop integracija](docs/sr/DESKTOP_INTEGRATION.md)
 - [Poverenje i oporavak](docs/sr/TRUST_AND_RECOVERY.md)
 - [Administratorski tokovi](docs/sr/ADMIN_GUIDE.md)
