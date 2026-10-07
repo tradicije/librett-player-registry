@@ -13,5 +13,7 @@ All documents describe planned behavior unless explicitly marked implemented. Th
 7. [Administrator workflows](ADMIN_GUIDE.md)
 8. [Development standards](DEVELOPMENT.md)
 9. [ADR 0001](../adr/0001-registry-foundation.md)
+10. [Publication policy proposal](PUBLICATION_POLICY.md)
+11. [ADR 0002](../adr/0002-publication-policy-baseline.md)
 
 Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SECURITY.md), [license](../../LICENSE), [agent instructions](../../AGENTS.md), [changelog](../../CHANGELOG.md).

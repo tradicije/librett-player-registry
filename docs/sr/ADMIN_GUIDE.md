@@ -16,6 +16,8 @@ Unesi naziv/politiku objave, odredi administratore i napravi/preuzmi offline rec
 
 Praktično je prvo uneti klubove. Forme biraju klub po UUID-u, polja profila i zasebno javnu objavu. Moderator pregleda duplikate; ne spaja samo po imenu. Glavni CRUD i dalje proverava capabilities i reviziju.
 
+Pratiti predloženi [tok objave](PUBLICATION_POLICY.md): pripremiti neobjavljen nacrt, privatno zabeležiti odobrenje, pregledati javna polja i izričito odobriti objavu. Čuvanje izmena ih ne objavljuje automatski. Arhiviranje povlači javni pristup u prvoj etapi. Podešavanje recovery materijala važi tek za kasniju pregledanu funkciju poverenja, ne kao uslov prve etape na jednom sajtu.
+
 ## Javni profili
 
 Liste igrača/klubova, pretraga, filteri i profili trajnog identiteta na čitljivim promenljivim URL-ovima. Javna polja/slike odvojena su od privatnih informacija. Replika prikazuje izvor/svežinu. Savez može dodati svoj urednički sadržaj bez menjanja kopiranih profila.

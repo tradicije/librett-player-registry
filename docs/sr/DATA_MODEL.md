@@ -27,6 +27,8 @@ Replika čuva ID-jeve registra/zapisa. Nov nezavisan registar dobija novi ID. Ne
 
 Lokalni SQL indeksi/ograničenja i transakcije idu kroz repositories; detalji se zaključuju pregledom šeme. Ne duplirati istu činjenicu u više promenljivih JSON blob-ova. Prenosivi izvoz je verzionski model, ne SQL dump.
 
+Predložena [politika objavljivanja](PUBLICATION_POLICY.md) određuje javna polja i odvaja radne zapise od odobrenih projekcija. Nov/fajlom uvezen zapis počinje kao neobjavljen; privatne izmene traže pregled objave. Javne revizije/checkpoint-i ne smeju otkriti broj privatnih izmena. Tačne storage i JSON šeme ostaju otvorene.
+
 ## Profili igrača
 
 Prvi kandidati polja: prikazno/ime/prezime gde postoje, neobavezno godište, država/region, klubovi, plain-text biografija i referenca fotografije. Pre stvarnog prikupljanja dogovoriti javna polja. Detaljna dostignuća i istorijska članstva traže modele, ne proizvoljan neproveren JSON.

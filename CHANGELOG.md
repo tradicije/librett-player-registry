@@ -6,6 +6,9 @@ Notable changes are recorded in English. No application release exists yet.
 
 ### Documentation
 
+- Started Phase 0 with a bilingual publication-policy proposal and ADR 0002 covering public catalogue scope, explicit field allowlists, private drafts/approval evidence, media access and withdrawal semantics. Legal authorization, schema and runtime decisions remain open.
+- Linked the proposal from READMEs and documentation indexes; aligned plan progress, data model, protocol and administrator workflows without claiming implementation or completed verification.
+
 - Established LibreTT Player Registry as one WordPress plugin with independent core layers and primary/replica roles; installation includes no player dataset.
 - Added bilingual README, plan, architecture, data model, protocol proposal, desktop import, trust/recovery and administrator workflow documentation.
 - Added contribution and security policies, canonical AGENTS.md, an architecture decision, repository hygiene files and the AGPL-3.0-or-later license.

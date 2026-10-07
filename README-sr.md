@@ -38,6 +38,7 @@ Počni od [indeksa dokumentacije](docs/sr/INDEX.md).
 - [Plan razvoja](docs/sr/PLAN.md)
 - [Arhitektura](docs/sr/ARCHITECTURE.md)
 - [Model podataka i životni ciklus](docs/sr/DATA_MODEL.md)
+- [Predlog politike objavljivanja](docs/sr/PUBLICATION_POLICY.md)
 - [Predlog protokola](docs/sr/PROTOCOL.md)
 - [Desktop integracija](docs/sr/DESKTOP_INTEGRATION.md)
 - [Poverenje i oporavak](docs/sr/TRUST_AND_RECOVERY.md)

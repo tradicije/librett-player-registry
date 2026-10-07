@@ -8,6 +8,10 @@ Status: proposed implementation milestones; no application code exists.
 
 One modular plugin supports an empty independent registry or a replica, public player/club profiles, administration, portable JSON and one-way LibreTT Desktop imports. Later milestones add verified replication, moderated proposals and offline-authorized recovery. The package contains no federation dataset.
 
+## Current work
+
+Phase 0 is in progress. The [publication policy](PUBLICATION_POLICY.md) and [ADR 0002](../adr/0002-publication-policy-baseline.md) propose the first catalogue scope, allowed fields and approval lifecycle; they are not approved or implemented. Next: review this baseline, define the normative data/JSON schema and transaction/revision rules, then verify the runtime matrix and select tooling. Trust contracts remain a Phase 0 review requirement before verified replication. No implementation dependencies or tests have been added.
+
 ## Phase 0 — contracts and technical foundation
 
 - Confirm publication/privacy fields, dataset/media rights and whether the first catalogue is public only.

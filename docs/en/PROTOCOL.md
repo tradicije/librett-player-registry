@@ -25,6 +25,8 @@ Proposed operations:
 
 Desktop is a read/import consumer. It never calls proposal or CRUD operations. API namespaces can be identical across independent sites without making their registries identical.
 
+All public read operations use the same approved allowlisted projection described in the proposed [publication policy](PUBLICATION_POLICY.md), including nested memberships and media. Private drafts, authorization evidence and private edit counters are excluded. Public catalogue reads are proposed for the first milestone; private catalogue authentication is deferred. Unsigned file import stages unpublished records rather than trusting imported publication flags. Administrative restore and verified replica application need separate contracts.
+
 ## Snapshot envelope
 
 Proposed logical fields: `format`, `schema_version`, `registry_id`, `authority_generation`, `checkpoint`, `exported_at`, `publication_policy`, `players`, `clubs`, `memberships`, `media`, `tombstones`, plus a detached/authenticated publication envelope when signed trust is enabled. Timestamps are display metadata, not sole freshness/order evidence. SQL primary keys, passwords, private audit, proposal evidence and recovery secrets are excluded.

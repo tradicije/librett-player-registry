@@ -16,6 +16,8 @@ Provide a name and publication policy, define authorized administrators, and cre
 
 Add clubs before linking players where practical. Forms allow UUID-backed club selection, profile fields and separate publication choices. Moderators review duplicate candidates; do not merge solely by name. Primary CRUD is still subject to capabilities and revision checks.
 
+Follow the proposed [publication workflow](PUBLICATION_POLICY.md): prepare an unpublished draft, record private authorization, preview selected public fields and explicitly approve publication. Saving edits does not automatically publish them. Archive withdraws public access in the first milestone. Recovery material setup applies only when the later reviewed trust feature exists, not as a prerequisite for the initial single-site milestone.
+
 ## Public profiles
 
 Provide player/club lists, search, filters and stable-identity profiles at changeable readable URLs. Public fields/photos are curated separately from private information. Show source/freshness on replicas. A federation may add editorial content without modifying mirrored player records.

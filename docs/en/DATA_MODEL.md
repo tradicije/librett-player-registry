@@ -27,6 +27,8 @@ An imported replica preserves registry/entity IDs. A newly created independent r
 
 Use local SQL indexes/constraints and transactions through repositories; finalize details in schema review. Avoid duplicating a fact in several mutable JSON blobs. Portable export is a versioned model, not a SQL dump.
 
+The proposed [publication policy](PUBLICATION_POLICY.md) defines the public allowlist and separates editable records from approved projections. New/file-imported records start unpublished; private edits require publication review. Public revision/checkpoint metadata must not reveal private edit counts. Exact storage and JSON schemas remain open.
+
 ## Player profiles
 
 First candidate fields: display/given/family name where provided, optional birth year, country/region, club links, plain-text biography and photo reference. Decide which fields are public before collecting real data. Detailed achievements and historical memberships need explicit models rather than unvalidated arbitrary JSON.

@@ -8,6 +8,10 @@ Status: predložene implementacione etape; aplikacioni kod još ne postoji.
 
 Jedan modularan dodatak podržava prazan nezavisan registar ili repliku, javne profile igrača/klubova, administraciju, prenosivi JSON i jednosmerno preuzimanje u LibreTT Desktop. Kasnije etape dodaju proverene replike, moderirane predloge i oporavak sa odobrenjem van starog servera. Paket ne sadrži bazu saveza.
 
+## Trenutni rad
+
+Faza 0 je u toku. [Politika objavljivanja](PUBLICATION_POLICY.md) i [ADR 0002](../adr/0002-publication-policy-baseline.md) predlažu obim prvog kataloga, dozvoljena polja i tok odobrenja; nisu odobreni niti implementirani. Sledeće: pregled ove osnove, normativna šema podataka/JSON-a i pravila transakcija/revizija, zatim provera runtime matrice i izbor alata. Ugovori poverenja ostaju obaveza pregleda faze 0 pre proverene replikacije. Nisu dodate implementacione zavisnosti ili testovi.
+
 ## Faza 0 — ugovori i tehnička osnova
 
 - Potvrditi polja za objavu/privatnost, prava nad bazom/fotografijama i da li je prvi katalog samo javan.

@@ -25,6 +25,8 @@ Predložene operacije:
 
 Desktop samo čita/preuzima. Nikada ne poziva predloge ili CRUD. Isti API namespace na više sajtova ne znači isti registar.
 
+Sve javne operacije čitanja koriste istu odobrenu projekciju dozvoljenih polja iz predložene [politike objavljivanja](PUBLICATION_POLICY.md), uključujući ugnježdena članstva i medije. Privatni nacrti, dokazi odobrenja i brojači privatnih izmena su isključeni. Javno čitanje kataloga predloženo je za prvu etapu; autentifikacija privatnog kataloga je odložena. Nepotpisan fajl pravi neobjavljene zapise i ne veruje oznakama objave iz uvoza. Administrativni restore i primena proverene replike traže zasebne ugovore.
+
 ## Snapshot envelope
 
 Predložena logička polja: `format`, `schema_version`, `registry_id`, `authority_generation`, `checkpoint`, `exported_at`, `publication_policy`, `players`, `clubs`, `memberships`, `media`, `tombstones` i odvojen/autentifikovan envelope kada je potpisivanje uključeno. Datum je prikazni podatak, ne jedini dokaz svežine/redosleda. SQL ID-jevi, lozinke, privatni audit, dokazi predloga i recovery tajne nisu javni.

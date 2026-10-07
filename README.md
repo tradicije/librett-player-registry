@@ -38,6 +38,7 @@ Start with the [documentation index](docs/en/INDEX.md).
 - [Development plan](docs/en/PLAN.md)
 - [Architecture](docs/en/ARCHITECTURE.md)
 - [Data model and lifecycle](docs/en/DATA_MODEL.md)
+- [Publication policy proposal](docs/en/PUBLICATION_POLICY.md)
 - [Proposed protocol](docs/en/PROTOCOL.md)
 - [Desktop integration](docs/en/DESKTOP_INTEGRATION.md)
 - [Trust and recovery](docs/en/TRUST_AND_RECOVERY.md)
