@@ -2,16 +2,37 @@
 
 [Srpski](../sr/DEVELOPMENT.md)
 
-There is no code/toolchain to run yet. Read [architecture](ARCHITECTURE.md) for mandatory module boundaries and [plan](PLAN.md) for milestones.
+The first Phase 1 bootstrap is implemented. Read [implementation status](IMPLEMENTATION_STATUS.md), [architecture](ARCHITECTURE.md) and the [compatibility matrix](COMPATIBILITY_AND_TOOLING.md) before extending it. Exact dependencies are pinned in composer.lock; install from the lockfile rather than updating dependencies implicitly.
 
-Phase 0 has selected the [compatibility matrix and tooling families](COMPATIBILITY_AND_TOOLING.md). Exact resolved versions/configuration/check commands follow authorized installation in Phase 1. See [readiness](PHASE_0_READINESS.md) for actual review limits.
+Use PHP 8.5 on a 64-bit runtime with the extensions declared in composer.json. The WordPress adapter also requires GD or Imagick. Run from the repository root:
 
-At design date (2026-10-07), PHP's supported-version page lists 8.5 as the newest supported branch. Target modern PHP 8.5 development; approve a WordPress/PHP/database matrix before claiming deployability. PHP-FIG PER Coding Style 3.1 replaces/extends PSR-12; use Composer PSR-4, strict types and explicit types in independent modules.
+```sh
+composer install
+php vendor/bin/phpunit
+php vendor/bin/phpstan analyse --debug --memory-limit=512M
+php vendor/bin/php-cs-fixer check --sequential
+composer validate --strict --no-check-publish
+```
 
-The maintained static-analysis, formatting, test and audit tool families are selected in the Phase 0 matrix. Document exact installation/check/build commands only when real configuration exists. If a frontend is introduced, use strict TypeScript and bounded view/state/transport modules; framework is undecided.
+PHPStan uses the maximum level. `--debug` runs sequentially and avoids worker socket restrictions in sandboxed environments. The formatter currently supports PER-CS 3.0; PER 3.1 remains the documented target and requires manual review of additions beyond that ruleset. Domain/application classes must remain loadable without WordPress.
 
-Domain/application packages must be loadable without bootstrapping WordPress. Adapter integration tests require WordPress separately. Planned CI checks dependency direction, syntax/style/static analysis, unit/adapter tests, migrations, exports, recovery fixtures and package contents. Tests require task authorization under AGENTS.md; none were added/run in this documentation bootstrap.
+## Disposable WordPress integration environment
 
-Release ZIPs will contain runtime code, required runtime dependencies and notices, not development secrets, tests, player datasets or recovery material. Do not choose a published version or tag before implementation starts.
+Use a separate WordPress 7.1.3 directory and a private MariaDB 10.11 instance with a UNIX socket, networking disabled and a disposable root account with an empty password. This helper is only for that local test environment. Never point it at an existing user site or production database. MySQL 8.4 is a selected target but has not been exercised in this batch.
 
-References: [PHP support](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/).
+Set the following paths to your own disposable environment:
+
+```sh
+export LIBRETT_WP_ROOT=/path/to/disposable/wordpress
+export LIBRETT_DB_SOCKET=/path/to/private/mysql.sock
+export LIBRETT_TEST_DB=librett_registry_test_bootstrap
+ln -s "$PWD" "$LIBRETT_WP_ROOT/wp-content/plugins/librett-player-registry"
+php tools/install-integration-site.php
+php vendor/bin/phpunit -c phpunit.integration.xml
+```
+
+The installer requires the `librett_registry_test_` database prefix and refuses to overwrite a different wp-config.php. It creates synthetic administrator credentials without printing the password; mail, external WordPress HTTP, cron and automatic updates are disabled. Integration tests require that dedicated database, create isolated table prefixes and remove their test tables. The lifecycle test also exercises the dedicated site's plugin tables. Do not use this environment as a deployable installation.
+
+Unit and integration suites cover the implemented identity/bootstrap behavior; they do not verify planned player CRUD, publication, replication or recovery. No CI workflow or release packaging is implemented. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
+
+Preserve module boundaries, strict types, explicit ports and Composer PSR-4. A future scripted frontend uses strict TypeScript; no framework is selected. Future release ZIPs must include runtime dependencies and [third-party notices](../../THIRD_PARTY_NOTICES.md), while excluding development dependencies, tests, datasets and recovery secrets. No release version is assigned.

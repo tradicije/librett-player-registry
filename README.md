@@ -3,12 +3,12 @@
 A portable player and club registry with public profiles, WordPress administration, and one-way imports into LibreTT Desktop.
 
 ![License: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL--3.0--or--later-3da639.svg)
-![Status: Design](https://img.shields.io/badge/Status-Design-818cf8.svg)
-![WordPress adapter: planned](https://img.shields.io/badge/WordPress_adapter-planned-21759b.svg)
+![Status: Design](https://img.shields.io/badge/Status-Development-818cf8.svg)
+![WordPress adapter: planned](https://img.shields.io/badge/WordPress_adapter-bootstrap-21759b.svg)
 
 [Srpski](README-sr.md)
 
-**Status: planning and documentation only.** This repository is not an installable WordPress plugin yet. There is no released version, supported runtime matrix or implemented synchronization protocol.
+**Status: early implementation.** An unreleased WordPress development bootstrap provides empty initial migrations and primary registry identity setup. Player/club CRUD, public profiles/API, import/export and synchronization remain planned. See [implemented scope and actual verification](docs/en/IMPLEMENTATION_STATUS.md).
 
 ## What we are building
 
@@ -47,11 +47,11 @@ Start with the [documentation index](docs/en/INDEX.md).
 - [Architecture decision](docs/adr/0001-registry-foundation.md)
 - [Contributing](CONTRIBUTING.md), [security policy](SECURITY.md), [agent instructions](AGENTS.md)
 
-Phase 0 documentation preparation is complete: [readiness and entry gates](docs/en/PHASE_0_READINESS.md), [schema/examples](docs/en/CONTRACT_VALIDATION.md), and [reviewed compatibility/tool targets](docs/en/COMPATIBILITY_AND_TOOLING.md). Implementation and runtime verification have not started.
+Phase 0 documentation preparation is complete: [readiness and entry gates](docs/en/PHASE_0_READINESS.md), [schema/examples](docs/en/CONTRACT_VALIDATION.md), and [reviewed compatibility/tool targets](docs/en/COMPATIBILITY_AND_TOOLING.md). The first implementation slice and its tests are now recorded separately.
 
 ## Development
 
-There are no installation/build/test commands yet. Tooling, minimum PHP/WordPress versions, database requirements and CI will be selected in the first implementation milestone. Do not install this documentation folder as a working plugin.
+Composer dependencies and test configurations are committed. Follow [development setup](docs/en/DEVELOPMENT.md) on a disposable WordPress site; activation creates setup tables only and a separate administrator action creates the registry UUID. No production installer or release ZIP is published.
 
 ## Author and license
 

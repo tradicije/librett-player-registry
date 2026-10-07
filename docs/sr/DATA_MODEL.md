@@ -4,6 +4,8 @@
 
 Status: konceptualni model, ne završena šema/migracija.
 
+Početne identity/audit/migration tabele su implementirane; player/club/publication skladište ispod ostaje konceptualno. Pogledaj [trenutni obim](IMPLEMENTATION_STATUS.md).
+
 [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) predlaže konkretne javne tipove, granice, razdvajanje privatnih/javnih revizija i identitet pri uvozu nacrta. Razrađuje konceptualni opis ispod; potpisan feed i privatni restore ostaju otvoreni.
 
 Priložena [šema i pravila validacije](CONTRACT_VALIDATION.md) daju strukturnu javnu v1 osnovu. [Skladište/migracije](STORAGE_AND_MIGRATIONS.md) određuju privatne/javne zapise i transakcije; konkretan SQL DDL dolazi sa implementacijom.

@@ -2,6 +2,8 @@
 
 [Srpski](../sr/MODULE_CONTRACTS.md)
 
+Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+
 Status: Phase 0 design baseline. Names denote planned PHP interfaces, not existing classes. Small shared UUID/counter/error/actor value types have no infrastructure dependencies.
 
 ## Acyclic dependency graph

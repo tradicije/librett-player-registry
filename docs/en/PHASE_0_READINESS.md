@@ -2,6 +2,8 @@
 
 [Srpski](../sr/PHASE_0_READINESS.md)
 
+Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+
 Date: 2026-10-07. Status: documentation and engineering design baseline complete for the user's request to finish preparation before Phase 1. This is design review, not runtime, interoperability execution, security audit or production approval. No plugin code, dependency installation, release or live dataset is included.
 
 ## Decisions and artifacts

@@ -4,6 +4,8 @@
 
 Status: conceptual model, not a finalized migration/schema.
 
+The initial identity/audit/migration tables are implemented; player/club/publication storage below remains conceptual. See [current scope](IMPLEMENTATION_STATUS.md).
+
 The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) proposes concrete public types, limits, private/public revision separation and staged import identity rules. It refines the conceptual discussion below; signed feed and private restore contracts remain open.
 
 The bundled [schema and validation rules](CONTRACT_VALIDATION.md) now provide the structural public v1 baseline. [Storage/migration ownership](STORAGE_AND_MIGRATIONS.md) defines private/public records and transaction boundaries; concrete SQL DDL belongs to implementation.

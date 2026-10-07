@@ -2,7 +2,7 @@
 
 [English](CONTRIBUTING.md)
 
-Pročitaj [README](README-sr.md), [plan](docs/sr/PLAN.md), [arhitekturu](docs/sr/ARCHITECTURE.md) i [AGENTS.md](AGENTS.md). Još nema izvršive implementacije; predlozi dizajna i dokumentovani scenariji su dobrodošli.
+Pročitaj [README](README-sr.md), [plan](docs/sr/PLAN.md), [arhitekturu](docs/sr/ARCHITECTURE.md) i [AGENTS.md](AGENTS.md). Početni bootstrap faze 1 je implementiran; [stanje implementacije](docs/sr/IMPLEMENTATION_STATUS.md) razdvaja postojeći kod od planiranih funkcija.
 
 Inženjerske odluke i ograničenja faze 0 su u [evidenciji spremnosti](docs/sr/PHASE_0_READINESS.md). Javna šema zahteva i [parser/semantičke provere](docs/sr/CONTRACT_VALIDATION.md); potpisani formati imaju [zasebne kasnije preglede](docs/sr/AUTHENTICATED_PUBLICATION.md).
 
@@ -23,7 +23,7 @@ Opiši problem korisnika, trenutno/planirano ponašanje, konkretne primere i neu
 
 Čuvaj nepovezane izmene i fokusiraj patch. Ažuriraj CHANGELOG.md i pogođenu englesku/srpsku dokumentaciju. Koristi izmišljene/anonimizovane podatke; ne commit-uj baze saveza, fotografije bez dozvole, kredencijale niti ključeve za oporavak.
 
-Kada je provera zatražena, obuhvati ispravne/neispravne uvoze, duplikate, migracije, prekide sinhronizacije, replay, neuspešne autorizacije, brisanje i sukobe oporavka. Navedi stvarne komande/rezultate i ograničenja. Alati i komande stižu sa implementacijom; trenutno ih nema.
+Kada je provera zatražena, obuhvati ispravne/neispravne uvoze, duplikate, migracije, prekide sinhronizacije, replay, neuspešne autorizacije, brisanje i sukobe oporavka. Navedi stvarne komande/rezultate i ograničenja. Konfiguracija i stvarne komande opisane su u [razvojnim standardima](docs/sr/DEVELOPMENT.md).
 
 Korisnički tekst podržava srpski i engleski. Koristi stabilne ključeve prevoda; ne prevodi sačuvane identifikatore/stanja. Imena ostaju onako kako su uneta.
 

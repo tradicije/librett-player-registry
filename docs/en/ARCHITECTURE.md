@@ -47,7 +47,7 @@ A rich front end, if needed, should use strict TypeScript and separated views/st
 
 ## Planned directory shape
 
-Modules and platform adapters will get actual source directories when code starts. This repository currently contains documentation only. The contract is module ownership and dependency direction, not a premature empty skeleton.
+The first slice implements RegistryIdentity under `src/RegistryIdentity/{Domain,Application,Infrastructure}` and shared WordPress composition/migration/UI adapters under `src/Infrastructure/WordPress`. Future module directories are added with their functionality. See implemented scope for the actual boundary.
 
 ## References
 

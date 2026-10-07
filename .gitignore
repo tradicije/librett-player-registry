@@ -34,3 +34,5 @@ recovery-*
 .idea/
 .vscode/
 *.log
+
+.phpstan-cache/

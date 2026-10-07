@@ -2,7 +2,9 @@
 
 [Srpski](../sr/COMPATIBILITY_AND_TOOLING.md)
 
-Reviewed: 2026-10-07. Status: selected engineering targets for review and implementation, not tested plugin support or an advertised runtime minimum. No dependencies are installed. Exact resolved versions and platform evidence must be recorded when Phase 1 starts.
+Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+
+Reviewed: 2026-10-07. Status: selected engineering targets for review and implementation, not tested plugin support or an advertised runtime minimum. Bootstrap dependencies are installed and locked; actual evidence is in implementation status.
 
 ## Upstream evidence
 

@@ -2,7 +2,7 @@
 
 [Srpski](../sr/PLAN.md)
 
-Status: proposed implementation milestones; no application code exists.
+Status: Phase 1 bootstrap implemented; subsequent milestones remain planned.
 
 ## Scope
 
@@ -10,7 +10,7 @@ One modular plugin supports an empty independent registry or a replica, public p
 
 ## Current work
 
-Phase 0 documentation preparation is complete; see the [readiness record](PHASE_0_READINESS.md) and [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). Publication rules, unsigned structural JSON Schema/examples, storage/migrations, module interfaces and reviewed runtime/tool targets are recorded as the engineering baseline. Runtime/dependency/fixture execution remains implementation-time work, and real-data approval and authenticated-format security review remain deployment/feature gates. No application code, dependencies or tests have been added. Next is the Phase 1 bootstrap slice described in [module contracts](MODULE_CONTRACTS.md), when implementation is requested.
+Phase 0 design is recorded in the readiness record. Phase 1 now has a [verified development bootstrap](IMPLEMENTATION_STATUS.md): runtime preflight, empty initial migrations, primary identity setup and retention. The user authorized dependency installation and implementation testing. Phase 1 is not complete; next are Players/Clubs private drafts and CRUD. Publication, JSON import/export, replicas and recovery are not implemented.
 
 ## Phase 0 — contracts and technical foundation
 
@@ -18,7 +18,7 @@ Phase 0 documentation preparation is complete; see the [readiness record](PHASE_
 - Adopt module boundaries, acyclic dependencies and explicit ports; no giant plugin file, all-purpose service or controller.
 - Development target: PHP 8.5, the highest supported branch listed by PHP on 2026-10-07. Confirm WordPress/database compatibility and minimum deployment versions before claiming support. Recheck versions when implementation begins.
 - Composer PSR-4, strict types, typed DTOs/value objects and current PHP-FIG PER Coding Style (3.1 at review date). Avoid older-runtime compatibility work unless deliberately agreed.
-- Choose static-analysis, formatter, test and dependency-audit tools; record exact versions and commands when installed. No tooling has been installed now.
+- Choose static-analysis, formatter, test and dependency-audit tools; record exact versions and commands when installed. Tooling is now locked for the bootstrap; see implementation status.
 - Review schema/versioned JSON, UUID identity, transaction boundaries, conflict rules, bounded import and migration rollback.
 - Review recovery trust/bootstrap and canonical signed-envelope design before representing any replica as authenticated.
 

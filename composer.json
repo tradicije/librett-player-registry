@@ -1,0 +1,39 @@
+{
+  "name": "librett/player-registry",
+  "description": "LibreTT Player Registry development bootstrap",
+  "type": "wordpress-plugin",
+  "license": "AGPL-3.0-or-later",
+  "require": {
+    "php": "~8.5.0",
+    "ext-mysqli": "*",
+    "ext-mbstring": "*",
+    "ext-intl": "*",
+    "ext-fileinfo": "*",
+    "ramsey/uuid": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "LibreTT\\PlayerRegistry\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": false,
+    "sort-packages": true
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.95",
+    "php-stubs/wordpress-stubs": "^7.1",
+    "phpstan/phpstan": "^2.3",
+    "phpunit/phpunit": "^13.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LibreTT\\PlayerRegistry\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "analyse": "phpstan analyse --memory-limit=512M",
+    "style": "php-cs-fixer check"
+  }
+}

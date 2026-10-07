@@ -2,7 +2,7 @@
 
 [Srpski](../sr/INDEX.md)
 
-All documents describe planned behavior unless explicitly marked implemented. There is no executable plugin.
+All documents describe planned behavior unless explicitly marked implemented. A development bootstrap exists; [implemented scope](IMPLEMENTATION_STATUS.md) is authoritative.
 
 1. [Plan and acceptance criteria](PLAN.md)
 2. [Architecture and module boundaries](ARCHITECTURE.md)
@@ -24,5 +24,7 @@ All documents describe planned behavior unless explicitly marked implemented. Th
 18. [Authenticated publication design](AUTHENTICATED_PUBLICATION.md)
 19. [Phase 0 completion and entry gates](PHASE_0_READINESS.md)
 20. [ADR 0004](../adr/0004-phase-0-engineering-baseline.md)
+21. [Implemented bootstrap and verification](IMPLEMENTATION_STATUS.md)
+22. [ADR 0005](../adr/0005-phase-1-bootstrap.md)
 
 Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SECURITY.md), [license](../../LICENSE), [agent instructions](../../AGENTS.md), [changelog](../../CHANGELOG.md).

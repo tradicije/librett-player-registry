@@ -2,7 +2,9 @@
 
 [English](../en/COMPATIBILITY_AND_TOOLING.md)
 
-Pregled: 2026-10-07. Status: izabrani inženjerski ciljevi za pregled/implementaciju, ne proverena podrška plugina ili oglašen minimum. Zavisnosti nisu instalirane. Tačne rešene verzije i dokaz okruženja beleže se na početku faze 1.
+Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+
+Pregled: 2026-10-07. Status: izabrani inženjerski ciljevi za pregled/implementaciju, ne proverena podrška plugina ili oglašen minimum. Bootstrap zavisnosti su instalirane/zaključane; stvarni dokazi su u statusu implementacije.
 
 ## Dokazi upstream-a
 

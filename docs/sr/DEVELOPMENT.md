@@ -2,16 +2,37 @@
 
 [English](../en/DEVELOPMENT.md)
 
-Još nema koda/alata za pokretanje. [Arhitektura](ARCHITECTURE.md) definiše obavezne granice modula, a [plan](PLAN.md) etape.
+Početni bootstrap faze 1 je implementiran. Pre proširenja pročitaj [stanje implementacije](IMPLEMENTATION_STATUS.md), [arhitekturu](ARCHITECTURE.md) i [matricu kompatibilnosti](COMPATIBILITY_AND_TOOLING.md). Tačne zavisnosti su u composer.lock; instaliraj iz lockfile-a bez implicitnog ažuriranja verzija.
 
-Faza 0 izabrala je [matricu kompatibilnosti i porodice alata](COMPATIBILITY_AND_TOOLING.md). Tačne verzije/konfiguracija/komande dolaze posle autorizovane instalacije u fazi 1. [Spremnost](PHASE_0_READINESS.md) navodi ograničenja pregleda.
+Koristi PHP 8.5 na 64-bitnom runtime-u sa ekstenzijama navedenim u composer.json. WordPress adapter zahteva i GD ili Imagick. Iz korena repozitorijuma pokreni:
 
-Na datum dizajna (7. oktobar 2026) PHP stranica podrške navodi 8.5 kao najnoviju podržanu granu. Cilj je savremen PHP 8.5 razvoj; pre tvrdnje o deploy-u odobriti WordPress/PHP/database matricu. PHP-FIG PER Coding Style 3.1 zamenjuje/proširuje PSR-12; Composer PSR-4, strict types i izričiti tipovi koriste se u nezavisnim modulima.
+```sh
+composer install
+php vendor/bin/phpunit
+php vendor/bin/phpstan analyse --debug --memory-limit=512M
+php vendor/bin/php-cs-fixer check --sequential
+composer validate --strict --no-check-publish
+```
 
-Porodice održavanih alata za analizu, formatter, testove i audit izabrane su u matrici faze 0. Tačne install/check/build komande navesti tek kada postoji konfiguracija. Frontend, ako ga bude, koristi strict TypeScript i odvojene view/state/transport module; framework nije odabran.
+PHPStan koristi najstroži nivo. `--debug` radi sekvencijalno i izbegava ograničenja worker socket-a u sandbox okruženjima. Formatter trenutno podržava PER-CS 3.0; dokumentovani cilj ostaje PER 3.1, uz ručni pregled dopuna izvan tog ruleset-a. Domain/application klase moraju da se učitavaju bez WordPress-a.
 
-Domain/application paketi učitavaju se bez WordPress bootstrap-a. Adapter integration provere imaju posebno WordPress okruženje. Planirani CI proverava smer zavisnosti, syntax/style/statičku analizu, unit/adapter slučajeve, migracije, izvoz, recovery primere i sadržaj paketa. Testovi zahtevaju autorizaciju zadatka prema AGENTS.md; u ovom docs bootstrap-u nisu dodati niti pokrenuti.
+## Privremeno WordPress integraciono okruženje
 
-Release ZIP sadrži runtime kod, potrebne zavisnosti i notices, ne tajne, testove, baze igrača niti recovery materijal. Verzija/tag ne bira se pre implementacije.
+Koristi zaseban WordPress 7.1.3 direktorijum i privatnu MariaDB 10.11 instancu sa UNIX socket-om, isključenom mrežom i privremenim root nalogom bez lozinke. Helper je samo za to lokalno test okruženje. Ne usmeravaj ga na postojeći korisnički sajt ili produkcionu bazu. MySQL 8.4 je izabran cilj, ali nije proveren u ovoj izmeni.
 
-Reference: [PHP podrška](https://www.php.net/supported-versions.php), [PER Coding Style](https://www.php-fig.org/per/coding-style/), [PSR-4](https://www.php-fig.org/psr/psr-4/).
+Postavi putanje svog privremenog okruženja:
+
+```sh
+export LIBRETT_WP_ROOT=/putanja/do/privremenog/wordpress
+export LIBRETT_DB_SOCKET=/putanja/do/privatnog/mysql.sock
+export LIBRETT_TEST_DB=librett_registry_test_bootstrap
+ln -s "$PWD" "$LIBRETT_WP_ROOT/wp-content/plugins/librett-player-registry"
+php tools/install-integration-site.php
+php vendor/bin/phpunit -c phpunit.integration.xml
+```
+
+Installer zahteva prefiks baze `librett_registry_test_` i odbija prepisivanje drugačijeg wp-config.php. Pravi sintetički administratorski nalog bez ispisa lozinke; mail, spoljni WordPress HTTP, cron i automatska ažuriranja su isključeni. Integracioni testovi zahtevaju tu zasebnu bazu, koriste izolovane prefikse tabela i uklanjaju svoje test tabele. Lifecycle test koristi i plugin tabele zasebnog sajta. Ovo okruženje nije namenjeno deployment-u.
+
+Unit i integracioni testovi pokrivaju implementirani identitet/bootstrap; ne proveravaju planirani CRUD igrača, publikovanje, replikaciju ili oporavak. CI workflow i release pakovanje nisu implementirani. [Stanje implementacije](IMPLEMENTATION_STATUS.md) beleži stvarne verzije, rezultate i ograničenja.
+
+Čuvaj granice modula, strict types, izričite portove i Composer PSR-4. Budući scripted frontend koristi strict TypeScript; framework nije izabran. Budući release ZIP mora da sadrži runtime zavisnosti i [third-party notices](../../THIRD_PARTY_NOTICES.md), bez razvojnih zavisnosti, testova, baza igrača ili tajni za oporavak. Release verzija nije dodeljena.

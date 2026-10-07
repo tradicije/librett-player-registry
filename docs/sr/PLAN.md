@@ -2,7 +2,7 @@
 
 [English](../en/PLAN.md)
 
-Status: predložene implementacione etape; aplikacioni kod još ne postoji.
+Status: bootstrap faze 1 implementiran; naredni koraci ostaju planirani.
 
 ## Obim
 
@@ -10,7 +10,7 @@ Jedan modularan dodatak podržava prazan nezavisan registar ili repliku, javne p
 
 ## Trenutni rad
 
-Dokumentaciona priprema faze 0 je završena; pogledaj [evidenciju spremnosti](PHASE_0_READINESS.md) i [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). Politika objave, nepotpisana strukturna JSON šema/primeri, skladište/migracije, interfejsi modula i pregledani runtime/alati čine inženjersku osnovu. Runtime/zavisnosti/izvršenje primera pripadaju implementaciji; odobrenje stvarnih podataka i pregled bezbednosti autentifikovanih formata ostaju deployment/feature uslovi. Nema aplikacionog koda, zavisnosti ili testova. Sledeći je bootstrap faze 1 iz [ugovora modula](MODULE_CONTRACTS.md), kada implementacija bude zatražena.
+Dizajn faze 0 je u evidenciji spremnosti. Faza 1 sada ima [proverenu razvojnu osnovu](IMPLEMENTATION_STATUS.md): preflight, prazne početne migracije, primary identitet i čuvanje podataka. Korisnik je odobrio zavisnosti i implementacione testove. Faza 1 nije završena; slede Players/Clubs privatni nacrti/CRUD. Objava, JSON uvoz/izvoz, replike i oporavak nisu implementirani.
 
 ## Faza 0 — ugovori i tehnička osnova
 
@@ -18,7 +18,7 @@ Dokumentaciona priprema faze 0 je završena; pogledaj [evidenciju spremnosti](PH
 - Usvojiti granice modula, zavisnosti bez ciklusa i izričite portove; bez ogromnog plugin fajla, univerzalnog servisa ili kontrolera.
 - Razvojni cilj: PHP 8.5, najviša podržana grana na PHP sajtu 7. oktobra 2026. Proveriti WordPress/bazu i minimalne deployment verzije pre tvrdnje o podršci. Ponovo proveriti verzije na početku implementacije.
 - Composer PSR-4, strict types, tipizirani DTO/value objekti i aktuelni PHP-FIG PER Coding Style (3.1 na datum pregleda). Podršku starim runtime-ovima uvodimo samo namernom odlukom.
-- Izabrati statičku analizu, formatter, testove i audit zavisnosti; navesti verzije/komande kada se alati instaliraju. Sada ništa nije instalirano.
+- Izabrati statičku analizu, formatter, testove i audit zavisnosti; navesti verzije/komande kada se alati instaliraju. Alati su sada zaključani za bootstrap; pogledaj status implementacije.
 - Pregled šeme/JSON verzionisanja, UUID identiteta, transakcija, sukoba, ograničenog uvoza i oporavka migracija.
 - Pregled početnog poverenja i potpisanih poruka pre tvrdnje da su replike autentifikovane.
 

@@ -1,0 +1,57 @@
+# Copyright (C) 2026 Aleksa Dimitrijević. AGPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: LibreTT Player Registry development\n"
+"Language: sr_RS\n"
+"PO-Revision-Date: 2026-10-07 22:30+0200\n"
+"Last-Translator: Aleksa Dimitrijević\n"
+"Language-Team: Serbian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "LibreTT requires the PHP 8.5 development target and installed Composer dependencies."
+msgstr "LibreTT zahteva razvojni PHP 8.5 i instalirane Composer zavisnosti."
+
+msgid "LibreTT bootstrap is unavailable. Check the development runtime and Composer dependencies."
+msgstr "LibreTT osnova nije dostupna. Proverite razvojno okruženje i Composer zavisnosti."
+
+msgid "Primary registry configured."
+msgstr "Glavni registar je podešen."
+
+msgid "Player profiles, publication and imports are still under development."
+msgstr "Profili igrača, objavljivanje i uvoz su još u razvoju."
+
+msgid "Create a new empty independent registry. No players or clubs will be added."
+msgstr "Napravite nov prazan nezavisan registar. Igrači i klubovi neće biti dodati."
+
+msgid "Registry name"
+msgstr "Naziv registra"
+
+msgid "Create registry"
+msgstr "Napravi registar"
+
+msgid "Setup is unavailable. Check the runtime and reactivate the plugin to resume its initial migration."
+msgstr "Podešavanje nije dostupno. Proverite okruženje i ponovo aktivirajte dodatak za nastavak početne migracije."
+
+msgid "Stored registry identity is invalid. Contact the administrator."
+msgstr "Sačuvan identitet registra nije ispravan. Obratite se administratoru."
+
+msgid "POST required."
+msgstr "Potreban je POST zahtev."
+
+msgid "Invalid registry name."
+msgstr "Naziv registra nije ispravan."
+
+msgid "Registry setup could not be completed. Existing data was preserved."
+msgstr "Podešavanje registra nije završeno. Postojeći podaci su sačuvani."
+
+msgid "Permission denied."
+msgstr "Pristup nije dozvoljen."
+
+msgid "Activation is not authorized for this installation."
+msgstr "Aktivacija nije dozvoljena za ovu instalaciju."
+
+msgid "LibreTT activation failed. Check runtime/database requirements. No registry was created."
+msgstr "LibreTT aktivacija nije uspela. Proverite zahteve okruženja i baze. Registar nije napravljen."

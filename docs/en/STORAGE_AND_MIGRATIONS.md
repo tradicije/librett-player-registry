@@ -2,7 +2,9 @@
 
 [Srpski](../sr/STORAGE_AND_MIGRATIONS.md)
 
-Status: Phase 0 engineering baseline for Phase 1 implementation; no SQL or migration runner exists. One WordPress single-site registry, InnoDB tables and one shared transaction connection. Network activation/multisite and nontransactional engines are excluded from the first matrix.
+Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+
+Status: Phase 0 engineering baseline for Phase 1 implementation; the initial identity migration is implemented; later storage below is planned. One WordPress single-site registry, InnoDB tables and one shared transaction connection. Network activation/multisite and nontransactional engines are excluded from the first matrix.
 
 ## Ownership and logical keys
 

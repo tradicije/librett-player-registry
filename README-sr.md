@@ -3,12 +3,12 @@
 Prenosiv registar igrača i klubova sa javnim profilima, WordPress administracijom i jednosmernim preuzimanjem u LibreTT Desktop.
 
 ![Licenca: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL--3.0--or--later-3da639.svg)
-![Status: Planiranje](https://img.shields.io/badge/Status-Design-818cf8.svg)
-![WordPress adapter: planiran](https://img.shields.io/badge/WordPress_adapter-planned-21759b.svg)
+![Status: Planiranje](https://img.shields.io/badge/Status-Development-818cf8.svg)
+![WordPress adapter: planiran](https://img.shields.io/badge/WordPress_adapter-bootstrap-21759b.svg)
 
 [English](README.md)
 
-**Status: plan i dokumentacija.** Ovaj repozitorijum još nije WordPress dodatak koji može da se instalira. Nema objavljene verzije, potvrđenih minimalnih sistemskih zahteva ni implementiranog protokola sinhronizacije.
+**Status: rana implementacija.** Neobjavljena WordPress razvojna osnova ima prazne početne migracije i podešavanje identiteta glavnog registra. CRUD igrača/klubova, javni profili/API, uvoz/izvoz i sinhronizacija ostaju planirani. Pogledaj [implementiran obim i stvarne provere](docs/sr/IMPLEMENTATION_STATUS.md).
 
 ## Šta pravimo
 
@@ -47,11 +47,11 @@ Počni od [indeksa dokumentacije](docs/sr/INDEX.md).
 - [Arhitektonska odluka](docs/adr/0001-registry-foundation.md)
 - [Doprinos projektu](CONTRIBUTING-sr.md), [bezbednost](SECURITY-sr.md), [uputstva agentima](AGENTS.md)
 
-Dokumentaciona priprema faze 0 je završena: [spremnost i uslovi](docs/sr/PHASE_0_READINESS.md), [šema/primeri](docs/sr/CONTRACT_VALIDATION.md) i [pregledani ciljevi kompatibilnosti/alata](docs/sr/COMPATIBILITY_AND_TOOLING.md). Implementacija i runtime provere nisu počele.
+Dokumentaciona priprema faze 0 je završena: [spremnost i uslovi](docs/sr/PHASE_0_READINESS.md), [šema/primeri](docs/sr/CONTRACT_VALIDATION.md) i [pregledani ciljevi kompatibilnosti/alata](docs/sr/COMPATIBILITY_AND_TOOLING.md). Prvi implementacioni korak i njegove provere sada su zabeleženi odvojeno.
 
 ## Razvoj
 
-Komande za instalaciju, build i testiranje još nisu određene. Alati, minimalne PHP/WordPress verzije, zahtevi baze i CI biće izabrani u prvoj implementacionoj etapi. Ovaj folder dokumentacije nije funkcionalan plugin.
+Composer zavisnosti i test konfiguracije su zabeležene. Prati [razvojno podešavanje](docs/sr/DEVELOPMENT.md) na privremenom WordPress sajtu; aktivacija pravi samo setup tabele, a poseban administratorski zahtev UUID registra. Nema produkcionog installer-a ili ZIP izdanja.
 
 ## Autor i licenca
 

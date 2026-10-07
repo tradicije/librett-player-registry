@@ -6,7 +6,7 @@ Phase 0 engineering decisions and review limits are recorded in [readiness](docs
 
 ## Supported versions
 
-There is no executable release or supported production version yet. This repository contains a proposed design, not audited security controls. Before any release, select supported runtimes, implement the threat-model requirements and publish the actual support matrix.
+There is no executable release or supported production version yet. The repository contains an unreleased identity bootstrap plus proposed later features; it is not security audited. Before any release, select supported runtimes, implement the threat-model requirements and publish the actual support matrix.
 
 ## Reporting
 

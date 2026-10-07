@@ -6,7 +6,7 @@ Inženjerske odluke i ograničenja faze 0 su u [evidenciji spremnosti](docs/sr/P
 
 ## Podržane verzije
 
-Još nema izvršivog izdanja niti podržane produkcione verzije. Repozitorijum sadrži predlog dizajna, ne auditovane kontrole. Pre izdanja treba izabrati runtime verzije, implementirati zahteve modela pretnji i objaviti stvarnu matricu podrške.
+Još nema izvršivog izdanja niti podržane produkcione verzije. Repozitorijum ima neobjavljen identity bootstrap i predloge kasnijih funkcija; nije bezbednosno auditovan. Pre izdanja treba izabrati runtime verzije, implementirati zahteve modela pretnji i objaviti stvarnu matricu podrške.
 
 ## Prijavljivanje
 

@@ -4,7 +4,16 @@ Notable changes are recorded in English. No application release exists yet.
 
 ## Unreleased
 
+### Added
+
+- Began Phase 1 with a modular WordPress development bootstrap, Composer PSR-4 and independent RegistryIdentity domain/application ports using ramsey/uuid v4.
+- Added bounded runtime/database preflight, an InnoDB initial identity/audit schema with advisory migration lock/checksum/resume checks, and capability/nonce-protected primary setup. Activation includes no registry UUID or player data; repeated setup preserves the original identity.
+- Added English/Serbian setup UI and explicit retention on deactivation/uninstall; no purge, player CRUD, publication API or replica feature is implemented.
+- Added locked development tooling, 16 unit tests and 14 real WordPress/MariaDB integration tests covering authorization, validation, rollback, migration failure/resume/lock and lifecycle retention. PHPStan max-level and supported PER 3.0 formatter checks passed; full PER 3.1 automation and production support are not claimed.
+
 ### Documentation
+
+- Added bilingual development commands and implementation/verification records, ADR 0005 and runtime third-party notices; updated project/agent status and affected plans/policies without claiming Phase 1 completion.
 
 - Completed the Phase 0 documentation/engineering baseline with a local JSON Schema 2020-12 for unsigned public snapshots and 11 synthetic acceptance/rejection documents; specified mandatory parser, semantic and contextual checks without claiming fixture execution.
 - Specified module interfaces and acyclic dependencies, private/public storage ownership, InnoDB transaction rules, protected media finalization/withdrawal, resumable migrations and explicit backup/uninstall behavior.

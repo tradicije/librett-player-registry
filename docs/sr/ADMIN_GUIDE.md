@@ -2,6 +2,8 @@
 
 [English](../en/ADMIN_GUIDE.md)
 
+Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+
 Ovo su budući ekrani, ne dostupno uputstvo za instalaciju.
 
 Mediji prve etape dolaze iz zaštićenog storage-a tek posle odobrenja. Uvoz javnog snimka pravi neobjavljene nacrte sa izričitim mapiranjem; ne vraća privatna odobrenja niti daje autoritet izvora. Pogledaj [skladište/restore](STORAGE_AND_MIGRATIONS.md) i [spremnost](PHASE_0_READINESS.md).

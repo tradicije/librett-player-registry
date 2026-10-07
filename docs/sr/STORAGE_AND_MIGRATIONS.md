@@ -2,7 +2,9 @@
 
 [English](../en/STORAGE_AND_MIGRATIONS.md)
 
-Status: inženjerska osnova faze 0 za implementaciju faze 1; SQL i migration runner ne postoje. Jedan WordPress single-site registar, InnoDB tabele i jedna zajednička transakciona konekcija. Network aktivacija/multisite i netransakcioni engine-i nisu u prvoj matrici.
+Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+
+Status: inženjerska osnova faze 0 za implementaciju faze 1; početna identity migracija je implementirana; ostalo skladište ispod je planirano. Jedan WordPress single-site registar, InnoDB tabele i jedna zajednička transakciona konekcija. Network aktivacija/multisite i netransakcioni engine-i nisu u prvoj matrici.
 
 ## Vlasništvo i logički ključevi
 

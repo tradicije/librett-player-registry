@@ -2,6 +2,8 @@
 
 [Srpski](../sr/ADMIN_GUIDE.md)
 
+Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+
 These describe future screens, not available installation instructions.
 
 First-milestone media is delivered from protected storage only after approval. Public snapshot import creates unpublished drafts with explicit identity mappings; it does not restore private approvals or confer source authority. See [storage/restore rules](STORAGE_AND_MIGRATIONS.md) and [readiness](PHASE_0_READINESS.md).

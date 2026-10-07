@@ -2,7 +2,7 @@
 
 [English](../en/INDEX.md)
 
-Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao implementirano. Izvršivi plugin još ne postoji.
+Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao implementirano. Postoji razvojna osnova; [implementiran obim](IMPLEMENTATION_STATUS.md) je merodavan.
 
 1. [Plan i kriterijumi prihvatanja](PLAN.md)
 2. [Arhitektura i granice modula](ARCHITECTURE.md)
@@ -24,5 +24,7 @@ Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao impl
 18. [Dizajn autentifikovane objave](AUTHENTICATED_PUBLICATION.md)
 19. [Završetak faze 0 i uslovi](PHASE_0_READINESS.md)
 20. [ADR 0004](../adr/0004-phase-0-engineering-baseline.md)
+21. [Implementirana osnova i provere](IMPLEMENTATION_STATUS.md)
+22. [ADR 0005](../adr/0005-phase-1-bootstrap.md)
 
 Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.md), [licenca](../../LICENSE), [uputstva agentima](../../AGENTS.md), [changelog](../../CHANGELOG.md).

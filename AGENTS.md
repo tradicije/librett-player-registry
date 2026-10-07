@@ -2,7 +2,7 @@
 
 ## Project status
 
-LibreTT Player Registry is currently a documentation/design project. No plugin bootstrap, runnable application, production API or release exists. Do not describe planned features as implemented. Read README.md, docs/en/PLAN.md and the relevant architecture/protocol document before changing code or plans. User instructions override this file.
+LibreTT Player Registry has an unreleased Phase 1 development bootstrap: identity setup, initial migrations and authorized tests. Players/clubs CRUD, public publication/API, imports, replicas and recovery are not implemented. No production release exists. See docs/en/IMPLEMENTATION_STATUS.md for actual scope. Do not describe planned features as implemented. Read README.md, docs/en/PLAN.md and the relevant architecture/protocol document before changing code or plans. User instructions override this file.
 
 ## Product boundaries
 
@@ -34,7 +34,7 @@ The documented development target is PHP 8.5, Composer PSR-4, strict types, expl
 
 ## Implementation discipline
 
-- This bootstrap task is documentation only. Do not create a plugin header/version or installation claims until implementation is requested.
+- Implementation has been requested for Phase 1. Keep changes in the documented slice and do not create release versions or production installation/support claims without actual verification.
 - Keep dependencies minimal. Select supported WordPress/PHP versions and tooling before adding requirements or check commands.
 - Use WordPress capabilities plus request authentication/nonces as appropriate. Validate permissions on every server-side mutation.
 - Validate imports before applying them; enforce bounded size/count/depth, transactional updates and idempotence.

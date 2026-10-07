@@ -2,6 +2,8 @@
 
 [English](../en/PHASE_0_READINESS.md)
 
+Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+
 Datum: 2026-10-07. Status: dokumentacija i inženjerska osnova završeni prema zahtevu da se završi priprema pre faze 1. Ovo je pregled dizajna, ne runtime provera, izvršena interoperabilnost, bezbednosni audit ili odobrenje produkcije. Nema plugin koda, instalacije zavisnosti, izdanja ili stvarne baze.
 
 ## Odluke i artefakti

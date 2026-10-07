@@ -2,6 +2,8 @@
 
 [English](../en/MODULE_CONTRACTS.md)
 
+Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+
 Status: osnova dizajna faze 0. Nazivi predstavljaju buduće PHP interfejse, ne postojeće klase. Mali zajednički UUID/counter/error/actor tipovi nemaju infrastrukturne zavisnosti.
 
 ## Graf bez ciklusa

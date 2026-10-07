@@ -47,7 +47,7 @@ Bogat frontend, ako bude potreban, koristi strict TypeScript i odvojene view/sta
 
 ## Plan rasporeda direktorijuma
 
-Moduli i platformski adapteri dobijaju stvarne source direktorijume kada počne kod. Sada je repozitorijum samo dokumentacija. Ugovor su vlasništvo modula i smer zavisnosti, ne prazna prerana skeleton struktura.
+Prvi korak implementira RegistryIdentity u `src/RegistryIdentity/{Domain,Application,Infrastructure}` i WordPress composition/migration/UI adaptere u `src/Infrastructure/WordPress`. Budući direktorijumi modula dolaze sa funkcijama. Implementiran obim navodi stvarnu granicu.
 
 ## Reference
 
