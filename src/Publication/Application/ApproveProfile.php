@@ -39,7 +39,7 @@ final readonly class ApproveProfile
         $actor->assertCanPublish();
         PlainText::assertValid($evidence, 1000, true);
         $allowed = match ($type) {
-            'player' => self::PLAYER_FIELDS, 'club' => self::CLUB_FIELDS, default => throw new RegistryFailure('invalid_data')
+            'player' => self::PLAYER_FIELDS, 'club' => self::CLUB_FIELDS, default => throw new RegistryFailure('invalid_data'),
         };
         if (count($fields) !== count(array_unique($fields)) || array_diff($fields, $allowed) !== []) {
             throw new RegistryFailure('invalid_data');

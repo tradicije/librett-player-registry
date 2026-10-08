@@ -2,6 +2,8 @@
 
 [Srpski](../sr/COMPATIBILITY_AND_TOOLING.md)
 
+**PHP 8.3 update:** The user approved PHP 8.3.3 hosting compatibility and a prepared ZIP. The active runtime range is 8.3.3–8.5.x, 64-bit; dependencies resolve against 8.3.3 and tests use maintained PHPUnit 12. [Current evidence](PHP83_COMPATIBILITY.md) supersedes older PHP-8.5-only/no-packaging decisions below. WordPress remains 7.1.3 single-site; MariaDB 11.8 is additionally accepted for the user’s hosting; private storage requirements are unchanged.
+
 **Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
 
 Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.

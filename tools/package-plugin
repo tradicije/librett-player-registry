@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Copyright (C) 2026 Aleksa Dimitrijević. AGPL-3.0-or-later.
+set -euo pipefail
+registryPackageRoot="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$registryPackageRoot"
+registryPackagePath="$(tools/dev/run php tools/build-plugin.php prepare)"
+tools/dev/run composer install --working-dir="$registryPackagePath" --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-scripts
+tools/dev/run composer check-platform-reqs --working-dir="$registryPackagePath" --no-dev
+tools/dev/run php tools/build-plugin.php zip "$registryPackagePath"

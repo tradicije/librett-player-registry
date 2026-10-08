@@ -4,7 +4,7 @@
   "type": "wordpress-plugin",
   "license": "AGPL-3.0-or-later",
   "require": {
-    "php": "~8.5.0",
+    "php": ">=8.3.3 <8.6",
     "ext-fileinfo": "*",
     "ext-gd": "*",
     "ext-intl": "*",
@@ -21,13 +21,16 @@
   },
   "config": {
     "allow-plugins": false,
-    "sort-packages": true
+    "sort-packages": true,
+    "platform": {
+      "php": "8.3.3"
+    }
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.95",
     "php-stubs/wordpress-stubs": "^7.1",
     "phpstan/phpstan": "^2.3",
-    "phpunit/phpunit": "^13.0"
+    "phpunit/phpunit": "^12.0"
   },
   "autoload-dev": {
     "psr-4": {

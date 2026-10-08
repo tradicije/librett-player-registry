@@ -124,7 +124,7 @@ final readonly class InitialSchema implements SchemaMigration
         $version = (string) ($rows[0]['version'] ?? '');
         $maria = stripos($version, 'MariaDB') !== false;
         if (preg_match('/(?:5\.5\.5-)?([0-9]+\.[0-9]+)\.[0-9]+/', $version, $matches) !== 1
-            || $matches[1] !== ($maria ? '10.11' : '8.4')) {
+            || !in_array($matches[1], $maria ? ['10.11', '11.8'] : ['8.4'], true)) {
             throw new RegistryFailure('unsupported_database');
         }
         $engines = $this->db->rows('SHOW ENGINES');

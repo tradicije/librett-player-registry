@@ -4,7 +4,7 @@
 
 The first Phase 1 bootstrap is implemented. Read [implementation status](IMPLEMENTATION_STATUS.md), [architecture](ARCHITECTURE.md) and the [compatibility matrix](COMPATIBILITY_AND_TOOLING.md) before extending it. Exact dependencies are pinned in composer.lock; install from the lockfile rather than updating dependencies implicitly.
 
-Use PHP 8.5 on a 64-bit runtime with the extensions declared in composer.json. The WordPress adapter also requires GD. Run from the repository root:
+Use PHP 8.3.3–8.5.x on a 64-bit runtime with the extensions declared in composer.json. The WordPress adapter also requires GD. Run from the repository root:
 
 ```sh
 composer install
@@ -33,7 +33,7 @@ php vendor/bin/phpunit -c phpunit.integration.xml
 
 The installer requires the `librett_registry_test_` database prefix and refuses to overwrite a different wp-config.php. It creates synthetic administrator credentials without printing the password; mail, external WordPress HTTP, cron and automatic updates are disabled. Integration tests require that dedicated database, create isolated table prefixes and remove their test tables. The lifecycle test also exercises the dedicated site's plugin tables. Do not use this environment as a deployable installation.
 
-Unit and integration suites cover identities, private CRUD, additive migrations, relationships, protected media, explicit publication, JSON validation/import and privacy. Replication/recovery remain absent. No CI workflow or release packaging is implemented. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
+Unit and integration suites cover identities, private CRUD, additive migrations, relationships, protected media, explicit publication, JSON validation/import and privacy. Replication/recovery remain absent. No CI workflow or production release is implemented; a development ZIP builder is available. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
 
 Preserve module boundaries, strict types, explicit ports and Composer PSR-4. A future scripted frontend uses strict TypeScript; no framework is selected. Future release ZIPs must include runtime dependencies and [third-party notices](../../THIRD_PARTY_NOTICES.md), while excluding development dependencies, tests, datasets and recovery secrets. No release version is assigned.
 
@@ -63,6 +63,20 @@ tools/dev/run msgfmt --check --output-file=local/dev/serbian.mo languages/libret
 
 Stop the disposable database with `tools/dev/run db-stop`; restart with `db-start`. Stopping preserves data. No automatic startup, purge or production deployment is configured. The image tags select the documented branches; record resolved versions on installation rather than treating tags as immutable patch pins.
 
-## Private-draft extension verification pending
+## Catalogue verification
 
 [Current verification and limits](VERIFICATION_2026_10_08.md) supersede earlier bootstrap-only coverage. Configure protected storage as described in the [administrator guide](ADMIN_GUIDE.md).
+## PHP 8.3 and distributable development package
+
+The user's PHP 8.3.3 hosting is an explicitly accepted compatibility target (ADR 0008). `config.platform.php=8.3.3` keeps dependency resolution compatible even when Composer runs on PHP 8.5; actual platform checks are still required. PHPUnit 12 replaces 13 so tests run on both PHP branches. Runtime packages are unchanged. Historical PHPUnit 13/PHP 8.5 verification remains historical evidence.
+
+```sh
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run build
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run php vendor/bin/phpunit
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run php vendor/bin/phpunit -c phpunit.integration.xml
+LIBRETT_DEV_PHP=8.3.3 tools/package-plugin
+```
+
+The builder copies allowlisted source/docs/languages, installs runtime-only dependencies from the lockfile in fresh ignored staging, checks the actual platform/autoload and creates a single-root ZIP plus SHA-256 in `build/`. It excludes development dependencies, tests, tools, repository metadata, local databases/media/configuration and recovery secrets. It does not mutate the working development vendor directory or publish anything. See [PHP 8.3 evidence](PHP83_COMPATIBILITY.md).
+
+`LIBRETT_DEV_DB=11.8.8` selects the hosting database candidate with a separate named container, data directory and UNIX socket. Run db-start and wp-install with that variable before integration/package checks. The default 10.11 environment and its data remain intact.

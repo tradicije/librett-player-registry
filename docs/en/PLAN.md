@@ -2,6 +2,8 @@
 
 [Srpski](../sr/PLAN.md)
 
+**Accepted compatibility addition:** PHP 8.3.3 hosting and runtime-complete development ZIP are now in scope at the user’s request; see [ADR 0008](../adr/0008-php83-hosting-and-development-package.md) and [verification](PHP83_COMPATIBILITY.md). Earlier PHP-8.5-only planning is superseded for this slice.
+
 Status: single-site catalogue and one-way Desktop import implemented in development; release and authenticated replication remain pending.
 
 ## Scope

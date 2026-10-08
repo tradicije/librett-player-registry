@@ -61,6 +61,10 @@ Start with the [documentation index](docs/en/INDEX.md).
 
 Phase 0 documentation preparation is complete: [readiness and entry gates](docs/en/PHASE_0_READINESS.md), [schema/examples](docs/en/CONTRACT_VALIDATION.md), and [reviewed compatibility/tool targets](docs/en/COMPATIBILITY_AND_TOOLING.md). The first implementation slice and its tests are now recorded separately.
 
+## Install the development plugin
+
+Use the prepared `build/librett-player-registry-development.zip`, including runtime dependencies. GitHub **Download ZIP** is source-only and cannot be activated directly. The hosting target is 64-bit PHP 8.3.3–8.5.x and WordPress 7.1.3 single-site; see [installation instructions](docs/en/ADMIN_GUIDE.md) and [actual compatibility checks](docs/en/PHP83_COMPATIBILITY.md). This is an unreleased development package, not a production release.
+
 ## Development
 
 Composer dependencies and test configurations are committed. Follow [development setup](docs/en/DEVELOPMENT.md) on a disposable WordPress site; fresh activation creates empty setup/private-draft tables and a separate administrator action creates the registry UUID. No production installer or release ZIP is published.

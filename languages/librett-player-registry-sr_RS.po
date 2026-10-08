@@ -400,3 +400,9 @@ msgstr "Povuci objavu"
 
 msgid "Use Players and Clubs for private drafts, then configure license settings and review publication. JSON import creates private drafts."
 msgstr "Koristite Igrače i Klubove za privatne nacrte, zatim podesite licence i pregledajte objavu. JSON uvoz pravi privatne nacrte."
+
+msgid "LibreTT requires 64-bit PHP 8.3.3–8.5.x. This server runs PHP %s."
+msgstr "LibreTT zahteva 64-bit PHP 8.3.3–8.5.x. Ovaj server koristi PHP %s."
+
+msgid "LibreTT dependencies are missing. Install the prepared plugin ZIP containing vendor/autoload.php; a GitHub source ZIP is incomplete."
+msgstr "Nedostaju LibreTT zavisnosti. Instalirajte pripremljen ZIP sa vendor/autoload.php; GitHub ZIP izvornog koda nije potpun."

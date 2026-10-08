@@ -32,3 +32,5 @@ Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SEC
 [ADR 0006: Private draft slice (unverified)](../adr/0006-private-player-club-drafts.md)
 
 - [Development verification, 2026-10-08](VERIFICATION_2026_10_08.md)
+
+- [PHP 8.3 / development package](PHP83_COMPATIBILITY.md)

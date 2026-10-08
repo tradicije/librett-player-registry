@@ -30,3 +30,7 @@ Testovi pokrivaju nacrte, identitet, dodatne šeme, članstva/alias-e, odobrenje
 Nema potpisa, autentifikovane replikacije, predloga, oporavka autoriteta, automatskog otkrivanja izvora ni garancije svežine pri prvom kontaktu. Nepotpisani UUID/revizije ne uspostavljaju poverenje. MySQL 8.4, multisite, produkcioni kapacitet i macOS/Windows integracija nisu provereni ovde. Interaktivni GUI/browser i javni HTTPS deployment traže operatorov pregled. Prava i objava ostaju odgovornost operatora.
 
 Zaštićeni fajlovi traže privatno skladište van svih web-served direktorijuma. Baza i privatni fajlovi traže usklađen backup. Neuspeli upis može ostaviti privatni orphan fajl; garbage collection nije implementiran. PHP/server upload i database packet limiti mogu biti niži od protokolskih 32 MiB. Baza saveza nije uključena.
+
+## Dopuna za PHP 8.3 hosting
+
+Korisnik je odobrio PHP 8.3.3 kompatibilnost i kompletan razvojni instalacioni ZIP posle pokušaja GitHub source-only instalacije. Runtime prihvata 64-bit PHP 8.3.3–8.5.x; WordPress ostaje 7.1.3–7.1.x single-site. Zavisnosti se biraju prema 8.3.3, uz razvojni PHPUnit 12. Lokalni ZIP builder uključuje runtime vendor bez produkcionog release-a. [Stvarne PHP 8.3/paket provere](PHP83_COMPATIBILITY.md) dopunjuju raniju PHP 8.5 evidenciju.

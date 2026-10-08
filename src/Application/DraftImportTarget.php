@@ -31,7 +31,7 @@ final readonly class DraftImportTarget implements ImportTarget
     {
         return match ($type) {
             'player' => $this->players->find($id)?->revision->value,
-            'club' => $this->clubs->find($id)?->revision->value, default => throw new RegistryFailure('invalid_mapping')
+            'club' => $this->clubs->find($id)?->revision->value, default => throw new RegistryFailure('invalid_mapping'),
         };
     }
 

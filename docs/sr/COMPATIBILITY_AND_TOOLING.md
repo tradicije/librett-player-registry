@@ -2,6 +2,8 @@
 
 [English](../en/COMPATIBILITY_AND_TOOLING.md)
 
+**PHP 8.3 dopuna:** Korisnik je odobrio PHP 8.3.3 hosting kompatibilnost i pripremljen ZIP. Aktuelni runtime je 8.3.3–8.5.x, 64-bit; zavisnosti se biraju za 8.3.3, testovi koriste održavani PHPUnit 12. [Aktuelne provere](PHP83_COMPATIBILITY.md) zamenjuju starije odluke samo-PHP-8.5/bez-paketa ispod. WordPress ostaje 7.1.3 single-site; MariaDB 11.8 je dodatno prihvaćena za korisnikov hosting; privatno skladište nije izmenjeno.
+
 **Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
 
 Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.

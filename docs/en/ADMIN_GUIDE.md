@@ -6,10 +6,16 @@ This is unreleased source for a disposable development site. Read [scope/limits]
 
 ## Installation and setup
 
-1. Use the selected development matrix: 64-bit PHP 8.5, WordPress 7.1.3 single-site, MariaDB 10.11/InnoDB; install Composer runtime dependencies. MySQL 8.4 remains unverified.
+1. Use the selected development matrix: 64-bit PHP 8.3.3–8.5.x, WordPress 7.1.3 single-site, MariaDB 10.11 or 11.8/InnoDB; install Composer runtime dependencies. MySQL 8.4 remains unverified.
 2. Activate the plugin; fresh activation creates empty schema and administrator capabilities. Open **LibreTT Registry** and create your own named primary registry.
 3. Existing configured installations: back up database and protected files, then use **Registry schema** to acknowledge your backup and install/resume additive migrations 001–006. The acknowledgement does not create a backup. Restart/retry resumes verified DDL; never edit recorded checksums to bypass errors.
 4. For photo/Custom document uploads, provision a writable directory owned by the PHP user, mode 0700, outside the document root, WordPress directory and every web-server alias. Set `LIBRETT_PRIVATE_STORAGE` in wp-config.php to that absolute directory (or supply the environment variable). Stored files use 0600. No public uploads directory fallback exists; CRUD without uploads needs no private directory.
+
+### Installing the prepared development ZIP
+
+GitHub's **Code → Download ZIP** contains source only and excludes `vendor`; it cannot be activated directly. Use `build/librett-player-registry-development.zip`, generated with `tools/package-plugin`, which includes locked runtime dependencies. In Plugins → Add New → Upload Plugin, select that ZIP. If the source-only copy is already installed, use WordPress's replacement confirmation, then activate. Existing registry data is retained. No numbered production release is created.
+
+This package is prepared for the user's PHP 8.3.3 / WordPress 7.1.3 single-site combination. Actual test evidence is in [PHP 8.3 compatibility](PHP83_COMPATIBILITY.md). Database/extensions/private-storage requirements still apply; host settings are checked at activation.
 
 ## Private catalogue
 

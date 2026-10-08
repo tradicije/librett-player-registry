@@ -30,7 +30,7 @@ LibreTT Player Registry has an unreleased single-site development catalogue: ide
 
 Do not build a monolithic plugin. Keep RegistryIdentity, Players, Clubs, Publication, Replication, Proposals, Recovery and Media as modules with explicit interfaces and acyclic dependencies. One ZIP/composition root is acceptable; one giant service/controller or direct cross-module table access is not.
 
-The documented development target is PHP 8.5, Composer PSR-4, strict types, explicit types/value objects and PHP-FIG PER Coding Style 3.1 (reviewed 2026-10-07). Recheck the latest stable/supported tooling before implementation and approve a WordPress/deployment compatibility matrix. Do not advertise an unverified runtime minimum. Use maintained libraries and strict TypeScript if a scripted frontend is introduced; no framework has been selected.
+The user-approved hosting/runtime target is 64-bit PHP 8.3.3–8.5.x with WordPress 7.1.3–7.1.x single-site; the default development image remains PHP 8.5. Composer resolves dependencies against PHP 8.3.3 and PHPUnit 12 runs on both branches. A local runtime-complete development ZIP builder is authorized; no production release exists. Use Composer PSR-4, strict types, explicit types/value objects and PHP-FIG PER Coding Style 3.1 (reviewed 2026-10-07). Recheck the latest stable/supported tooling before implementation and approve a WordPress/deployment compatibility matrix. Do not advertise an unverified runtime minimum. Use maintained libraries and strict TypeScript if a scripted frontend is introduced; no framework has been selected.
 
 ## Implementation discipline
 

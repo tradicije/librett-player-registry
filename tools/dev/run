@@ -3,8 +3,25 @@
 set -euo pipefail
 
 registryProjectRoot="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
-registryDevImage=localhost/librett-player-registry-dev:php85
+registryPhpVersion="${LIBRETT_DEV_PHP:-8.5}"
+if [[ ! "$registryPhpVersion" =~ ^8\.[345](\.[0-9]+)?$ ]]; then
+    printf '%s\n' 'LIBRETT_DEV_PHP must select a PHP 8.3, 8.4 or 8.5 image.' >&2
+    exit 1
+fi
+registryDevImage="localhost/librett-player-registry-dev:php${registryPhpVersion//./}"
+registryDbVersion="${LIBRETT_DEV_DB:-10.11}"
+if [[ ! "$registryDbVersion" =~ ^(10\.11|11\.8)(\.[0-9]+)?$ ]]; then
+    printf '%s\n' 'LIBRETT_DEV_DB must select MariaDB 10.11 or 11.8.' >&2
+    exit 1
+fi
 registryDbContainer=librett-registry-dev-db
+registryDbData="$registryProjectRoot/local/dev/mariadb"
+registryDbRuntime="$registryProjectRoot/local/dev/runtime"
+if [[ "$registryDbVersion" != 10.11 ]]; then
+    registryDbContainer="librett-registry-dev-db-${registryDbVersion//./}"
+    registryDbData="$registryProjectRoot/local/dev/db-${registryDbVersion//./}/data"
+    registryDbRuntime="$registryProjectRoot/local/dev/db-${registryDbVersion//./}/runtime"
+fi
 registryCommand="${1:-help}"
 if (($# > 0)); then
     shift
@@ -12,19 +29,19 @@ fi
 
 case "$registryCommand" in
     build)
-        exec podman build --tag "$registryDevImage" --file "$registryProjectRoot/tools/dev/Containerfile" "$registryProjectRoot/tools/dev"
+        exec podman build --build-arg "PHP_VERSION=$registryPhpVersion" --tag "$registryDevImage" --file "$registryProjectRoot/tools/dev/Containerfile" "$registryProjectRoot/tools/dev"
         ;;
     db-start)
-        mkdir -p "$registryProjectRoot/local/dev/mariadb" "$registryProjectRoot/local/dev/runtime"
+        mkdir -p "$registryDbData" "$registryDbRuntime"
         if podman container exists "$registryDbContainer"; then
             exec podman start "$registryDbContainer"
         fi
         exec podman run --detach --name "$registryDbContainer" --userns=keep-id --user "$(id -u):$(id -g)" \
             --network=none --security-opt label=disable \
-            --volume "$registryProjectRoot/local/dev/mariadb:/var/lib/mysql:rw" \
-            --volume "$registryProjectRoot/local/dev/runtime:/run/mysqld:rw" \
+            --volume "$registryDbData:/var/lib/mysql:rw" \
+            --volume "$registryDbRuntime:/run/mysqld:rw" \
             --env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 \
-            docker.io/library/mariadb:10.11 --skip-networking --socket=/run/mysqld/mysql.sock
+            "docker.io/library/mariadb:$registryDbVersion" --skip-networking --socket=/run/mysqld/mysql.sock
         ;;
     db-stop)
         exec podman stop "$registryDbContainer"
@@ -54,7 +71,7 @@ case "$registryCommand" in
         exec "$registryProjectRoot/tools/dev/run" php tools/install-integration-site.php
         ;;
     php|composer|msgfmt)
-        mkdir -p "$registryProjectRoot/local/dev/wordpress" "$registryProjectRoot/local/dev/runtime" "$registryProjectRoot/local/dev/composer-cache" "$registryProjectRoot/local/dev/private"
+        mkdir -p "$registryProjectRoot/local/dev/wordpress" "$registryDbRuntime" "$registryProjectRoot/local/dev/composer-cache" "$registryProjectRoot/local/dev/private"
         chmod 700 "$registryProjectRoot/local/dev/private"
         registryNetwork=none
         if [[ "$registryCommand" == composer ]]; then
@@ -64,7 +81,7 @@ case "$registryCommand" in
             --network="$registryNetwork" --security-opt label=disable \
             --volume "$registryProjectRoot:/workspace:rw" \
             --volume "$registryProjectRoot/local/dev/wordpress:/wordpress:rw" \
-            --volume "$registryProjectRoot/local/dev/runtime:/run/mysqld:rw" \
+            --volume "$registryDbRuntime:/run/mysqld:rw" \
             --volume "$registryProjectRoot/local/dev/private:/librett-private:rw" \
             --workdir /workspace \
             --env LIBRETT_PRIVATE_STORAGE=/librett-private \

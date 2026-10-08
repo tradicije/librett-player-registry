@@ -2,6 +2,8 @@
 
 [English](../en/PLAN.md)
 
+**Prihvaćena dopuna kompatibilnosti:** PHP 8.3.3 hosting i kompletan razvojni ZIP sada su u obimu na korisnikov zahtev; vidi [ADR 0008](../adr/0008-php83-hosting-and-development-package.md) i [provere](PHP83_COMPATIBILITY.md). Raniji plan samo-PHP-8.5 zamenjen je za ovaj korak.
+
 Status: single-site katalog i jednosmerni Desktop uvoz implementirani u razvoju; release i autentifikovana replikacija ostaju za kasnije.
 
 ## Obim

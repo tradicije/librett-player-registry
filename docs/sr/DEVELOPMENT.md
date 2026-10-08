@@ -4,7 +4,7 @@
 
 Početni bootstrap faze 1 je implementiran. Pre proširenja pročitaj [stanje implementacije](IMPLEMENTATION_STATUS.md), [arhitekturu](ARCHITECTURE.md) i [matricu kompatibilnosti](COMPATIBILITY_AND_TOOLING.md). Tačne zavisnosti su u composer.lock; instaliraj iz lockfile-a bez implicitnog ažuriranja verzija.
 
-Koristi PHP 8.5 na 64-bitnom runtime-u sa ekstenzijama navedenim u composer.json. WordPress adapter zahteva i GD. Iz korena repozitorijuma pokreni:
+Koristi PHP 8.3.3–8.5.x na 64-bitnom runtime-u sa ekstenzijama navedenim u composer.json. WordPress adapter zahteva i GD. Iz korena repozitorijuma pokreni:
 
 ```sh
 composer install
@@ -33,7 +33,7 @@ php vendor/bin/phpunit -c phpunit.integration.xml
 
 Installer zahteva prefiks baze `librett_registry_test_` i odbija prepisivanje drugačijeg wp-config.php. Pravi sintetički administratorski nalog bez ispisa lozinke; mail, spoljni WordPress HTTP, cron i automatska ažuriranja su isključeni. Integracioni testovi zahtevaju tu zasebnu bazu, koriste izolovane prefikse tabela i uklanjaju svoje test tabele. Lifecycle test koristi i plugin tabele zasebnog sajta. Ovo okruženje nije namenjeno deployment-u.
 
-Unit/integracioni testovi pokrivaju identitet, privatni CRUD, dodatne migracije, članstva, zaštićene medije, objavu, JSON validaciju/uvoz i privatnost. Replikacija/oporavak ne postoje. CI workflow i release pakovanje nisu implementirani. [Stanje implementacije](IMPLEMENTATION_STATUS.md) beleži stvarne verzije, rezultate i ograničenja.
+Unit/integracioni testovi pokrivaju identitet, privatni CRUD, dodatne migracije, članstva, zaštićene medije, objavu, JSON validaciju/uvoz i privatnost. Replikacija/oporavak ne postoje. CI workflow i produkcioni release nisu implementirani; razvojni ZIP builder je dostupan. [Stanje implementacije](IMPLEMENTATION_STATUS.md) beleži stvarne verzije, rezultate i ograničenja.
 
 Čuvaj granice modula, strict types, izričite portove i Composer PSR-4. Budući scripted frontend koristi strict TypeScript; framework nije izabran. Budući release ZIP mora da sadrži runtime zavisnosti i [third-party notices](../../THIRD_PARTY_NOTICES.md), bez razvojnih zavisnosti, testova, baza igrača ili tajni za oporavak. Release verzija nije dodeljena.
 
@@ -66,3 +66,17 @@ Zaustavite privremenu bazu kroz `tools/dev/run db-stop`; ponovo je pokrenite kro
 ## Provera proširenja privatnim nacrtima ostaje za izvršavanje
 
 [Aktuelne provere i ograničenja](VERIFICATION_2026_10_08.md) zamenjuju raniji bootstrap obim. Zaštićeno skladište podesi prema [administratorskom uputstvu](ADMIN_GUIDE.md).
+## PHP 8.3 i razvojni instalacioni paket
+
+Korisnikov PHP 8.3.3 hosting je izričito prihvaćen compatibility cilj (ADR 0008). `config.platform.php=8.3.3` čuva kompatibilan izbor zavisnosti i kada Composer radi na PHP 8.5; stvarna platform provera ostaje potrebna. PHPUnit 12 zamenjuje 13 da testovi rade na obe grane. Runtime paketi nisu promenjeni. Raniji PHPUnit 13/PHP 8.5 rezultati ostaju istorijska evidencija.
+
+```sh
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run build
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run php vendor/bin/phpunit
+LIBRETT_DEV_PHP=8.3.3 tools/dev/run php vendor/bin/phpunit -c phpunit.integration.xml
+LIBRETT_DEV_PHP=8.3.3 tools/package-plugin
+```
+
+Builder kopira izabrani source/docs/languages, instalira samo runtime zavisnosti iz lockfile-a u novo ignorisano staging skladište, proverava stvarnu platformu/autoload i pravi ZIP sa jednim root-om i SHA-256 u `build/`. Razvojne zavisnosti, testovi, alati, Git metadata, lokalne baze/mediji/konfiguracija i recovery tajne nisu uključeni. Radni razvojni vendor se ne menja i ništa se ne objavljuje. Pogledaj [PHP 8.3 provere](PHP83_COMPATIBILITY.md).
+
+`LIBRETT_DEV_DB=11.8.8` bira hosting bazu sa zasebnim kontejnerom, data direktorijumom i UNIX socket-om. Pokreni db-start i wp-install sa tom promenljivom pre integracionih/paket provera. Podrazumevano 10.11 okruženje i podaci ostaju sačuvani.

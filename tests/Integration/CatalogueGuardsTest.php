@@ -13,6 +13,15 @@ use RuntimeException;
 
 final class CatalogueGuardsTest extends CatalogueTestCase
 {
+    public function testAcceptedPhpBranchesUseTheSameWordPressPreflight(): void
+    {
+        $preflight = new Preflight();
+        foreach (['8.3.3', '8.3.30', '8.4.0', '8.5.11'] as $version) {
+            $preflight->assertReady($version, 8);
+            $this->addToAssertionCount(1);
+        }
+    }
+
     public function testAdditiveSchemaResumeAndChecksumProtection(): void
     {
         $identity = $this->registry->current()->id->value;

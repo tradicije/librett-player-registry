@@ -32,3 +32,5 @@ Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.
 [ADR 0006: Privatni nacrti (bez provere)](../adr/0006-private-player-club-drafts.md)
 
 - [Razvojne provere, 2026-10-08](VERIFICATION_2026_10_08.md)
+
+- [PHP 8.3 / razvojni paket](PHP83_COMPATIBILITY.md)

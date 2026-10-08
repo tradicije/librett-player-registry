@@ -30,3 +30,7 @@ Suites cover private drafts, identities, additive schemas, memberships/aliases, 
 No signatures, authenticated replica sync, proposals, authority recovery, automatic source discovery or first-contact freshness guarantee. Unsigned UUID/revision metadata does not establish trust. MySQL 8.4, multisite, production capacity and macOS/Windows integration are not verified here. Interactive GUI/browser and live public HTTPS deployment require operator acceptance. Rights/publication decisions remain the operator's responsibility.
 
 Protected files require configured private storage outside all web-served roots. Database and private files need a coordinated backup. Failed writes can leave private orphan files; garbage collection is not implemented. PHP/server upload and database packet limits may be lower than the 32 MiB protocol limit. No federation dataset is bundled.
+
+## PHP 8.3 hosting compatibility update
+
+The user authorized PHP 8.3.3 compatibility and a complete development installation ZIP after trying GitHub source-only download. Runtime accepts 64-bit PHP 8.3.3–8.5.x; WordPress remains 7.1.3–7.1.x single-site. Dependencies are resolved against 8.3.3, with PHPUnit 12 for development. A local ZIP builder includes runtime vendor packages without creating a production release. [Actual PHP 8.3/package verification](PHP83_COMPATIBILITY.md) supplements the earlier PHP 8.5 record.

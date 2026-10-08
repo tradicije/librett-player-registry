@@ -30,7 +30,7 @@ final class PreflightTest extends TestCase
     /** @return iterable<string, array{string, int, string}> */
     public static function unsupportedTargets(): iterable
     {
-        yield 'older PHP' => ['8.4.9', 8, '7.1.3'];
+        yield 'older PHP' => ['8.3.2', 8, '7.1.3'];
         yield 'unreviewed PHP branch' => ['8.6.0', 8, '7.1.3'];
         yield '32-bit' => ['8.5.5', 4, '7.1.3'];
         yield 'older WordPress' => ['8.5.5', 8, '7.0.0'];

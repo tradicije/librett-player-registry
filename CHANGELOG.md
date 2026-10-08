@@ -4,6 +4,14 @@ Notable changes are recorded in English. No application release exists yet.
 
 ## Unreleased
 
+### Changed — PHP 8.3 hosting and installable development ZIP
+
+- Accept 64-bit PHP 8.3.3–8.5.x for the user's WordPress 7.1.3 hosting; add the user's MariaDB 11.8 branch while retaining schema definitions/checksums and WordPress boundaries.
+- Resolve dependencies against PHP 8.3.3 and use maintained PHPUnit 12 for cross-version tests; runtime dependency versions remain unchanged.
+- Separate unsupported-PHP and missing-vendor activation diagnostics; include the actual PHP version and source-ZIP explanation.
+- Add parameterized development images and runtime-only ZIP packaging with platform/autoload validation and checksum. See docs/en/PHP83_COMPATIBILITY.md for actual test/package results.
+
+
 ### Added — catalogue and Desktop integration (2026-10-08)
 
 - UUID club memberships/aliases and explicit duplicate mapping; optimistic revisions and atomic archive hooks.

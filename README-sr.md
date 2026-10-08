@@ -61,6 +61,10 @@ Počni od [indeksa dokumentacije](docs/sr/INDEX.md).
 
 Dokumentaciona priprema faze 0 je završena: [spremnost i uslovi](docs/sr/PHASE_0_READINESS.md), [šema/primeri](docs/sr/CONTRACT_VALIDATION.md) i [pregledani ciljevi kompatibilnosti/alata](docs/sr/COMPATIBILITY_AND_TOOLING.md). Prvi implementacioni korak i njegove provere sada su zabeleženi odvojeno.
 
+## Instalacija razvojnog dodatka
+
+Koristi pripremljen `build/librett-player-registry-development.zip` sa runtime zavisnostima. GitHub **Download ZIP** sadrži samo izvorni kod i ne može direktno da se aktivira. Hosting cilj je 64-bit PHP 8.3.3–8.5.x i WordPress 7.1.3 single-site; pogledaj [uputstvo za instalaciju](docs/sr/ADMIN_GUIDE.md) i [stvarne provere](docs/sr/PHP83_COMPATIBILITY.md). Ovo je neobjavljen razvojni paket, ne produkcioni release.
+
 ## Razvoj
 
 Composer zavisnosti i test konfiguracije su zabeležene. Prati [razvojno podešavanje](docs/sr/DEVELOPMENT.md) na privremenom WordPress sajtu; sveža aktivacija pravi prazne setup/tabele privatnih nacrta, a poseban administratorski zahtev UUID registra. Nema produkcionog installer-a ili ZIP izdanja.

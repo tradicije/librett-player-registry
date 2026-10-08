@@ -1,7 +1,8 @@
 # Copyright (C) 2026 Aleksa Dimitrijević. AGPL-3.0-or-later.
 # Development tools only; not a production plugin deployment image.
+ARG PHP_VERSION=8.5
 FROM docker.io/library/composer:2 AS composer
-FROM docker.io/library/php:8.5-cli-bookworm
+FROM docker.io/library/php:${PHP_VERSION}-cli-bookworm
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates gettext git unzip \

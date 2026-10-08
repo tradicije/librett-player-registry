@@ -6,10 +6,16 @@ Neobjavljen izvorni kod za izdvojeni razvojni sajt. Pročitaj [obim/ograničenja
 
 ## Instalacija i podešavanje
 
-1. Izabrani razvojni cilj: 64-bit PHP 8.5, WordPress 7.1.3 single-site, MariaDB 10.11/InnoDB; instaliraj Composer runtime zavisnosti. MySQL 8.4 nije proveren.
+1. Izabrani razvojni cilj: 64-bit PHP 8.3.3–8.5.x, WordPress 7.1.3 single-site, MariaDB 10.11 ili 11.8/InnoDB; instaliraj Composer runtime zavisnosti. MySQL 8.4 nije proveren.
 2. Aktiviraj dodatak; nova aktivacija stvara praznu šemu i administratorske dozvole. Otvori **LibreTT Registry** i napravi svoj imenovani glavni registar.
 3. Postojeća podešena instalacija: napravi backup baze i privatnih fajlova, pa kroz **Šema registra** potvrdi backup i instaliraj/nastavi dodatne migracije 001–006. Izjava ne pravi backup. Ponovni pokušaj nastavlja provereni DDL; ne menjaj evidentirane checksum vrednosti da zaobiđeš grešku.
 4. Za fotografije/Custom dokumente obezbedi upisiv direktorijum PHP korisnika, mode 0700, van document root-a, WordPress direktorijuma i svih web-server alias-a. Podesi `LIBRETT_PRIVATE_STORAGE` u wp-config.php na apsolutnu putanju (ili environment promenljivu). Fajlovi imaju 0600. Nema fallback-a na javni uploads; unos bez upload-a ne traži privatni direktorijum.
+
+### Instalacija pripremljenog razvojnog ZIP-a
+
+GitHub **Code → Download ZIP** daje samo izvorni kod, bez `vendor` direktorijuma; ne može direktno da se aktivira. Koristi `build/librett-player-registry-development.zip`, napravljen komandom `tools/package-plugin`, koji uključuje zaključane runtime zavisnosti. U Dodaci → Dodaj novi → Otpremi dodatak izaberi taj ZIP. Ako je već instaliran ZIP izvornog koda, potvrdi WordPress zamenu, pa aktiviraj. Postojeći podaci registra ostaju. Produkciona release verzija nije uvedena.
+
+Paket se priprema za korisnikov PHP 8.3.3 / WordPress 7.1.3 single-site. Stvarni testovi su u [PHP 8.3 kompatibilnosti](PHP83_COMPATIBILITY.md). Baza/ekstenzije/privatno skladište i dalje su potrebni; hosting podešavanja proveravaju se pri aktivaciji.
 
 ## Privatni katalog
 
