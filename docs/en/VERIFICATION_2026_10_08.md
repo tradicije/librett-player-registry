@@ -50,3 +50,9 @@ Desktop exercises local overrides/omissions, manual profiles, duplicate names, l
 No interactive browser/GUI acceptance or macOS/Windows native checks here. Host native compilation initially lacked DBus development files; container compilation resolves this development prerequisite. MySQL 8.4, multisite, production performance and operator data/rights approval remain unverified. No signature/replica/recovery, purge/private restore, orphan cleanup, source trust/freshness guarantee or production installer is claimed.
 
 Local source changes are ready for review/commit in both repositories; no commit, push, version change, publication or user-data migration was performed by this task. Suggested commits: registry `feat: implement single-site player catalogue and public snapshot workflows`; Desktop `feat: add one-way player registry import and refresh`.
+
+## Import correction verification — macOS follow-up
+
+On 2026-10-08, PHP 8.5.5 / PHPUnit 12.5.38, WordPress 7.1.3 and isolated MariaDB 10.11.19/InnoDB on macOS: 47 unit tests / 80 assertions and 44 integration tests / 158 assertions passed. The two new cases confirm rejection of a second initial preview after the first creates mappings, and rejection of a preview after explicit remapping; draft counts, receipts and accepted mappings are preserved. PHPStan maximum level passed and PHP CS Fixer checked 122 files without changes. `git diff --check` passed. Dependencies were installed from the existing lockfile without updating package versions.
+
+The full integration suite includes the export artifact test; it now creates `local/dev/` when absent. PHP 8.3, MariaDB 11.8, Desktop and browser acceptance were not rerun for this correction. No development ZIP was rebuilt or published; existing ZIPs do not include these fixes.

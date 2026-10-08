@@ -55,6 +55,54 @@ final class SnapshotImportTest extends CatalogueTestCase
         self::assertSame([], $store->pending($this->actor()->id));
     }
 
+    public function testSecondPreviewCannotReplaceMappingsCreatedByFirstConfirmation(): void
+    {
+        [$stage, $confirm, $store] = $this->workflow();
+        $first = $stage->execute($this->actor(), $this->payload());
+        $second = $stage->execute($this->actor(), $this->payload());
+        $confirm->execute($this->actor(), $first->id, $first->payloadHash);
+        try {
+            $confirm->execute($this->actor(), $second->id, $second->payloadHash);
+            self::fail('Preview with obsolete mappings applied.');
+        } catch (RegistryFailure $failure) {
+            self::assertSame('preview_stale', $failure->errorCode);
+        }
+        self::assertCount(2, $this->players->search('', 0));
+        self::assertCount(1, $this->clubs->search('', 0));
+        self::assertCount(1, $this->db->rows('SELECT * FROM ' . $this->db->table('import_receipts')));
+        $registry = new EntityId(json_decode($this->payload())->registry_id);
+        foreach ($first->mappings as $map) {
+            self::assertSame($map->local->value, $store->mapping($registry, $map->type, $map->source)['local']->value);
+        }
+        self::assertNotNull($store->job($second->id));
+    }
+
+    public function testExplicitRemappingInvalidatesAnEarlierPreview(): void
+    {
+        [$stage, $confirm, $store] = $this->workflow();
+        $first = $stage->execute($this->actor(), $this->payload());
+        $confirm->execute($this->actor(), $first->id, $first->payloadHash);
+        $earlier = $stage->execute($this->actor(), $this->payload());
+        $players = array_values(array_filter($first->mappings, static fn($map): bool => $map->type === 'player'));
+        $overrides = [
+            'player:' . $players[0]->source->value => $players[1]->local,
+            'player:' . $players[1]->source->value => $players[0]->local,
+        ];
+        $remap = $stage->execute($this->actor(), $this->payload(), $overrides);
+        $confirm->execute($this->actor(), $remap->id, $remap->payloadHash);
+        try {
+            $confirm->execute($this->actor(), $earlier->id, $earlier->payloadHash);
+            self::fail('Earlier preview restored obsolete mappings.');
+        } catch (RegistryFailure $failure) {
+            self::assertSame('preview_stale', $failure->errorCode);
+        }
+        $registry = new EntityId(json_decode($this->payload())->registry_id);
+        foreach ($players as $map) {
+            self::assertSame($overrides['player:' . $map->source->value]->value, $store->mapping($registry, 'player', $map->source)['local']->value);
+        }
+        self::assertCount(2, $this->players->search('', 0));
+    }
+
     public function testChangedPayloadUnderSameRequestIsRejected(): void
     {
         [$stage, $confirm] = $this->workflow();

@@ -37,7 +37,11 @@ final class PublicationTest extends CatalogueTestCase
         }
         $bytes = json_encode($this->export->execute(), JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         self::assertStringNotContainsString('PRIVATE_ROUNDTRIP', $bytes);
-        self::assertSame(strlen($bytes), file_put_contents(dirname(__DIR__, 2) . '/local/dev/roundtrip-snapshot.json', $bytes));
+        $directory = dirname(__DIR__, 2) . '/local/dev';
+        if (!is_dir($directory)) {
+            self::assertTrue(mkdir($directory, 0755, true));
+        }
+        self::assertSame(strlen($bytes), file_put_contents($directory . '/roundtrip-snapshot.json', $bytes));
     }
 
     public function testPrivateEditsNeverLeakAndNoopApprovalDoesNotAdvanceCheckpoint(): void

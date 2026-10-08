@@ -9,7 +9,7 @@ use LibreTT\PlayerRegistry\Shared\Domain\EntityId;
 
 final readonly class ImportMapping
 {
-    public function __construct(public string $type, public EntityId $source, public EntityId $local, public int $expected)
+    public function __construct(public string $type, public EntityId $source, public EntityId $local, public int $expected, public ?EntityId $previousLocal = null)
     {
         if (!in_array($type, ['player','club'], true) || $expected < 0) {
             throw new \InvalidArgumentException('Invalid import mapping.');

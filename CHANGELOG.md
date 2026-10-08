@@ -4,6 +4,13 @@ Notable changes are recorded in English. No application release exists yet.
 
 ## Unreleased
 
+### Fixed — staged import provenance
+
+- Recheck each source-to-local mapping under the import transaction lock before confirmation, including mappings that were absent at preview time. Reject obsolete previews before any writes; two previews prepared before the first import can no longer create duplicate drafts or replace accepted provenance.
+- Preserve explicit remapping and receipt retries. Older pending previews without the mapping baseline must be cancelled and staged again; completed receipts and stored records are unchanged.
+- Create the ignored export artifact directory when needed so the integration export test works on a fresh checkout. Add regression coverage for competing initial previews and intervening explicit remapping.
+
+
 ### Changed — PHP 8.3 hosting and installable development ZIP
 
 - Accept 64-bit PHP 8.3.3–8.5.x for the user's WordPress 7.1.3 hosting; add the user's MariaDB 11.8 branch while retaining schema definitions/checksums and WordPress boundaries.

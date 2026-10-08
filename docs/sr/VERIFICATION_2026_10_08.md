@@ -50,3 +50,9 @@ Desktop pokriva lokalne prioritete/izostavljene vrednosti, ručne profile, ista 
 Interaktivni browser/GUI i macOS/Windows native provere nisu izvršeni. Host je prvobitno ostao bez DBus razvojnih fajlova; kontejnerska kompilacija rešava taj razvojni preduslov. MySQL 8.4, multisite, produkcioni kapacitet i operatorovo odobrenje podataka/prava nisu provereni. Ne tvrdi se postojanje potpisa/replika/recovery-ja, purge/private restore-a, čišćenja orphan fajlova, garancije poverenja/svežine izvora ili produkcionog instalera.
 
 Lokalne izmene oba projekta spremne su za pregled/commit; ovaj zadatak nije pravio commit, push, novu verziju, objavu ni migraciju korisničke baze. Predlog commit poruka: registry `feat: implement single-site player catalogue and public snapshot workflows`; Desktop `feat: add one-way player registry import and refresh`.
+
+## Provera ispravke importa — macOS dopuna
+
+Dana 8. oktobra 2026, PHP 8.5.5 / PHPUnit 12.5.38, WordPress 7.1.3 i izolovana MariaDB 10.11.19/InnoDB na macOS-u: prošlo je 47 unit testova / 80 assertions i 44 integraciona testa / 158 assertions. Dva nova slučaja potvrđuju odbijanje drugog početnog preview-a nakon što prvi kreira mape, i odbijanje preview-a nakon izričitog remapiranja; broj draftova, receipts i prihvaćene mape ostaju sačuvani. PHPStan na najstrožem nivou prolazi, a PHP CS Fixer proverio je 122 fajla bez izmena. `git diff --check` prolazi. Zavisnosti su instalirane iz postojećeg lockfile-a bez promene verzija paketa.
+
+Kompletan integracioni skup uključuje test izvoznog artefakta; on sada kreira `local/dev/` ako ne postoji. PHP 8.3, MariaDB 11.8, Desktop i browser prihvatanje nisu ponovo provereni za ovu ispravku. Razvojni ZIP nije ponovo napravljen niti objavljen; postojeći ZIP-ovi ne sadrže ove ispravke.

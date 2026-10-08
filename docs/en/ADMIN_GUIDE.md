@@ -50,3 +50,5 @@ Open Desktop **Players** and the registry import panel. Use the HTTPS `snapshot`
 ## Permissions
 
 `librett_registry_manage_settings`: setup/schema/policy. `librett_registry_edit_profiles`: private catalogue/media. `librett_registry_publish_profiles`: publication, with edit permission for inspection. `librett_registry_import` plus edit permission: JSON import. Server-side mutations require POST, capability checks, action nonce and application authorization. Public endpoints serve approved projections only. Deactivation/uninstall retain records and capabilities.
+
+Import previews also expire when source-to-local mappings change after preparation. Cancel the stale preview and stage the file again. Pending previews created before the mapping-baseline correction must also be cancelled and recreated; completed imports remain valid.

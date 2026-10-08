@@ -50,3 +50,5 @@ Otvori Desktop **Igrači** i panel uvoza registra. Koristi HTTPS `snapshot` URL 
 ## Dozvole
 
 `librett_registry_manage_settings`: setup/šema/politika. `librett_registry_edit_profiles`: privatni katalog/mediji. `librett_registry_publish_profiles`: objava, uz edit dozvolu za pregled. `librett_registry_import` uz edit: JSON uvoz. Mutacije traže POST, capabilities, nonce i application autorizaciju. Javni API daje samo odobrenu projekciju. Deaktivacija/deinstalacija čuvaju podatke i dozvole.
+
+Import preview postaje zastareo i kada se mape izvora prema lokalnim zapisima promene nakon pripreme. Otkaži zastareli preview i ponovo pripremi fajl. Nepotvrđene preview-e napravljene pre ispravke provere mapa takođe treba otkazati i ponovo kreirati; potvrđeni importi ostaju važeći.

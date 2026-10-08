@@ -52,6 +52,15 @@ final readonly class ConfirmImport
                 throw new RegistryFailure('preview_expired');
             }
             $snapshot = $this->validator->decode($job->payload);
+            $sourceRegistry = new EntityId($snapshot->registry_id);
+            // receipt() already holds the import lock for this transaction.
+            // Compare provenance, including an absent mapping, before applying any drafts.
+            foreach ($job->mappings as $map) {
+                $current = $this->store->mapping($sourceRegistry, $map->type, $map->source);
+                if (($current['local']->value ?? null) !== $map->previousLocal?->value) {
+                    throw new RegistryFailure('preview_stale');
+                }
+            }
             $repeat = $this->store->repeated($job->semanticHash);
             if ($repeat !== null) {
                 // Semantic retries never overwrite intervening local edits.

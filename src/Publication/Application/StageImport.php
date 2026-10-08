@@ -51,7 +51,7 @@ final readonly class StageImport
                     throw new RegistryFailure('invalid_mapping');
                 }
                 $seen[$type . ':' . $local->value] = true;
-                $mappings[] = new ImportMapping($type, $source, $local, $revision ?? 0);
+                $mappings[] = new ImportMapping($type, $source, $local, $revision ?? 0, $previous['local'] ?? null);
             }
         }
         if (array_diff_key($overrides, $sourceKeys) !== []) {

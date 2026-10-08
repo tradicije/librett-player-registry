@@ -47,7 +47,7 @@ final readonly class WordPressImportStore implements ImportStore
         if ((int) $count[0]['total'] >= 5) {
             throw new RegistryFailure('staging_limit');
         }
-        $maps = array_map(static fn(ImportMapping $map): array => ['type' => $map->type, 'source' => $map->source->value, 'local' => $map->local->value, 'expected' => (string) $map->expected], $job->mappings);
+        $maps = array_map(static fn(ImportMapping $map): array => ['type' => $map->type, 'source' => $map->source->value, 'local' => $map->local->value, 'expected' => (string) $map->expected, 'previous_local' => $map->previousLocal?->value], $job->mappings);
         $this->db->execute($this->db->prepare('INSERT INTO %i (request_uuid, actor_id, created_at, payload, payload_hash, semantic_hash, mappings) VALUES (%s, %d, %s, %s, %s, %s, %s)', $this->table('import_jobs'), $job->id->value, $job->actorId, $job->createdAt, $job->payload, $job->payloadHash, $job->semanticHash, json_encode($maps, JSON_THROW_ON_ERROR)));
     }
 
@@ -64,10 +64,11 @@ final readonly class WordPressImportStore implements ImportStore
         }
         $maps = [];
         foreach ($raw as $map) {
-            if (!$map instanceof \stdClass || !is_string($map->type) || !is_string($map->source) || !is_string($map->local) || !is_string($map->expected)) {
+            if (!$map instanceof \stdClass || !is_string($map->type) || !is_string($map->source) || !is_string($map->local) || !is_string($map->expected)
+                || !property_exists($map, 'previous_local') || ($map->previous_local !== null && !is_string($map->previous_local))) {
                 throw new RegistryFailure('invalid_import_job');
             }
-            $maps[] = new ImportMapping($map->type, new EntityId($map->source), new EntityId($map->local), (int) $map->expected);
+            $maps[] = new ImportMapping($map->type, new EntityId($map->source), new EntityId($map->local), (int) $map->expected, $map->previous_local === null ? null : new EntityId($map->previous_local));
         }
         return new ImportJob($id, (int) $row['actor_id'], (string) $row['created_at'], (string) $row['payload'], (string) $row['payload_hash'], (string) $row['semantic_hash'], $maps);
     }

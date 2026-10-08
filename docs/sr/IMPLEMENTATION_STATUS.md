@@ -34,3 +34,9 @@ Zaštićeni fajlovi traže privatno skladište van svih web-served direktorijuma
 ## Dopuna za PHP 8.3 hosting
 
 Korisnik je odobrio PHP 8.3.3 kompatibilnost i kompletan razvojni instalacioni ZIP posle pokušaja GitHub source-only instalacije. Runtime prihvata 64-bit PHP 8.3.3–8.5.x; WordPress ostaje 7.1.3–7.1.x single-site. Zavisnosti se biraju prema 8.3.3, uz razvojni PHPUnit 12. Lokalni ZIP builder uključuje runtime vendor bez produkcionog release-a. [Stvarne PHP 8.3/paket provere](PHP83_COMPATIBILITY.md) dopunjuju raniju PHP 8.5 evidenciju.
+
+## Ispravka import preview-a — 8. oktobar 2026.
+
+Potvrda proverava identitete mapa izvora prema stanju sačuvanom u preview-u, pod postojećim zaključavanjem import transakcije. Nova mapa ili remapiranje prihvaćeno nakon pripreme čini taj preview zastarelim pre bilo kog upisa u draftove. Izričito remapiranje ostaje podržano, a potvrđeni request receipts i dalje dozvoljavaju idempotentna ponavljanja. Stari nepotvrđeni preview-i nemaju ovaj podatak: otkaži ih i pripremi novi preview. Nije potrebna migracija baze niti promena javnog snapshot formata.
+
+Integracioni test izvoza kreira ignorisani direktorijum za artefakt ako ne postoji. [Dopuna evidencije provera](VERIFICATION_2026_10_08.md) navodi stvarne rezultate ove ispravke.

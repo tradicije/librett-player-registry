@@ -34,3 +34,9 @@ Protected files require configured private storage outside all web-served roots.
 ## PHP 8.3 hosting compatibility update
 
 The user authorized PHP 8.3.3 compatibility and a complete development installation ZIP after trying GitHub source-only download. Runtime accepts 64-bit PHP 8.3.3–8.5.x; WordPress remains 7.1.3–7.1.x single-site. Dependencies are resolved against 8.3.3, with PHPUnit 12 for development. A local ZIP builder includes runtime vendor packages without creating a production release. [Actual PHP 8.3/package verification](PHP83_COMPATIBILITY.md) supplements the earlier PHP 8.5 record.
+
+## Import preview correction — 2026-10-08
+
+Confirmation checks source-to-local mapping identities against the baseline captured in the preview, under the existing import transaction lock. A new mapping or remapping accepted after preview preparation makes that preview stale before any draft writes. Explicit remapping remains supported, and completed request receipts still allow idempotent retries. Older pending previews lack this baseline: cancel them and prepare a new preview. No database migration or public snapshot format change is required.
+
+The export integration test creates its ignored artifact directory when absent. See [verification follow-up](VERIFICATION_2026_10_08.md) for this correction's actual results.
