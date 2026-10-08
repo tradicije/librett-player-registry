@@ -8,7 +8,7 @@ Prenosiv registar igrača i klubova sa javnim profilima, WordPress administracij
 
 [English](README.md)
 
-**Status: rana implementacija.** Neobjavljena WordPress razvojna osnova ima prazne početne migracije i podešavanje identiteta glavnog registra. CRUD igrača/klubova, javni profili/API, uvoz/izvoz i sinhronizacija ostaju planirani. Pogledaj [implementiran obim i stvarne provere](docs/sr/IMPLEMENTATION_STATUS.md).
+**Status: rana implementacija.** Neobjavljena WordPress razvojna verzija ima migracije, podešavanje identiteta glavnog registra i administraciju privatnih nacrta igrača/klubova (pravljenje, pretraga, uređivanje, arhiviranje/vraćanje). Proširenje nacrtima nije runtime provereno. Članstva, javni profili/API, uvoz/izvoz i sinhronizacija ostaju planirani. Pogledaj [implementiran obim i stvarne provere](docs/sr/IMPLEMENTATION_STATUS.md).
 
 ## Šta pravimo
 
@@ -26,6 +26,18 @@ Savez ili klub iz bilo koje države može napraviti svoju bazu. Dodatak ne sadr�
 - Verzionski JSON snimci i tok promena koriste isti model; nisu sirovi WordPress database dump.
 - LibreTT Desktop preuzima zapise u lokalnu bazu. Korisnik ih slobodno menja lokalno; te izmene se ne šalju online registru.
 - Javne baze, mediji i privatni administrativni podaci imaju različita pravila objave i bekapa.
+
+## Integracija sa LibreTT Desktop — planirano
+
+Korisnik LibreTT Desktop aplikacije moći će da preuzme bazu igrača iz ovog registra i čuva je lokalno za rad bez interneta. Podaci se prenose **u jednom smeru: online registar → LibreTT Desktop**. Kasnije izmene profila u Desktop aplikaciji ostaju na korisnikovom računaru; osvežavanje podataka iz registra čuva izričite lokalne izmene i istorijske snimke turnira.
+
+Ovaj kanal za preuzimanje ne šalje izmene lokalnih profila, privatne beleške, dolaske, uplate ni podatke turnira nazad registru. Time štiti lokalne podatke korisnika od slanja kroz ovu integraciju i online bazu od izmena napravljenih u Desktop aplikaciji. Integracija registra je planirana i još nije implementirana.
+
+## Izbor licence baze — planirano
+
+Administrator će birati licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Ovaj tok podešavanja je planiran i još nije implementiran.
+
+Licenca baze određuje se odvojeno od AGPL-3.0-or-later licence dodatka, odobrenja za objavu ličnih podataka i dozvola za fotografije.
 
 ## Predlog prve etape
 
@@ -51,7 +63,7 @@ Dokumentaciona priprema faze 0 je završena: [spremnost i uslovi](docs/sr/PHASE_
 
 ## Razvoj
 
-Composer zavisnosti i test konfiguracije su zabeležene. Prati [razvojno podešavanje](docs/sr/DEVELOPMENT.md) na privremenom WordPress sajtu; aktivacija pravi samo setup tabele, a poseban administratorski zahtev UUID registra. Nema produkcionog installer-a ili ZIP izdanja.
+Composer zavisnosti i test konfiguracije su zabeležene. Prati [razvojno podešavanje](docs/sr/DEVELOPMENT.md) na privremenom WordPress sajtu; sveža aktivacija pravi prazne setup/tabele privatnih nacrta, a poseban administratorski zahtev UUID registra. Nema produkcionog installer-a ili ZIP izdanja.
 
 ## Autor i licenca
 

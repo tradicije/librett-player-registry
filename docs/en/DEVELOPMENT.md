@@ -36,3 +36,7 @@ The installer requires the `librett_registry_test_` database prefix and refuses 
 Unit and integration suites cover the implemented identity/bootstrap behavior; they do not verify planned player CRUD, publication, replication or recovery. No CI workflow or release packaging is implemented. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
 
 Preserve module boundaries, strict types, explicit ports and Composer PSR-4. A future scripted frontend uses strict TypeScript; no framework is selected. Future release ZIPs must include runtime dependencies and [third-party notices](../../THIRD_PARTY_NOTICES.md), while excluding development dependencies, tests, datasets and recovery secrets. No release version is assigned.
+
+## Private-draft extension verification pending
+
+The 2026-10-08 Players/Clubs extension has not been executed in this workspace, where PHP/Composer/msgfmt are unavailable. Earlier bootstrap results do not cover migration 002 or draft forms. Before deployment, authorized verification must cover permission/nonce denial, unconfigured/replica context, Unicode/control/field bounds, optional birth year, duplicate names, stale edits, revision exhaustion, audit rollback, archive/restore, bounded search, fresh/existing activation, migration interruption/checksum/future-schema/lock failures and retention of all seven tables. Existing bootstrap tests have not been changed or rerun.

@@ -1,12 +1,20 @@
-# Administrator workflows — planned
+# Administrator workflows — development and planned
 
 [Srpski](../sr/ADMIN_GUIDE.md)
 
 Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
 
-These describe future screens, not available installation instructions.
+The current draft slice is described separately below; subsequent screens remain planned.
 
 First-milestone media is delivered from protected storage only after approval. Public snapshot import creates unpublished drafts with explicit identity mappings; it does not restore private approvals or confer source authority. See [storage/restore rules](STORAGE_AND_MIGRATIONS.md) and [readiness](PHASE_0_READINESS.md).
+
+## Current private-draft administration
+
+The development source adds private draft screens; runtime verification is pending. After fresh activation, create the primary registry in LibreTT Registry. For an existing configured bootstrap, open LibreTT Registry → Private-draft schema and confirm a verified backup before installing/resuming migration 002. This acknowledgement is the operator's responsibility; automated backup/restore is absent.
+
+Administrators receive `librett_registry_edit_profiles`; authenticated users explicitly granted that capability can use Players and Clubs without gaining settings access. Create a draft, search by name, select a UUID-backed record, edit and save. To archive or restore, select Archived or Active and save. A stale revision returns a conflict; reload and review before resubmitting. Names may repeat, and saving does not merge records or publish them. Club memberships, aliases, media and purge remain pending.
+
+## Planned later screens
 
 ## Initial setup
 

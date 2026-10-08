@@ -6,6 +6,10 @@ Status: planirano; povezivanje sa registrom još nije implementirano u Desktop-u
 
 Predloženi [ugovor snimka](SNAPSHOT_CONTRACT.md) koristi decimalne string brojače, odsutna neobavezna polja i izričit identitet izvora. Brojače čitati bez gubitka preciznosti; odsutna polja ne brišu lokalne vrednosti. Nepotpisan nacrt ne autentifikuje autoritet i ne dokazuje svežinu izvora.
 
+## Lokalno čuvanje i smer prenosa
+
+Korisnik Desktop aplikacije preuzima bazu igrača i čuva lokalnu kopiju za rad bez interneta. Podaci se prenose samo iz online registra prema Desktop aplikaciji. Kasnije izmene ostaju lokalne, čime se lokalni podaci štite od slanja kroz ovaj kanal, a online baza od Desktop izmena. Osvežavanje mora sačuvati izričite lokalne izmene i istorijske snimke turnira. Integracija je i dalje planirana.
+
 ## Korisnički tok
 
 U Igračima dodati „Preuzmi / ažuriraj registar” i JSON uvoz/izvoz. Podesiti izvorni URL ili pouzdan fajl povezivanja; prvi default može biti librett.org, ali mora biti zamenljiv. Isti registar kasnije može biti na stoni.rs ili sajtu druge organizacije. Javni katalog ne zahteva nalog igrača; privatni izvor traži poseban read-only authorization dizajn.

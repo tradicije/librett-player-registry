@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LibreTT Player Registry development\n"
 "Language: sr_RS\n"
-"PO-Revision-Date: 2026-10-07 22:30+0200\n"
+"PO-Revision-Date: 2026-10-08 12:00+0200\n"
 "Last-Translator: Aleksa Dimitrijević\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
@@ -55,3 +55,117 @@ msgstr "Aktivacija nije dozvoljena za ovu instalaciju."
 
 msgid "LibreTT activation failed. Check runtime/database requirements. No registry was created."
 msgstr "LibreTT aktivacija nije uspela. Proverite zahteve okruženja i baze. Registar nije napravljen."
+
+msgid "Players"
+msgstr "Igrači"
+
+msgid "Clubs"
+msgstr "Klubovi"
+
+msgid "Display name"
+msgstr "Prikazno ime"
+
+msgid "Club name"
+msgstr "Naziv kluba"
+
+msgid "Country"
+msgstr "Država"
+
+msgid "Region"
+msgstr "Region"
+
+msgid "Given name"
+msgstr "Ime"
+
+msgid "Family name"
+msgstr "Prezime"
+
+msgid "Biography"
+msgstr "Biografija"
+
+msgid "Birth year (optional)"
+msgstr "Godište (neobavezno)"
+
+msgid "Abbreviation"
+msgstr "Skraćenica"
+
+msgid "Private draft saved."
+msgstr "Privatni nacrt je sačuvan."
+
+msgid "These profiles are private drafts. Names may repeat; records are never merged automatically."
+msgstr "Ovi profili su privatni nacrti. Imena mogu da se ponavljaju; zapisi se nikada ne spajaju automatski."
+
+msgid "Search drafts"
+msgstr "Pretraži nacrte"
+
+msgid "Name"
+msgstr "Naziv"
+
+msgid "Search"
+msgstr "Pretraži"
+
+msgid "Status"
+msgstr "Stanje"
+
+msgid "No drafts found."
+msgstr "Nema pronađenih nacrta."
+
+msgid "Previous"
+msgstr "Prethodna"
+
+msgid "Next"
+msgstr "Sledeća"
+
+msgid "Drafts are unavailable or the request is invalid. Check registry setup and the private-draft schema."
+msgstr "Nacrti nisu dostupni ili zahtev nije ispravan. Proverite podešavanje registra i šemu privatnih nacrta."
+
+msgid "Private-draft schema"
+msgstr "Šema privatnih nacrta"
+
+msgid "Invalid draft fields or revision. No changes were saved."
+msgstr "Polja ili revizija nacrta nisu ispravni. Izmene nisu sačuvane."
+
+msgid "This draft changed. Reload it and review your changes before saving."
+msgstr "Ovaj nacrt je izmenjen. Učitajte ga ponovo i pregledajte svoje izmene pre čuvanja."
+
+msgid "The draft could not be saved. Check registry setup and storage."
+msgstr "Nacrt nije mogao da se sačuva. Proverite podešavanje registra i skladište."
+
+msgid "New draft"
+msgstr "Novi nacrt"
+
+msgid "Edit draft"
+msgstr "Uredi nacrt"
+
+msgid "Active"
+msgstr "Aktivan"
+
+msgid "Archived"
+msgstr "Arhiviran"
+
+msgid "Save private draft"
+msgstr "Sačuvaj privatni nacrt"
+
+msgid "Private-draft schema is ready."
+msgstr "Šema privatnih nacrta je spremna."
+
+msgid "Install or resume the additive private-draft migration. Existing registry identity and records are retained."
+msgstr "Instalirajte ili nastavite dopunsku migraciju privatnih nacrta. Postojeći identitet registra i zapisi se čuvaju."
+
+msgid "Before continuing, create and verify a backup of the database, protected media and configuration, and retain the matching plugin code. This confirmation represents your acknowledgement; the plugin does not verify or restore the backup."
+msgstr "Pre nastavka napravite i proverite rezervnu kopiju baze, zaštićenih medija i konfiguracije i sačuvajte odgovarajući kod dodatka. Ova potvrda predstavlja vašu izjavu; dodatak ne proverava niti obnavlja rezervnu kopiju."
+
+msgid "I have created and verified the backup."
+msgstr "Napravio/la sam i proverio/la rezervnu kopiju."
+
+msgid "Install private-draft schema"
+msgstr "Instaliraj šemu privatnih nacrta"
+
+msgid "Confirm a verified backup before changing the existing registry schema."
+msgstr "Potvrdite proverenu rezervnu kopiju pre izmene šeme postojećeg registra."
+
+msgid "The private-draft migration could not complete. Existing data is retained; resolve the runtime or schema problem before retrying."
+msgstr "Migracija privatnih nacrta nije završena. Postojeći podaci se čuvaju; rešite problem okruženja ili šeme pre ponovnog pokušaja."
+
+msgid "Use Players or Clubs to manage private drafts."
+msgstr "Koristite Igrače ili Klubove za uređivanje privatnih nacrta."

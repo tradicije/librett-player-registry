@@ -41,3 +41,7 @@ Kandidati PHP ekstenzija: `mysqli`, `mbstring`, `intl`, `fileinfo` i jedan prove
 Parser/JCS paket ne može odgovorno biti označen proverenim pre stvarne provere potrebnih sposobnosti. Spike je izričito raspoređen u odgovarajuću implementacionu etapu; ne dodaje se neproveren paket radi zatvaranja liste. To je granica dizajna/izbora alata, ne izostavljena runtime provera. Bez DI framework-a, ORM-a, SPA ili dodatnog coding-standard stack-a u prvoj etapi.
 
 Pri implementacionom bootstrap-u rešiti održavana stabilna izdanja za PHP 8.5, pregledati licence/bezbednost/održavanje, zaključati verzije, navesti stvarne komande/verzije i pokrenuti samo autorizovane provere. Faza 0 nema izmišljene build/test komande. Nijedan red matrice još nije označen kao testiran ili odobren od operatora.
+
+## Ponovni pregled za implementaciju 2026-10-08
+
+Pre proširenja privatnim nacrtima ponovo su pregledani zvanična [PHP tabela podrške](https://www.php.net/supported-versions.php), [WordPress arhiva izdanja](https://wordpress.org/download/releases/) i [PER Coding Style](https://www.php-fig.org/per/coding-style/). PHP 8.5 / WordPress 7.1.3 single-site inženjerski cilj i PER 3.1 cilj ostaju isti. Zavisnosti i lockfile nisu menjani. PHP/Composer/msgfmt nisu dostupni u ovom Linux okruženju, pa novi korak ne dodaje proveren red matrice.

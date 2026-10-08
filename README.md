@@ -8,7 +8,7 @@ A portable player and club registry with public profiles, WordPress administrati
 
 [Srpski](README-sr.md)
 
-**Status: early implementation.** An unreleased WordPress development bootstrap provides empty initial migrations and primary registry identity setup. Player/club CRUD, public profiles/API, import/export and synchronization remain planned. See [implemented scope and actual verification](docs/en/IMPLEMENTATION_STATUS.md).
+**Status: early implementation.** An unreleased WordPress development build provides migrations, primary registry identity setup and private player/club draft administration (create, search, edit, archive/restore). The draft extension has not been runtime verified. Memberships, public profiles/API, import/export and synchronization remain planned. See [implemented scope and actual verification](docs/en/IMPLEMENTATION_STATUS.md).
 
 ## What we are building
 
@@ -26,6 +26,18 @@ A federation or club in any country can create its own dataset. No Serbian playe
 - Versioned JSON snapshots and change feeds share one model; neither is a raw WordPress database export.
 - LibreTT Desktop imports records into its local database. Users can edit them locally; no desktop edits are uploaded to the online registry.
 - Public datasets, media and private administrative data have different publication and backup requirements.
+
+## LibreTT Desktop integration — planned
+
+A LibreTT Desktop user will be able to download a player database from this registry and keep it locally for offline use. The flow is **one way: online registry → LibreTT Desktop**. Subsequent profile edits in Desktop stay on the user's computer; refreshing registry data preserves explicit local overrides and historical tournament snapshots.
+
+This import channel sends no local profile edits, private notes, attendance, payments or tournament data back to the registry. It protects the user's local data from being uploaded through this integration and protects the online database from changes made in Desktop. The registry integration is planned and has not been implemented yet.
+
+## Dataset license selection — planned
+
+The administrator will choose the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. This settings workflow is planned and is not implemented yet.
+
+Dataset licensing is separate from the plugin's AGPL-3.0-or-later license, personal-data publication authorization and photo permissions.
 
 ## Suggested first milestone
 
@@ -51,7 +63,7 @@ Phase 0 documentation preparation is complete: [readiness and entry gates](docs/
 
 ## Development
 
-Composer dependencies and test configurations are committed. Follow [development setup](docs/en/DEVELOPMENT.md) on a disposable WordPress site; activation creates setup tables only and a separate administrator action creates the registry UUID. No production installer or release ZIP is published.
+Composer dependencies and test configurations are committed. Follow [development setup](docs/en/DEVELOPMENT.md) on a disposable WordPress site; fresh activation creates empty setup/private-draft tables and a separate administrator action creates the registry UUID. No production installer or release ZIP is published.
 
 ## Author and license
 

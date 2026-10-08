@@ -23,13 +23,18 @@ final readonly class SetupPage
     public function register(): void
     {
         add_action('admin_menu', function (): void {
-            add_menu_page('LibreTT Player Registry', 'LibreTT Registry', 'librett_registry_manage_settings', 'librett-registry', $this->render(...), 'dashicons-id');
+            $capability = current_user_can('librett_registry_edit_profiles') ? 'librett_registry_edit_profiles' : 'librett_registry_manage_settings';
+            add_menu_page('LibreTT Player Registry', 'LibreTT Registry', $capability, 'librett-registry', $this->render(...), 'dashicons-id');
         });
         add_action('admin_post_librett_registry_setup', $this->submit(...));
     }
 
     public function render(): void
     {
+        if (!current_user_can('librett_registry_manage_settings') && current_user_can('librett_registry_edit_profiles')) {
+            echo '<div class="wrap"><h1>LibreTT Player Registry</h1><p>' . esc_html__('Use Players or Clubs to manage private drafts.', 'librett-player-registry') . '</p></div>';
+            return;
+        }
         $this->assertPermission();
         echo '<div class="wrap"><h1>LibreTT Player Registry</h1>';
         try {

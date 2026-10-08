@@ -12,6 +12,12 @@ Za prvu etapu na jednom sajtu predlaže se javni katalog. Posetioci bez naloga i
 
 Svrha: identifikacija igrača i klubova kroz javne profile i opciono preuzimanje za prijave na turnir. U ovoj etapi ne prikupljati kontakte, tačne datume rođenja ni lične dokumente. Ne uvode se nalozi igrača, rezultati turnira ili rangiranja.
 
+## Izbor licence baze — planirano
+
+Administrator će birati licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Ovaj tok podešavanja je planiran i još nije implementiran.
+
+Licenca baze određuje se odvojeno od AGPL-3.0-or-later licence dodatka, odobrenja za objavu ličnih podataka i dozvola za fotografije.
+
 ## Dozvoljena javna polja
 
 Samo izričito dozvoljena polja ulaze u javne strane, pretragu, API, snimke i budući tok promena. Projekcija ne sme nastajati iz svih sačuvanih polja uz uklanjanje poznatih tajni.

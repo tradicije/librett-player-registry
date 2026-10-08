@@ -6,6 +6,10 @@ Status: planned; the registry integration is not currently implemented in Deskto
 
 The proposed [snapshot contract](SNAPSHOT_CONTRACT.md) uses decimal-string counters, omitted optional fields and explicit source identity. Parse counters without precision loss; omitted fields never clear local values. The unsigned draft cannot authenticate authority or establish reliable remote freshness.
 
+## Local storage and direction
+
+Desktop users will download the player database and retain a local copy for offline use. Data flows only from the online registry to Desktop. Later Desktop edits remain local, protecting local information from upload through this channel and preserving the online database from Desktop changes. Refresh must preserve explicit local overrides and historical tournament snapshots. This integration remains planned.
+
 ## User workflow
 
 In Players, add “Update Player Registry” and JSON import/export workflows. Configure a source URL or trusted connection file; an initial default may point to librett.org but must be replaceable. The same registry may later live on stoni.rs or another organization’s site. A public registry does not require a player account; private sources need a separate read-only authorization design.

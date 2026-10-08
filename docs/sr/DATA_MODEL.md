@@ -2,9 +2,11 @@
 
 [English](../en/DATA_MODEL.md)
 
+Privatni Players/Clubs nacrti i zasebne audit tabele modula sada postoje u kodu (bez provere). Godište je nullable u domenskom ulazu; privatni SQL koristi nulu za odsustvo i vraća je u null. Ova vrednost skladišta nikada nije javno godište. Alias-i/članstva/objava ostaju konceptualni.
+
 Status: konceptualni model, ne završena šema/migracija.
 
-Početne identity/audit/migration tabele su implementirane; player/club/publication skladište ispod ostaje konceptualno. Pogledaj [trenutni obim](IMPLEMENTATION_STATUS.md).
+Identity/audit/migration i privatne tabele nacrta igrača/klubova implementirane su u kodu; proširenje nacrtima nije provereno. Skladište članstava i objave ispod ostaje konceptualno. Pogledaj [trenutni obim](IMPLEMENTATION_STATUS.md).
 
 [Ugovor snimka — nacrt 1](SNAPSHOT_CONTRACT.md) predlaže konkretne javne tipove, granice, razdvajanje privatnih/javnih revizija i identitet pri uvozu nacrta. Razrađuje konceptualni opis ispod; potpisan feed i privatni restore ostaju otvoreni.
 

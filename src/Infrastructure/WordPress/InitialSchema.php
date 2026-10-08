@@ -48,7 +48,7 @@ final readonly class InitialSchema
             $this->verify('migrations');
             $all = $this->db->rows('SELECT migration_id FROM ' . $this->db->table('migrations'));
             foreach ($all as $row) {
-                if ($row['migration_id'] !== self::MIGRATION) {
+                if (!in_array($row['migration_id'], [self::MIGRATION, DraftSchema::MIGRATION], true)) {
                     throw new RegistryFailure('unsupported_schema_version');
                 }
             }
@@ -105,8 +105,10 @@ final readonly class InitialSchema
             throw new RegistryFailure('schema_unavailable');
         }
         $all = $this->db->rows('SELECT migration_id FROM ' . $this->db->table('migrations'));
-        if (count($all) !== 1) {
-            throw new RegistryFailure('unsupported_schema_version');
+        foreach ($all as $row) {
+            if (!in_array($row['migration_id'], [self::MIGRATION, DraftSchema::MIGRATION], true)) {
+                throw new RegistryFailure('unsupported_schema_version');
+            }
         }
         $this->verify('identity');
         $this->verify('identity_audit');

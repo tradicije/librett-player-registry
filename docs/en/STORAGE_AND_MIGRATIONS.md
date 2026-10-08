@@ -2,6 +2,8 @@
 
 [Srpski](../sr/STORAGE_AND_MIGRATIONS.md)
 
+Migration 002 adds module-owned private players/clubs/audit tables, without modifying migration 001 definitions/checksum. It has one resumable additive step per table and verifies the complete structure before marking completion. Configured registries require operator backup acknowledgement through the settings capability/nonce form. This limited extension is unverified and is not a general upgrade/restore runner.
+
 Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
 
 Status: Phase 0 engineering baseline for Phase 1 implementation; the initial identity migration is implemented; later storage below is planned. One WordPress single-site registry, InnoDB tables and one shared transaction connection. Network activation/multisite and nontransactional engines are excluded from the first matrix.

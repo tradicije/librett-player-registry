@@ -2,9 +2,11 @@
 
 [English](../en/MODULE_CONTRACTS.md)
 
+Aktuelni kod implementira RegistryContextReader, PlayerDraftReader/SavePlayerDraft i ClubDraftReader/SaveClubDraft sa zasebnim repository portovima. Arhiviranje/vraćanje su izričita čuvanja retention stanja u ovom privatnom koraku; posebni koordinatori arhiviranja/purge-a uz objavu, članstva i mapiranje duplikata ostaju planirani. Granice provere su u statusu implementacije.
+
 Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
 
-Status: osnova dizajna faze 0. Nazivi predstavljaju buduće PHP interfejse, ne postojeće klase. Mali zajednički UUID/counter/error/actor tipovi nemaju infrastrukturne zavisnosti.
+Status: osnova dizajna faze 0. Osim implementiranih interfejsa navedenih iznad, nazivi predstavljaju buduće PHP interfejse. Mali zajednički UUID/counter/error/actor tipovi nemaju infrastrukturne zavisnosti.
 
 ## Graf bez ciklusa
 

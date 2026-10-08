@@ -2,9 +2,11 @@
 
 [Srpski](../sr/MODULE_CONTRACTS.md)
 
+Current source implements RegistryContextReader, PlayerDraftReader/SavePlayerDraft and ClubDraftReader/SaveClubDraft with separate repository ports. Archive/restore are explicit retention-state saves in this private-only slice; dedicated publication-aware archive/purge coordinators, memberships and duplicate mapping remain planned. See implementation status for verification limits.
+
 Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
 
-Status: Phase 0 design baseline. Names denote planned PHP interfaces, not existing classes. Small shared UUID/counter/error/actor value types have no infrastructure dependencies.
+Status: Phase 0 design baseline. Apart from the implemented interfaces noted above, names denote planned PHP interfaces. Small shared UUID/counter/error/actor value types have no infrastructure dependencies.
 
 ## Acyclic dependency graph
 

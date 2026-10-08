@@ -7,8 +7,7 @@ namespace LibreTT\PlayerRegistry\RegistryIdentity\Application;
 
 use LibreTT\PlayerRegistry\RegistryIdentity\Domain\Registry;
 
-interface RegistryRepository
+interface RegistryRepository extends RegistryContextReader
 {
-    public function current(): ?Registry;
     public function createIfUnconfigured(Registry $registry, int $actorId): void;
 }

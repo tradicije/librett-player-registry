@@ -16,4 +16,11 @@ final readonly class Actor
             throw new RegistryFailure('permission_denied');
         }
     }
+
+    public function assertCanEditProfiles(): void
+    {
+        if ($this->id < 1 || !in_array('librett_registry_edit_profiles', $this->capabilities, true)) {
+            throw new RegistryFailure('permission_denied');
+        }
+    }
 }

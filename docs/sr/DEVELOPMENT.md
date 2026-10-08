@@ -36,3 +36,7 @@ Installer zahteva prefiks baze `librett_registry_test_` i odbija prepisivanje dr
 Unit i integracioni testovi pokrivaju implementirani identitet/bootstrap; ne proveravaju planirani CRUD igrača, publikovanje, replikaciju ili oporavak. CI workflow i release pakovanje nisu implementirani. [Stanje implementacije](IMPLEMENTATION_STATUS.md) beleži stvarne verzije, rezultate i ograničenja.
 
 Čuvaj granice modula, strict types, izričite portove i Composer PSR-4. Budući scripted frontend koristi strict TypeScript; framework nije izabran. Budući release ZIP mora da sadrži runtime zavisnosti i [third-party notices](../../THIRD_PARTY_NOTICES.md), bez razvojnih zavisnosti, testova, baza igrača ili tajni za oporavak. Release verzija nije dodeljena.
+
+## Provera proširenja privatnim nacrtima ostaje za izvršavanje
+
+Players/Clubs proširenje od 2026-10-08 nije izvršeno u ovom okruženju, gde PHP/Composer/msgfmt nisu dostupni. Raniji bootstrap rezultati ne pokrivaju migraciju 002 i forme nacrta. Pre deployment-a odobrena provera mora pokriti odbijene dozvole/nonce, nepodešen/replica kontekst, Unicode/kontrole/ograničenja polja, opciono godište, ista imena, zastarele izmene, iscrpljenu reviziju, audit rollback, arhiviranje/vraćanje, ograničenu pretragu, svežu/postojeću aktivaciju, prekid/checksum/buduću šemu/lock migracije i čuvanje svih sedam tabela. Postojeći bootstrap testovi nisu menjani niti ponovo izvršeni.

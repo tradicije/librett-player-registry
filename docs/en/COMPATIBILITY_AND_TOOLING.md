@@ -41,3 +41,7 @@ Candidate PHP extensions: `mysqli`, `mbstring`, `intl`, `fileinfo`, and one veri
 A parser and JCS package cannot be responsibly declared verified before exercising the required capabilities. Their spikes are explicitly scheduled in the relevant implementation milestone; no unverified package is added simply to close a checklist. This is a design/tool choice boundary, not omitted runtime verification. Avoid a dependency-injection framework, ORM, SPA or additional coding-standard stack in the initial milestone.
 
 At implementation bootstrap, resolve supported stable releases against PHP 8.5, review license/security/maintenance, pin exact versions in lockfiles, record actual commands and versions, then run only authorized checks. The Phase 0 documents intentionally provide no fictitious build/test commands. No deployment matrix row is marked tested or operator-approved yet.
+
+## 2026-10-08 implementation recheck
+
+The official [PHP support table](https://www.php.net/supported-versions.php), [WordPress release archive](https://wordpress.org/download/releases/) and [PER Coding Style](https://www.php-fig.org/per/coding-style/) were reviewed again before the private-draft extension. The PHP 8.5 / WordPress 7.1.3 single-site engineering target and PER 3.1 design target remain unchanged. No dependency or lockfile update was made. PHP/Composer/msgfmt are unavailable in the current Linux workspace, so the new slice supplies no additional tested matrix row.

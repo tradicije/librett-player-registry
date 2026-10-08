@@ -2,6 +2,8 @@
 
 [English](../en/ARCHITECTURE.md)
 
+Proširenje privatnim nacrtima implementira i Players/Clubs domain/application/infrastructure direktorijume i male Shared value tipove. Nije provereno; prazni runtime Publication/Replication/Recovery moduli se ne dodaju.
+
 Vlasništvo interfejsa i graf bez ciklusa određuju [ugovori modula](MODULE_CONTRACTS.md), a transakcije/migracije [skladište](STORAGE_AND_MIGRATIONS.md). Razrađuju konceptualnu listu ispod.
 
 ## Bez monolitnog dizajna

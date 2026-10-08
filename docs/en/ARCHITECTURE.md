@@ -2,6 +2,8 @@
 
 [Srpski](../sr/ARCHITECTURE.md)
 
+The private-draft extension also implements Players and Clubs domain/application/infrastructure directories and small Shared value types. It is unverified; there are no empty runtime Publication/Replication/Recovery modules.
+
 Module interface ownership and the acyclic dependency graph are specified in [module contracts](MODULE_CONTRACTS.md); transactions and migrations in [storage](STORAGE_AND_MIGRATIONS.md). These refine the conceptual module list below.
 
 ## Non-monolithic design

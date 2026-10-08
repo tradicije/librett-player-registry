@@ -10,7 +10,7 @@ Jedan modularan dodatak podržava prazan nezavisan registar ili repliku, javne p
 
 ## Trenutni rad
 
-Dizajn faze 0 je u evidenciji spremnosti. Faza 1 sada ima [proverenu razvojnu osnovu](IMPLEMENTATION_STATUS.md): preflight, prazne početne migracije, primary identitet i čuvanje podataka. Korisnik je odobrio zavisnosti i implementacione testove. Faza 1 nije završena; slede Players/Clubs privatni nacrti/CRUD. Objava, JSON uvoz/izvoz, replike i oporavak nisu implementirani.
+Dizajn faze 0 je u evidenciji spremnosti. Faza 1 sada ima [proverenu razvojnu osnovu](IMPLEMENTATION_STATUS.md): preflight, prazne početne migracije, primary identitet i čuvanje podataka. Korisnik je odobrio zavisnosti i implementacione testove. Faza 1 nije završena; privatno pravljenje/pretraga/uređivanje/arhiviranje/vraćanje Players/Clubs nacrta sada su implementirani u kodu bez runtime provere; slede njihova provera, članstva, alias-i i izričito mapiranje duplikata. Objava, JSON uvoz/izvoz, replike i oporavak nisu implementirani.
 
 ## Faza 0 — ugovori i tehnička osnova
 

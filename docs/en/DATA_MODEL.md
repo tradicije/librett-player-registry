@@ -2,9 +2,11 @@
 
 [Srpski](../sr/DATA_MODEL.md)
 
+Private Players/Clubs drafts and separate module audit tables now exist in source (unverified). Player birth year is nullable in domain inputs; private SQL uses zero for absence and maps it back to null. This storage sentinel is never a public birth year. Aliases/memberships/publication remain conceptual.
+
 Status: conceptual model, not a finalized migration/schema.
 
-The initial identity/audit/migration tables are implemented; player/club/publication storage below remains conceptual. See [current scope](IMPLEMENTATION_STATUS.md).
+Identity/audit/migration and private player/club draft tables are implemented in source; the private-draft extension is unverified. Membership and publication storage below remains conceptual. See [current scope](IMPLEMENTATION_STATUS.md).
 
 The [snapshot contract — draft 1](SNAPSHOT_CONTRACT.md) proposes concrete public types, limits, private/public revision separation and staged import identity rules. It refines the conceptual discussion below; signed feed and private restore contracts remain open.
 

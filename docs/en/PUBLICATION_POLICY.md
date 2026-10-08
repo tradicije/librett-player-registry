@@ -12,6 +12,12 @@ Propose a public catalogue for the first single-site milestone. Anonymous visito
 
 Purpose: identify players and clubs for public profiles and optional tournament registration imports. Do not collect contacts, exact birth dates or identity documents for this milestone. No player accounts, tournament results or rankings are introduced.
 
+## Dataset license selection — planned
+
+The administrator will choose the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. This settings workflow is planned and is not implemented yet.
+
+Dataset licensing is separate from the plugin's AGPL-3.0-or-later license, personal-data publication authorization and photo permissions.
+
 ## Field allowlist
 
 Only explicitly allowed fields enter public pages, search, API responses, snapshots or future feeds. Building a projection from all stored fields and removing known secrets is insufficient.

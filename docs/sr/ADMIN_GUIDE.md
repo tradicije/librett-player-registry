@@ -1,12 +1,20 @@
-# Administratorski tokovi — planirano
+# Administratorski tokovi — razvoj i planirane funkcije
 
 [English](../en/ADMIN_GUIDE.md)
 
 Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
 
-Ovo su budući ekrani, ne dostupno uputstvo za instalaciju.
+Aktuelni korak nacrta opisan je zasebno ispod; naredni ekrani ostaju planirani.
 
 Mediji prve etape dolaze iz zaštićenog storage-a tek posle odobrenja. Uvoz javnog snimka pravi neobjavljene nacrte sa izričitim mapiranjem; ne vraća privatna odobrenja niti daje autoritet izvora. Pogledaj [skladište/restore](STORAGE_AND_MIGRATIONS.md) i [spremnost](PHASE_0_READINESS.md).
+
+## Aktuelna administracija privatnih nacrta
+
+Razvojni kod dodaje strane privatnih nacrta; runtime provera ostaje za izvršavanje. Posle sveže aktivacije napravite primary registar u LibreTT Registry. Za postojeći podešen bootstrap otvorite LibreTT Registry → Šema privatnih nacrta i potvrdite proverenu rezervnu kopiju pre instalacije/nastavka migracije 002. Izjava je odgovornost operatora; automatski backup/restore ne postoji.
+
+Administrator dobija `librett_registry_edit_profiles`; prijavljeni korisnik kome se izričito dodeli taj capability koristi Igrače i Klubove bez pristupa podešavanjima. Napravite nacrt, pretražite naziv, izaberite zapis po UUID-u, uredite i sačuvajte. Za arhiviranje ili vraćanje izaberite Arhiviran ili Aktivan i sačuvajte. Zastarela revizija daje sukob; učitajte ponovo i pregledajte pre ponovnog slanja. Imena se mogu ponavljati; čuvanje ne spaja i ne objavljuje zapise. Članstva klubova, alias-i, mediji i purge još nisu implementirani.
+
+## Planirani kasniji ekrani
 
 ## Prvo podešavanje
 

@@ -28,3 +28,5 @@ All documents describe planned behavior unless explicitly marked implemented. A 
 22. [ADR 0005](../adr/0005-phase-1-bootstrap.md)
 
 Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SECURITY.md), [license](../../LICENSE), [agent instructions](../../AGENTS.md), [changelog](../../CHANGELOG.md).
+
+[ADR 0006: Private draft slice (unverified)](../adr/0006-private-player-club-drafts.md)

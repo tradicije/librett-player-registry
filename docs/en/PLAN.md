@@ -10,7 +10,7 @@ One modular plugin supports an empty independent registry or a replica, public p
 
 ## Current work
 
-Phase 0 design is recorded in the readiness record. Phase 1 now has a [verified development bootstrap](IMPLEMENTATION_STATUS.md): runtime preflight, empty initial migrations, primary identity setup and retention. The user authorized dependency installation and implementation testing. Phase 1 is not complete; next are Players/Clubs private drafts and CRUD. Publication, JSON import/export, replicas and recovery are not implemented.
+Phase 0 design is recorded in the readiness record. Phase 1 now has a [verified development bootstrap](IMPLEMENTATION_STATUS.md): runtime preflight, empty initial migrations, primary identity setup and retention. The user authorized dependency installation and implementation testing. Phase 1 is not complete; private Players/Clubs create/search/edit/archive/restore are now implemented in source but unverified; next are their verification, memberships, aliases and explicit duplicate mapping. Publication, JSON import/export, replicas and recovery are not implemented.
 
 ## Phase 0 — contracts and technical foundation
 

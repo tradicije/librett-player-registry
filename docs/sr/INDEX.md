@@ -28,3 +28,5 @@ Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao impl
 22. [ADR 0005](../adr/0005-phase-1-bootstrap.md)
 
 Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.md), [licenca](../../LICENSE), [uputstva agentima](../../AGENTS.md), [changelog](../../CHANGELOG.md).
+
+[ADR 0006: Privatni nacrti (bez provere)](../adr/0006-private-player-club-drafts.md)

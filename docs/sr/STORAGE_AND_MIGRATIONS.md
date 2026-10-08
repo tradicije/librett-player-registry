@@ -2,6 +2,8 @@
 
 [English](../en/STORAGE_AND_MIGRATIONS.md)
 
+Migracija 002 dodaje privatne players/clubs/audit tabele u vlasništvu modula, bez izmene definicija/checksum-a migracije 001. Svaka tabela je dopunski korak koji može da se nastavi; puna struktura se proverava pre završenog statusa. Podešen registar traži izjavu operatora o bekapu kroz settings capability/nonce formu. Ovo ograničeno proširenje nije provereno i nije opšti upgrade/restore runner.
+
 Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
 
 Status: inženjerska osnova faze 0 za implementaciju faze 1; početna identity migracija je implementirana; ostalo skladište ispod je planirano. Jedan WordPress single-site registar, InnoDB tabele i jedna zajednička transakciona konekcija. Network aktivacija/multisite i netransakcioni engine-i nisu u prvoj matrici.
