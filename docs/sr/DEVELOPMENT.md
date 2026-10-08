@@ -37,6 +37,32 @@ Unit i integracioni testovi pokrivaju implementirani identitet/bootstrap; ne pro
 
 Čuvaj granice modula, strict types, izričite portove i Composer PSR-4. Budući scripted frontend koristi strict TypeScript; framework nije izabran. Budući release ZIP mora da sadrži runtime zavisnosti i [third-party notices](../../THIRD_PARTY_NOTICES.md), bez razvojnih zavisnosti, testova, baza igrača ili tajni za oporavak. Release verzija nije dodeljena.
 
+## Razvojni alati kroz rootless Podman
+
+Na ovom Fedora računaru PHP/Composer/gettext instaliraju se u rootless Podman razvojnu sliku. Iz repozitorijuma koristite `tools/dev/run`; PHP nije instaliran kao sistemska izvršna datoteka. Slika dodaje mysqli, intl, GD i ZIP zvaničnoj PHP 8.5 CLI slici i kopira Composer 2. Preduslovi su rootless Podman i sistemski curl/tar.
+
+```sh
+tools/dev/run build
+tools/dev/run composer install --no-interaction
+tools/dev/run db-start
+tools/dev/run wp-download
+tools/dev/run wp-install
+```
+
+Wrapper povezuje repozitorijum kao `/workspace`, privremeni WordPress kao `/wordpress` i zajednički MariaDB UNIX socket. MariaDB 10.11 radi u `librett-registry-dev-db` bez mreže; podaci, preuzimanja, keš i WordPress konfiguracija ostaju u ignorisanom `local/dev/`. PHP komande nemaju mrežu. Composer komande uključuju mrežu za preuzimanje zavisnosti; WordPress blokira spoljni HTTP i email. Sistemska baza/servis se ne koriste.
+
+Kada je provera implementacije odobrena, instalirani alati pozivaju se ovako:
+
+```sh
+tools/dev/run php vendor/bin/phpunit
+tools/dev/run php vendor/bin/phpunit -c phpunit.integration.xml
+tools/dev/run php vendor/bin/phpstan analyse --debug --memory-limit=512M
+tools/dev/run php vendor/bin/php-cs-fixer check --sequential
+tools/dev/run msgfmt --check --output-file=local/dev/serbian.mo languages/librett-player-registry-sr_RS.po
+```
+
+Zaustavite privremenu bazu kroz `tools/dev/run db-stop`; ponovo je pokrenite kroz `db-start`. Zaustavljanje čuva podatke. Nisu podešeni automatsko pokretanje, purge ili produkcioni deployment. Tagovi slika biraju dokumentovane grane; stvarne verzije zabeležiti pri instalaciji, jer tagovi nisu nepromenljivi patch pin-ovi.
+
 ## Provera proširenja privatnim nacrtima ostaje za izvršavanje
 
-Players/Clubs proširenje od 2026-10-08 nije izvršeno u ovom okruženju, gde PHP/Composer/msgfmt nisu dostupni. Raniji bootstrap rezultati ne pokrivaju migraciju 002 i forme nacrta. Pre deployment-a odobrena provera mora pokriti odbijene dozvole/nonce, nepodešen/replica kontekst, Unicode/kontrole/ograničenja polja, opciono godište, ista imena, zastarele izmene, iscrpljenu reviziju, audit rollback, arhiviranje/vraćanje, ograničenu pretragu, svežu/postojeću aktivaciju, prekid/checksum/buduću šemu/lock migracije i čuvanje svih sedam tabela. Postojeći bootstrap testovi nisu menjani niti ponovo izvršeni.
+Players/Clubs proširenje od 2026-10-08 nije provereno. PHP/Composer/msgfmt sada su dostupni kroz rootless okruženje iznad; [status implementacije](IMPLEMENTATION_STATUS.md) beleži stvarne instalirane verzije. Raniji bootstrap rezultati ne pokrivaju migraciju 002 i forme nacrta. Pre deployment-a odobrena provera mora pokriti odbijene dozvole/nonce, nepodešen/replica kontekst, Unicode/kontrole/ograničenja polja, opciono godište, ista imena, zastarele izmene, iscrpljenu reviziju, audit rollback, arhiviranje/vraćanje, ograničenu pretragu, svežu/postojeću aktivaciju, prekid/checksum/buduću šemu/lock migracije i čuvanje svih sedam tabela. Postojeći bootstrap testovi nisu menjani niti ponovo izvršeni.

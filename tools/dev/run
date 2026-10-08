@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Copyright (C) 2026 Aleksa Dimitrijević. AGPL-3.0-or-later.
+set -euo pipefail
+
+registryProjectRoot="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
+registryDevImage=localhost/librett-player-registry-dev:php85
+registryDbContainer=librett-registry-dev-db
+registryCommand="${1:-help}"
+if (($# > 0)); then
+    shift
+fi
+
+case "$registryCommand" in
+    build)
+        exec podman build --tag "$registryDevImage" --file "$registryProjectRoot/tools/dev/Containerfile" "$registryProjectRoot/tools/dev"
+        ;;
+    db-start)
+        mkdir -p "$registryProjectRoot/local/dev/mariadb" "$registryProjectRoot/local/dev/runtime"
+        if podman container exists "$registryDbContainer"; then
+            exec podman start "$registryDbContainer"
+        fi
+        exec podman run --detach --name "$registryDbContainer" --userns=keep-id --user "$(id -u):$(id -g)" \
+            --network=none --security-opt label=disable \
+            --volume "$registryProjectRoot/local/dev/mariadb:/var/lib/mysql:rw" \
+            --volume "$registryProjectRoot/local/dev/runtime:/run/mysqld:rw" \
+            --env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 \
+            docker.io/library/mariadb:10.11 --skip-networking --socket=/run/mysqld/mysql.sock
+        ;;
+    db-stop)
+        exec podman stop "$registryDbContainer"
+        ;;
+    wp-download)
+        if [[ -f "$registryProjectRoot/local/dev/wordpress/wp-settings.php" ]]; then
+            printf '%s\n' 'WordPress files already exist; refusing to replace them.'
+            exit 0
+        fi
+        mkdir -p "$registryProjectRoot/local/dev/wordpress"
+        curl --fail --location --proto '=https' --tlsv1.2 --connect-timeout 15 --max-time 120 \
+            --output "$registryProjectRoot/local/dev/wordpress-7.1.3.tar.gz" https://wordpress.org/wordpress-7.1.3.tar.gz
+        tar -xzf "$registryProjectRoot/local/dev/wordpress-7.1.3.tar.gz" \
+            -C "$registryProjectRoot/local/dev/wordpress" --strip-components=1
+        ;;
+    wp-install)
+        "$registryProjectRoot/tools/dev/run" php -r '
+            $link = "/wordpress/wp-content/plugins/librett-player-registry";
+            if (is_link($link)) {
+                if (readlink($link) !== "/workspace") {
+                    throw new RuntimeException("Refusing to replace another plugin link.");
+                }
+            } elseif (file_exists($link) || !symlink("/workspace", $link)) {
+                throw new RuntimeException("Cannot create the development plugin link.");
+            }
+        '
+        exec "$registryProjectRoot/tools/dev/run" php tools/install-integration-site.php
+        ;;
+    php|composer|msgfmt)
+        mkdir -p "$registryProjectRoot/local/dev/wordpress" "$registryProjectRoot/local/dev/runtime" "$registryProjectRoot/local/dev/composer-cache"
+        registryNetwork=none
+        if [[ "$registryCommand" == composer ]]; then
+            registryNetwork=private
+        fi
+        exec podman run --rm --userns=keep-id --user "$(id -u):$(id -g)" \
+            --network="$registryNetwork" --security-opt label=disable \
+            --volume "$registryProjectRoot:/workspace:rw" \
+            --volume "$registryProjectRoot/local/dev/wordpress:/wordpress:rw" \
+            --volume "$registryProjectRoot/local/dev/runtime:/run/mysqld:rw" \
+            --workdir /workspace \
+            --env LIBRETT_WP_ROOT=/wordpress \
+            --env LIBRETT_DB_SOCKET=/run/mysqld/mysql.sock \
+            --env LIBRETT_TEST_DB=librett_registry_test_podman \
+            --env COMPOSER_HOME=/tmp/librett-composer \
+            --env COMPOSER_CACHE_DIR=/workspace/local/dev/composer-cache \
+            "$registryDevImage" "$registryCommand" "$@"
+        ;;
+    *)
+        printf '%s\n' 'Usage: tools/dev/run {build|db-start|db-stop|wp-download|wp-install|php|composer|msgfmt} [arguments...]'
+        ;;
+esac

@@ -37,6 +37,32 @@ Unit and integration suites cover the implemented identity/bootstrap behavior; t
 
 Preserve module boundaries, strict types, explicit ports and Composer PSR-4. A future scripted frontend uses strict TypeScript; no framework is selected. Future release ZIPs must include runtime dependencies and [third-party notices](../../THIRD_PARTY_NOTICES.md), while excluding development dependencies, tests, datasets and recovery secrets. No release version is assigned.
 
+## Rootless Podman development tools
+
+For this Fedora workstation, PHP/Composer/gettext are installed in a rootless Podman development image. Use `tools/dev/run` from the repository; PHP is not installed as a host-system executable. The image adds mysqli, intl, GD and ZIP to the official PHP 8.5 CLI image and copies Composer 2. Rootless Podman and host curl/tar are prerequisites.
+
+```sh
+tools/dev/run build
+tools/dev/run composer install --no-interaction
+tools/dev/run db-start
+tools/dev/run wp-download
+tools/dev/run wp-install
+```
+
+The wrapper mounts the repository at `/workspace`, the disposable WordPress tree at `/wordpress`, and a shared MariaDB UNIX socket. MariaDB 10.11 runs in `librett-registry-dev-db` without networking; data, downloads, cache and WordPress configuration stay in ignored `local/dev/`. PHP commands have networking disabled. Composer commands enable network access for dependency downloads; WordPress itself blocks external HTTP and mail. No host database/service is used.
+
+When implementation verification is authorized, the installed tools can be called as follows:
+
+```sh
+tools/dev/run php vendor/bin/phpunit
+tools/dev/run php vendor/bin/phpunit -c phpunit.integration.xml
+tools/dev/run php vendor/bin/phpstan analyse --debug --memory-limit=512M
+tools/dev/run php vendor/bin/php-cs-fixer check --sequential
+tools/dev/run msgfmt --check --output-file=local/dev/serbian.mo languages/librett-player-registry-sr_RS.po
+```
+
+Stop the disposable database with `tools/dev/run db-stop`; restart with `db-start`. Stopping preserves data. No automatic startup, purge or production deployment is configured. The image tags select the documented branches; record resolved versions on installation rather than treating tags as immutable patch pins.
+
 ## Private-draft extension verification pending
 
-The 2026-10-08 Players/Clubs extension has not been executed in this workspace, where PHP/Composer/msgfmt are unavailable. Earlier bootstrap results do not cover migration 002 or draft forms. Before deployment, authorized verification must cover permission/nonce denial, unconfigured/replica context, Unicode/control/field bounds, optional birth year, duplicate names, stale edits, revision exhaustion, audit rollback, archive/restore, bounded search, fresh/existing activation, migration interruption/checksum/future-schema/lock failures and retention of all seven tables. Existing bootstrap tests have not been changed or rerun.
+The 2026-10-08 Players/Clubs extension has not been verified. PHP/Composer/msgfmt are now available through the rootless container setup above; [implementation status](IMPLEMENTATION_STATUS.md) records the actual installed versions. Earlier bootstrap results do not cover migration 002 or draft forms. Before deployment, authorized verification must cover permission/nonce denial, unconfigured/replica context, Unicode/control/field bounds, optional birth year, duplicate names, stale edits, revision exhaustion, audit rollback, archive/restore, bounded search, fresh/existing activation, migration interruption/checksum/future-schema/lock failures and retention of all seven tables. Existing bootstrap tests have not been changed or rerun.

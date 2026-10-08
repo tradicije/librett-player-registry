@@ -6,6 +6,8 @@ Notable changes are recorded in English. No application release exists yet.
 
 ### Added
 
+- Added rootless Podman development tooling for PHP 8.5, Composer, required PHP extensions and gettext, plus an isolated MariaDB 10.11 socket and disposable WordPress 7.1.3 setup; local data stays outside version control. Installed PHP 8.5.11, Composer 2.10.3, gettext 0.21 and 69 locked packages; manifest/platform/audit and WordPress/database setup checks passed, without executing implementation test suites.
+
 - Added separate Players/Clubs private draft modules, bounded fields/name search, stable UUIDs, capability/nonce-protected admin forms, optimistic edit revisions, transactional private audit and archive/restore. Memberships, aliases, duplicate mapping, purge and publication remain pending.
 - Added additive private-draft migration 002 with lock/checksum/resume/structure checks, fresh-install setup and explicit backup acknowledgement before upgrading an existing configured registry; original identity and migration checksum are retained.
 - Updated Serbian draft/migration UI catalogue and generated MO artifact. This slice has not been executed in PHP/WordPress; earlier bootstrap verification does not cover it.
@@ -16,6 +18,8 @@ Notable changes are recorded in English. No application release exists yet.
 - Added locked development tooling, 16 unit tests and 14 real WordPress/MariaDB integration tests covering authorization, validation, rollback, migration failure/resume/lock and lifecycle retention. PHPStan max-level and supported PER 3.0 formatter checks passed; full PER 3.1 automation and production support are not claimed.
 
 ### Documentation
+
+- Documented English/Serbian container setup, tool invocation and database start/stop commands; this installation does not imply private-draft test coverage or production support.
 
 - Clarified planned one-way registry-to-Desktop downloads, offline local storage and local-only edits, protecting both local data and the online registry through this import channel.
 - Recorded the unverified private-draft implementation, additive migration/operator backup workflow and next slice in English/Serbian documentation and ADR 0006.
