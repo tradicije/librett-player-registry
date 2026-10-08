@@ -1,52 +1,17 @@
-# LibreTT Desktop integration
+# LibreTT Desktop integration — development
 
 [Srpski](../sr/DESKTOP_INTEGRATION.md)
 
-Status: planned; the registry integration is not currently implemented in Desktop.
+Implemented in the sibling [LibreTT Desktop](https://github.com/tradicije/librett-desktop) development source; no integration release is published. See [actual verification](VERIFICATION_2026_10_08.md).
 
-The proposed [snapshot contract](SNAPSHOT_CONTRACT.md) uses decimal-string counters, omitted optional fields and explicit source identity. Parse counters without precision loss; omitted fields never clear local values. The unsigned draft cannot authenticate authority or establish reliable remote freshness.
+Registry → Desktop is one way. HTTPS GET/file import never uploads local profiles, contacts, notes, attendance, payments or tournament data. WordPress authority stays separate from local Desktop identities and edits.
 
-## Local storage and direction
+Desktop Players offers HTTPS snapshot download, bounded JSON file import, private preview, explicit existing-player mapping, missing-field completion, skip, conflict review and confirmation. Matching names never merge automatically. Local birth year is mandatory and name/club limits are 120 characters; remote optional birth year must be completed when needed. Source club UUID memberships are stored separately and summarized for the existing local club field.
 
-Desktop users will download the player database and retain a local copy for offline use. Data flows only from the online registry to Desktop. Later Desktop edits remain local, protecting local information from upload through this channel and preserving the online database from Desktop changes. Refresh must preserve explicit local overrides and historical tournament snapshots. This integration remains planned.
+SQLite schema 22 caches approved source data, remote/local mappings, baselines, sticky local overrides, club links and receipts. Existing files get a pre-v22 safety backup. New local UUIDs are independent of remote UUIDs. One local player has one source mapping in this slice. Edits stay local even when later remote values happen to match. Explicitly selecting registry values clears those overrides; absent optional remote values never erase local data. Local deletion leaves a detached source link skipped by default.
 
-## User workflow
+Refresh rejects older checkpoints, conflicting equal-checkpoint payloads and regressed/missing known entity revisions/withdrawals. Preview is invalidated by relevant local/source edits and expires after an hour. Confirm is transactional and idempotent. Remote withdrawal updates provenance and preserves local players and historical entry snapshots. This cannot prove first-contact freshness/authenticity: unsigned source metadata is untrusted.
 
-In Players, add “Update Player Registry” and JSON import/export workflows. Configure a source URL or trusted connection file; an initial default may point to librett.org but must be replaceable. The same registry may later live on stoni.rs or another organization’s site. A public registry does not require a player account; private sources need a separate read-only authorization design.
+Photos are optional: only an explicit request downloads a descriptor-validated image (hash, size, MIME, dimensions), then the existing crop dialog creates a local JPEG. Existing local photos are retained unless explicitly replaced. Requests are HTTPS-only GET with public pinned DNS addresses, bounded resolver concurrency/timeouts/body, no redirects/proxy/compression; private/reserved hosts are rejected.
 
-Fetch/validate → preview additions and changes → resolve mappings/required fields → confirm transaction → keep records available offline. Failure retains the existing local database and accepted cursor. A profile link opens the current remote public page, not a hard-coded hostname.
-
-## Stored provenance
-
-For a linked local player, retain local player UUID, registry UUID, remote player UUID, accepted authority/checkpoint, remote entity revision, last imported normalized field values and explicit local override state. Remote metadata is separate from the local player profile. Map imported clubs similarly; remote club IDs do not replace local IDs.
-
-One local player can eventually have reviewed links to multiple registries; first release may limit this. A duplicate name is a review candidate, never an automatic merge. Linking a manually entered profile is explicit and cannot replace historical registrations.
-
-## Refresh and local edits
-
-Compare previous remote value B, current local value L and new remote value R per field:
-
-| Condition | Action |
-| --- | --- |
-| No local override and L = B | Apply R if valid |
-| Local override; upstream unchanged | Keep local value |
-| Local override; upstream also changed | Keep local value by default; offer reviewed acceptance of upstream |
-| User chooses “use registry value” | Apply current R and clear that field's override |
-
-An explicit local override remains an override even if values happen to become equal. Treat a clear-to-null as a local edit. Missing remote optional/public fields have specified semantics; do not silently clear local fields. Validate complete Desktop profile invariants before saving.
-
-Online birth year may be absent. Since Desktop requires birth year, require organizer completion or keep the profile as a pending import instead of fabricating a year. Download photos through bounded validation/cropping rules; remote URLs are not silently stored where Desktop expects validated image bytes.
-
-## Removal and stale sources
-
-A tombstone marks the upstream profile unavailable; preserve local player and tournament history. A later stale snapshot must not resurrect upstream publication or overwrite newer provenance. A new authority generation is reviewed using the trusted transition, not compared solely by numeric revision.
-
-Normal refresh does not delete manual local players or strip local club names. Importing a full registry snapshot is not restoring the entire Desktop backup.
-
-## One-way guarantee
-
-No desktop profile edits, payments, attendance or tournament records are uploaded. The registry API client has read/import capabilities only. Proposal submission belongs to authorized registry sites, not an implicit desktop feature. Remote links/provenance cannot bypass local validation or scoring rules.
-
-## Acceptance cases
-
-First/repeated import, migrated source domain, same names/different identities, human-approved linking, local edit with upstream change, clearing a field, absent birth year, invalid media, upstream purge, schema mismatch, interrupted import, offline use and preservation of historical snapshots. Desktop changes belong in its repository when implementation is requested.
+JSON bounds: 32 MiB, depth 8, 100,000 aggregate array items, 32 keys/object and 32,768 bytes/string token. Schema and graph checks also enforce typed UUID uniqueness, references, revisions and individual collection bounds. Neither signatures, replica proposals, automatic source migration/discovery nor cached-source re-export are implemented. Use a reviewed new HTTPS URL for a moved source with the same registry UUID.

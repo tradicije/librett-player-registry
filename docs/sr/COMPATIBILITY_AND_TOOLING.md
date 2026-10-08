@@ -2,6 +2,8 @@
 
 [English](../en/COMPATIBILITY_AND_TOOLING.md)
 
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
 Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
 
 Pregled: 2026-10-07. Status: izabrani inženjerski ciljevi za pregled/implementaciju, ne proverena podrška plugina ili oglašen minimum. Bootstrap zavisnosti su instalirane/zaključane; stvarni dokazi su u statusu implementacije.

@@ -23,4 +23,17 @@ final readonly class Actor
             throw new RegistryFailure('permission_denied');
         }
     }
+    public function assertCanPublish(): void
+    {
+        if ($this->id < 1 || !in_array('librett_registry_publish_profiles', $this->capabilities, true)) {
+            throw new RegistryFailure('permission_denied');
+        }
+    }
+    public function assertCanImport(): void
+    {
+        $this->assertCanEditProfiles();
+        if (!in_array('librett_registry_import', $this->capabilities, true)) {
+            throw new RegistryFailure('permission_denied');
+        }
+    }
 }

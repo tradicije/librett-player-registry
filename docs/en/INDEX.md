@@ -30,3 +30,5 @@ All documents describe planned behavior unless explicitly marked implemented. A 
 Root policies: [contribution guide](../../CONTRIBUTING.md), [security](../../SECURITY.md), [license](../../LICENSE), [agent instructions](../../AGENTS.md), [changelog](../../CHANGELOG.md).
 
 [ADR 0006: Private draft slice (unverified)](../adr/0006-private-player-club-drafts.md)
+
+- [Development verification, 2026-10-08](VERIFICATION_2026_10_08.md)

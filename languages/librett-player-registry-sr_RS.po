@@ -169,3 +169,234 @@ msgstr "Migracija privatnih nacrta nije završena. Postojeći podaci se čuvaju;
 
 msgid "Use Players or Clubs to manage private drafts."
 msgstr "Koristite Igrače ili Klubove za uređivanje privatnih nacrta."
+
+msgid "Adult"
+msgstr "Odrasla osoba"
+
+msgid "Aliases, one per line (maximum 20)"
+msgstr "Alias-i, po jedan u redu (najviše 20)"
+
+msgid "Approve selected publication"
+msgstr "Odobri izabranu objavu"
+
+msgid "Birth year"
+msgstr "Godište"
+
+msgid "Cancel and remove staged file"
+msgstr "Otkaži i ukloni pripremljeni fajl"
+
+msgid "Changes could not be saved. Reload the current draft and check the supplied values."
+msgstr "Izmene nisu sačuvane. Ponovo učitajte nacrt i proverite unete vrednosti."
+
+msgid "Choose a license"
+msgstr "Izaberite licencu"
+
+msgid "Club aliases"
+msgstr "Alias-i kluba"
+
+msgid "Club identifiers, one per line (maximum 100). Search club drafts to find identifiers."
+msgstr "Identifikatori klubova, po jedan u redu (najviše 100). Pronađite ih pretragom nacrta klubova."
+
+msgid "Club memberships"
+msgstr "Članstva u klubovima"
+
+msgid "Compare identifiers and profile details before changing records. Matching names do not merge people or clubs. Search results include archived drafts."
+msgstr "Uporedite identifikatore i detalje pre izmene. Ista imena ne spajaju osobe ili klubove. Pretraga uključuje arhivirane nacrte."
+
+msgid "Configure the license and publication policy first."
+msgstr "Prvo podesite licencu i politiku objave."
+
+msgid "Confirm import"
+msgstr "Potvrdi uvoz"
+
+msgid "Custom license upload: UTF-8 text or PDF, maximum 1 MiB. A saved document is retained when both inputs are empty."
+msgstr "Custom licenca: UTF-8 tekst ili PDF, najviše 1 MiB. Sačuvan dokument ostaje kada su oba unosa prazna."
+
+msgid "Database license"
+msgstr "Licenca baze podataka"
+
+msgid "Dataset terms HTTPS URL (for Custom: URL or upload below)"
+msgstr "HTTPS URL uslova baze (za Custom: URL ili otpremanje ispod)"
+
+msgid "Documented minor publication policy (leave empty to block minor profiles)"
+msgstr "Dokumentovana politika objave maloletnika (prazno blokira njihove profile)"
+
+msgid "Existing mapped drafts receive supplied fields and current source club links; omitted optional fields retain local values. Archived records remain archived. Source withdrawals mark provenance and do not delete local records. Confirmation expires after one hour or relevant local edits. Public approvals remain unchanged."
+msgstr "Mapirani nacrti dobijaju dostavljena polja i članstva izvora; izostavljena opciona polja ostaju lokalna. Arhivirani zapisi ostaju arhivirani. Povlačenje izvora menja poreklo i ne briše lokalne zapise. Potvrda zastareva posle sat vremena ili relevantnih lokalnih izmena. Javna odobrenja ostaju ista."
+
+msgid "I reviewed the proposed records and mappings and authorize these private draft changes."
+msgstr "Pregledao/la sam predložene zapise i mapiranja i odobravam ove izmene privatnih nacrta."
+
+msgid "Import an unsigned public snapshot as private drafts. Names never create automatic matches. The source registry does not become the authority of this registry. Photos are retained as source descriptors and are not downloaded or published."
+msgstr "Uvezite nepotpisan javni snimak kao privatne nacrte. Imena ne stvaraju automatska poklapanja. Izvor ne postaje autoritet ovog registra. Fotografije ostaju opis izvora i ne preuzimaju se niti objavljuju."
+
+msgid "Import did not complete. Check format, mappings, permissions, preview age and current draft revisions. Cancel old previews if the staging limit was reached."
+msgstr "Uvoz nije završen. Proverite format, mapiranja, dozvole, starost pregleda i revizije nacrta. Otkažite stare preglede ako je dostignut limit."
+
+msgid "Install or resume the additive registry migration. Existing registry identity and records are retained."
+msgstr "Instalirajte ili nastavite dodatnu migraciju registra. Postojeći identitet i zapisi se čuvaju."
+
+msgid "Install registry schema"
+msgstr "Instaliraj šemu registra"
+
+msgid "Invalid catalogue request."
+msgstr "Neispravan zahtev kataloga."
+
+msgid "JPEG or PNG, maximum 5 MiB and 4096 pixels per side. Uploads are kept outside public storage; a photo becomes public only after profile approval."
+msgstr "JPEG ili PNG, najviše 5 MiB i 4096 piksela po strani. Fajlovi su van javnog skladišta; fotografija postaje javna tek posle odobrenja profila."
+
+msgid "JSON import"
+msgstr "JSON uvoz"
+
+msgid "License and publication settings"
+msgstr "Licence i podešavanja objave"
+
+msgid "License document unavailable."
+msgstr "Dokument licence nije dostupan."
+
+msgid "Local target and expected revision"
+msgstr "Lokalni cilj i očekivana revizija"
+
+msgid "Memberships, aliases and duplicate review"
+msgstr "Članstva, alias-i i pregled duplikata"
+
+msgid "Minor: requires configured policy"
+msgstr "Maloletnik: potrebna podešena politika"
+
+msgid "Name and identifier are required. Select each additional field you authorize for public profiles, API and download."
+msgstr "Naziv i identifikator su obavezni. Izaberite svako dodatno polje koje odobravate za javne profile, API i preuzimanje."
+
+msgid "Next candidates"
+msgstr "Sledeći kandidati"
+
+msgid "Next preview records"
+msgstr "Sledeći zapisi pregleda"
+
+msgid "Next profiles"
+msgstr "Sledeći profili"
+
+msgid "No database license is selected automatically. Dataset licensing, publication authorization and photo rights are separate decisions. Changing this policy withdraws previous publications for a new review."
+msgstr "Licenca baze se ne bira automatski. Licenca podataka, odobrenje objave i prava fotografija zasebne su odluke. Izmena politike povlači prethodne objave radi novog pregleda."
+
+msgid "No public profile found."
+msgstr "Nema javnog profila."
+
+msgid "Optional explicit mappings: player or club, source UUID, existing local UUID; one per line. Leave empty to create independent identities or reuse saved provenance."
+msgstr "Neobavezna izričita mapiranja: player ili club, UUID izvora, postojeći lokalni UUID; po jedno u redu. Prazno pravi nezavisne identitete ili koristi sačuvano poreklo."
+
+msgid "Photo"
+msgstr "Fotografija"
+
+msgid "Photo unavailable."
+msgstr "Fotografija nije dostupna."
+
+msgid "Photo was not changed. Check permissions, revision, protected storage and image limits."
+msgstr "Fotografija nije izmenjena. Proverite dozvole, reviziju, privatno skladište i ograničenja slike."
+
+msgid "Photo/media terms HTTPS URL"
+msgstr "HTTPS URL uslova fotografija/medija"
+
+msgid "Player photographs"
+msgstr "Fotografije igrača"
+
+msgid "Players: %d; clubs: %d; memberships: %d; source withdrawals: %d."
+msgstr "Igrači: %d; klubovi: %d; članstva: %d; povlačenja izvora: %d."
+
+msgid "Policy version (change for each policy update)"
+msgstr "Verzija politike (promenite pri svakoj izmeni)"
+
+msgid "Preview unavailable."
+msgstr "Pregled nije dostupan."
+
+msgid "Private authorization basis/reference (not exported)"
+msgstr "Privatni osnov/referenca odobrenja (ne izvozi se)"
+
+msgid "Private photo publication authorization/reference"
+msgstr "Privatni osnov/referenca prava objave fotografije"
+
+msgid "Profile editing permission is required to inspect drafts."
+msgstr "Za pregled nacrta potrebna je dozvola uređivanja profila."
+
+msgid "Profile editing permission is required."
+msgstr "Potrebna je dozvola uređivanja profila."
+
+msgid "Public catalogue is unavailable."
+msgstr "Javni katalog nije dostupan."
+
+msgid "Public photographer/rights attribution"
+msgstr "Javna atribucija fotografa/nosioca prava"
+
+msgid "Public profile not found."
+msgstr "Javni profil nije pronađen."
+
+msgid "Publication purpose"
+msgstr "Svrha objave"
+
+msgid "Publication review"
+msgstr "Pregled objave"
+
+msgid "Publication was not changed. Reload and review revisions, policy, age status and referenced clubs/photo."
+msgstr "Objava nije izmenjena. Ponovo učitajte i proverite revizije, politiku, uzrast i klubove/fotografiju."
+
+msgid "Registry schema"
+msgstr "Šema registra"
+
+msgid "Registry schema is ready."
+msgstr "Šema registra je spremna."
+
+msgid "Registry unavailable or invalid request. Check setup and schema."
+msgstr "Registar nije dostupan ili zahtev nije ispravan. Proverite podešavanje i šemu."
+
+msgid "Remove draft photo"
+msgstr "Ukloni fotografiju nacrta"
+
+msgid "Review before confirmation"
+msgstr "Pregled pre potvrde"
+
+msgid "Reviewed age status"
+msgstr "Proveren uzrast"
+
+msgid "Save aliases"
+msgstr "Sačuvaj alias-e"
+
+msgid "Save memberships"
+msgstr "Sačuvaj članstva"
+
+msgid "Save policy"
+msgstr "Sačuvaj politiku"
+
+msgid "Save private photo"
+msgstr "Sačuvaj privatnu fotografiju"
+
+msgid "Search candidates by name"
+msgstr "Pretraži kandidate po imenu"
+
+msgid "Search players"
+msgstr "Pretraži igrače"
+
+msgid "Search public profiles"
+msgstr "Pretraži javne profile"
+
+msgid "Settings were not saved. Check the current revision, policy version, HTTPS URLs and protected upload storage."
+msgstr "Podešavanja nisu sačuvana. Proverite reviziju, verziju politike, HTTPS URL-ove i privatno skladište."
+
+msgid "Snapshot JSON file, maximum 32 MiB (server upload limits also apply)"
+msgstr "Snapshot JSON fajl, najviše 32 MiB (važe i serverski upload limiti)"
+
+msgid "Source record"
+msgstr "Zapis izvora"
+
+msgid "The registry migration could not complete. Existing data is retained; resolve the runtime or schema problem before retrying."
+msgstr "Migracija registra nije završena. Podaci su sačuvani; rešite problem okruženja ili šeme pre ponovnog pokušaja."
+
+msgid "Unknown: publication blocked"
+msgstr "Nepoznat uzrast: objava blokirana"
+
+msgid "Validate and preview"
+msgstr "Proveri i pregledaj"
+
+msgid "Withdraw publication"
+msgstr "Povuci objavu"
+
+msgid "Use Players and Clubs for private drafts, then configure license settings and review publication. JSON import creates private drafts."
+msgstr "Koristite Igrače i Klubove za privatne nacrte, zatim podesite licence i pregledajte objavu. JSON uvoz pravi privatne nacrte."

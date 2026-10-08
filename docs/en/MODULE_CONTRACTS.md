@@ -2,11 +2,13 @@
 
 [Srpski](../sr/MODULE_CONTRACTS.md)
 
-Current source implements RegistryContextReader, PlayerDraftReader/SavePlayerDraft and ClubDraftReader/SaveClubDraft with separate repository ports. Archive/restore are explicit retention-state saves in this private-only slice; dedicated publication-aware archive/purge coordinators, memberships and duplicate mapping remain planned. See implementation status for verification limits.
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
 
-Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+Implemented ports include RegistryContextReader, draft readers/repositories, PlayerIdentityLookup, TouchPlayerDraftRevision, MembershipRepository, ClubAliases, PublicationStore, SnapshotValidator, ImportStore, ImportTarget, PhotoCatalogue, PhotoProcessor and ProtectedFiles. ArchiveRelations and DraftImportTarget coordinate module APIs within one shared transaction. Later interfaces below remain proposed contracts.
 
-Status: Phase 0 design baseline. Apart from the implemented interfaces noted above, names denote planned PHP interfaces. Small shared UUID/counter/error/actor value types have no infrastructure dependencies.
+The following sections retain the Phase 0 design baseline; concrete source and verified scope take precedence for the development catalogue.
+
+Later trust/storage contracts remain planned; multisite and nontransactional engines are excluded.
 
 ## Acyclic dependency graph
 

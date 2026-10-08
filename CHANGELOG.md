@@ -4,6 +4,16 @@ Notable changes are recorded in English. No application release exists yet.
 
 ## Unreleased
 
+### Added — catalogue and Desktop integration (2026-10-08)
+
+- UUID club memberships/aliases and explicit duplicate mapping; optimistic revisions and atomic archive hooks.
+- Operator-selected database licenses, Custom HTTPS/upload terms, purpose/minor policy and explicit publication review.
+- Protected photo derivatives and approval-gated delivery, public shortcode/search and GET API.
+- Bounded unsigned snapshot parsing/schema/graph validation, export and staged transactional private import with receipts.
+- One-way Desktop import/refresh with local overrides, source provenance and historical snapshot preservation in the sibling project.
+- Authorized unit/integration, migration, rollback/privacy and cross-project synthetic roundtrip checks; bilingual scope, operator guidance and third-party notices. See docs/en/VERIFICATION_2026_10_08.md for actual results and limits.
+
+
 ### Added
 
 - Added rootless Podman development tooling for PHP 8.5, Composer, required PHP extensions and gettext, plus an isolated MariaDB 10.11 socket and disposable WordPress 7.1.3 setup; local data stays outside version control. Installed PHP 8.5.11, Composer 2.10.3, gettext 0.21 and 69 locked packages; manifest/platform/audit and WordPress/database setup checks passed, without executing implementation test suites.

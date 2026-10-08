@@ -2,11 +2,13 @@
 
 [Srpski](../sr/STORAGE_AND_MIGRATIONS.md)
 
-Migration 002 adds module-owned private players/clubs/audit tables, without modifying migration 001 definitions/checksum. It has one resumable additive step per table and verifies the complete structure before marking completion. Configured registries require operator backup acknowledgement through the settings capability/nonce form. This limited extension is unverified and is not a general upgrade/restore runner.
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
 
-Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+Migrations 001–006 are implemented: identity; private drafts/audits; memberships/aliases; publication policy/projections/ledger/events/audit; protected media descriptors/links/audit; staged imports/mappings/receipts/lock. Fresh schema has 22 empty InnoDB tables. Existing 001/002 definitions/checksums are retained. Advisory locks, resumable DDL, exact structure verification and configured-site backup acknowledgement protect additive changes. No general private restore/down-migration runner exists.
 
-Status: Phase 0 engineering baseline for Phase 1 implementation; the initial identity migration is implemented; later storage below is planned. One WordPress single-site registry, InnoDB tables and one shared transaction connection. Network activation/multisite and nontransactional engines are excluded from the first matrix.
+The following sections retain the Phase 0 design baseline; concrete source and verified scope take precedence for the development catalogue.
+
+Later trust/storage contracts remain planned; multisite and nontransactional engines are excluded.
 
 ## Ownership and logical keys
 

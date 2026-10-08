@@ -1,55 +1,46 @@
-# Administratorski tokovi — razvoj i planirane funkcije
+# Administratorsko uputstvo — razvojni katalog
 
 [English](../en/ADMIN_GUIDE.md)
 
-Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+Neobjavljen izvorni kod za izdvojeni razvojni sajt. Pročitaj [obim/ograničenja](IMPLEMENTATION_STATUS.md) pre stvarnih podataka. Igrači i klubovi nisu uključeni.
 
-Aktuelni korak nacrta opisan je zasebno ispod; naredni ekrani ostaju planirani.
+## Instalacija i podešavanje
 
-Mediji prve etape dolaze iz zaštićenog storage-a tek posle odobrenja. Uvoz javnog snimka pravi neobjavljene nacrte sa izričitim mapiranjem; ne vraća privatna odobrenja niti daje autoritet izvora. Pogledaj [skladište/restore](STORAGE_AND_MIGRATIONS.md) i [spremnost](PHASE_0_READINESS.md).
+1. Izabrani razvojni cilj: 64-bit PHP 8.5, WordPress 7.1.3 single-site, MariaDB 10.11/InnoDB; instaliraj Composer runtime zavisnosti. MySQL 8.4 nije proveren.
+2. Aktiviraj dodatak; nova aktivacija stvara praznu šemu i administratorske dozvole. Otvori **LibreTT Registry** i napravi svoj imenovani glavni registar.
+3. Postojeća podešena instalacija: napravi backup baze i privatnih fajlova, pa kroz **Šema registra** potvrdi backup i instaliraj/nastavi dodatne migracije 001–006. Izjava ne pravi backup. Ponovni pokušaj nastavlja provereni DDL; ne menjaj evidentirane checksum vrednosti da zaobiđeš grešku.
+4. Za fotografije/Custom dokumente obezbedi upisiv direktorijum PHP korisnika, mode 0700, van document root-a, WordPress direktorijuma i svih web-server alias-a. Podesi `LIBRETT_PRIVATE_STORAGE` u wp-config.php na apsolutnu putanju (ili environment promenljivu). Fajlovi imaju 0600. Nema fallback-a na javni uploads; unos bez upload-a ne traži privatni direktorijum.
 
-## Aktuelna administracija privatnih nacrta
+## Privatni katalog
 
-Razvojni kod dodaje strane privatnih nacrta; runtime provera ostaje za izvršavanje. Posle sveže aktivacije napravite primary registar u LibreTT Registry. Za postojeći podešen bootstrap otvorite LibreTT Registry → Šema privatnih nacrta i potvrdite proverenu rezervnu kopiju pre instalacije/nastavka migracije 002. Izjava je odgovornost operatora; automatski backup/restore ne postoji.
+Unesi klubove i igrače kroz **Klubovi**/**Igrači**. UUID identifikuje zapis; ista imena su dozvoljena. Aktivno/Arhivirano vraća/arhivira uz prikazanu reviziju. Sukob traži ponovno učitavanje i pregled. Nema automatskog spajanja po imenu.
 
-Administrator dobija `librett_registry_edit_profiles`; prijavljeni korisnik kome se izričito dodeli taj capability koristi Igrače i Klubove bez pristupa podešavanjima. Napravite nacrt, pretražite naziv, izaberite zapis po UUID-u, uredite i sačuvajte. Za arhiviranje ili vraćanje izaberite Arhiviran ili Aktivan i sačuvajte. Zastarela revizija daje sukob; učitajte ponovo i pregledajte pre ponovnog slanja. Imena se mogu ponavljati; čuvanje ne spaja i ne objavljuje zapise. Članstva klubova, alias-i, mediji i purge još nisu implementirani.
+Kroz **Članstva, alias-i i pregled duplikata** proveri UUID i detalje kandidata. Unesi UUID-eve aktivnih klubova igrača (najviše 100) ili alias-e kluba (najviše 20). Izmena članstva podiže reviziju igrača. Arhiviranje kluba uklanja pogođena članstva; arhiviranje povlači njegovu javnu kopiju. Vraćanje nacrta ga ne objavljuje automatski.
 
-## Planirani kasniji ekrani
+## Licence i podešavanja objave
 
-## Prvo podešavanje
+Izričito izaberi ODbL 1.0, CC0 1.0, CC BY 4.0, CC BY-SA 4.0, All rights reserved ili Custom. Standardni URL može se dopuniti posle izbora; zadržana prava traže tvoj URL uslova. Custom koristi HTTPS URL ili UTF-8 tekst/PDF do 1 MiB. Prazni Custom unosi zadržavaju ranije sačuvan dokument. Dokument se isporučuje kao preuzimanje; ne stavljaj recovery tajne ili privatni osnov objave u njega.
 
-Aktivacija daje prazno stanje. Biraj „Napravi novi registar” ili „Hostuj repliku”. Nov registar dobija nov identitet; replika čuva identitet izvora. Početno jedan registar po instalaciji.
+Unesi verziju politike, svrhu i HTTPS uslove medija; politika maloletnika obavezna je pre njihove objave. Licenca ne uspostavlja dozvolu objave. Svaka izmena politike traži novu verziju: prethodne objave povlače se atomarno i traže novi pregled.
 
-Za repliku unesi URL povezivanja ili pouzdan connection fajl. Pre potvrde prikaži naziv, ID, host, otisak i obim objave. Sam ID nije adresa. Proveri izvor pre preuzimanja stvarnih profila.
+## Fotografije i javno odobrenje
 
-## Novi glavni registar
+**Fotografije igrača** prihvata JPEG/PNG do 5 MiB i 4096 piksela po strani. Zabeleži javnu atribuciju i privatni osnov prava. GD dekodira/ponovo kodira sliku i uklanja originalne metapodatke/dodatne bajtove. Privatni pregled traži dozvolu uređivanja. Čuvanje/uklanjanje fotografije samo po sebi ne objavljuje nacrt.
 
-Unesi naziv/politiku objave, odredi administratore i napravi/preuzmi offline recovery materijal kroz odobren postupak. Nema default saveza/igrača. Objasniti razliku operativnog ključa, recovery autoriteta i admin lozinke.
+U **Pregled objave** proveri podatke, izaberi dodatna javna polja, uzrast i privatni osnov odobrenja. Objavi klubove pre članstava igrača. Naziv/UUID su obavezni javni podaci. Nepoznat uzrast blokira; maloletnici traže podešenu politiku. Kasnije privatne izmene ne menjaju odobrenu kopiju. Povlačenje/arhiviranje zatvara javni pristup i fotografije; preuzete kopije ostaju van kontrole servera.
 
-Praktično je prvo uneti klubove. Forme biraju klub po UUID-u, polja profila i zasebno javnu objavu. Moderator pregleda duplikate; ne spaja samo po imenu. Glavni CRUD i dalje proverava capabilities i reviziju.
+## Javni sajt i JSON
 
-Pratiti predloženi [tok objave](PUBLICATION_POLICY.md): pripremiti neobjavljen nacrt, privatno zabeležiti odobrenje, pregledati javna polja i izričito odobriti objavu. Čuvanje izmena ih ne objavljuje automatski. Arhiviranje povlači javni pristup u prvoj etapi. Podešavanje recovery materijala važi tek za kasniju pregledanu funkciju poverenja, ne kao uslov prve etape na jednom sajtu.
+Dodaj `[librett_registry]` na WordPress stranu. GET rute pod `/wp-json/librett-registry/v1/`: `manifest`, `snapshot`, `players`, `clubs`, `players/{uuid}`, `clubs/{uuid}`, `media/{uuid}`, `license`. Pretraga koristi `q`, `offset`, `limit` (najviše 50). Snapshot je cela odobrena javna projekcija, nepotpisan format v1; sačuvaj odgovor `snapshot` za prenos fajlom. Privatna polja i dokazi nisu uključeni.
 
-## Javni profili
+**JSON uvoz** proverava fajl do 32 MiB, priprema privatni pregled i traži potvrdu. Postojeće zapise poveži izričitim redovima `player|club source-UUID local-UUID`; inače koristi nove nezavisne UUID-eve ili sačuvano poreklo. Proveri polja izvora i revizije cilja. Dostavljena polja i članstva menjaju nacrte; izostavljena opciona polja ostaju lokalna. Uvoz nikada ne odobrava objavu niti briše zapis zbog povlačenja izvora. Fotografije ostaju opis izvora bez preuzimanja. Pregled traje sat vremena; otkaži nepotrebne (najviše pet po operatoru).
 
-Liste igrača/klubova, pretraga, filteri i profili trajnog identiteta na čitljivim promenljivim URL-ovima. Javna polja/slike odvojena su od privatnih informacija. Replika prikazuje izvor/svežinu. Savez može dodati svoj urednički sadržaj bez menjanja kopiranih profila.
+PHP/proxy upload i database `max_allowed_packet` moraju podržati stvarni JSON i mapiranja; protokolski limit nije garancija kapaciteta servera. Backup uključuje privatne tabele i zasebno skladište. Sam backup baze ne vraća privatne fotografije/licence. Automatski privatni restore, purge i čišćenje orphan fajlova nisu implementirani.
 
-## Replika
+## Desktop
 
-Sync prikazuje poslednji uspešan checkpoint, prihvaćen glavni izvor, pending status i razumljivu grešku. Neuspeh čuva poslednju kopiju uz oznaku zastarelosti. Admin uređuje prikaz, ne objavljuje direktne zajedničke izmene. „Predloži dodavanje/izmenu/uklanjanje” pravi zaseban zahtev za glavnu moderaciju. Predlozi mogu tražiti uparivanje i kada je čitanje javno.
+Otvori Desktop **Igrači** i panel uvoza registra. Koristi HTTPS `snapshot` URL ili preuzet JSON. Pregledaj mapiranja, dopuni godište/lokalna ograničenja, po želji izričito preuzmi/iseci fotografiju, pa potvrdi. Lokalne izmene i istorijske prijave ostaju lokalne. Osvežavanje koristi identitet/checkpoint i sačuvane lokalne izbore. Beleške, kontakti, uplate i turniri ne šalju se nazad.
 
-## Uvoz/izvoz i backup
+## Dozvole
 
-Javni JSON je prenosiva javna projekcija. Privatni backup organizacije ima dodatne admin podatke i posebno se štiti. Nijedan ne sadrži tajni recovery ključ. Mediji traže proverljiv paket/preuzimanje; WordPress attachment ID nije dovoljan.
-
-Pre potvrde prikaži izvor, identitet i broj/sukobe zapisa. Kopiranje starog registra za nezavisan nastavak traži novi identitet. Deaktivacija čuva podatke. Update/uninstall ne briše ih prećutno.
-
-## Oporavak
-
-Validna kopija/checkpoint i potpisano recovery odobrenje postavljaju novi glavni izvor/ključ. Stari host ne mora odgovoriti. Zabeležiti moguć gubitak promena i dostaviti potpisan prenos peer-ima/operatorima. Oporavak čuva normalnu admin autorizaciju; ne omogućava anonimne izmene.
-
-Pročitaj [poverenje i oporavak](TRUST_AND_RECOVERY.md). Izgubljen ključ/sukob tvrđenja daju jasnu putanju neuspeha ili rešavanja, ne prećutno prihvatanje novog autoriteta.
-
-## Jezici i upotrebljivost
-
-Srpski/engleski UI, keyboard forme, čitljivi razmaci, jednostavne potvrde/pregledi, javne mobilne strane i razumljive greške. Podaci bilo koje države su podržani konceptom; imena/sadržaj profila ne prevode se automatski.
+`librett_registry_manage_settings`: setup/šema/politika. `librett_registry_edit_profiles`: privatni katalog/mediji. `librett_registry_publish_profiles`: objava, uz edit dozvolu za pregled. `librett_registry_import` uz edit: JSON uvoz. Mutacije traže POST, capabilities, nonce i application autorizaciju. Javni API daje samo odobrenu projekciju. Deaktivacija/deinstalacija čuvaju podatke i dozvole.

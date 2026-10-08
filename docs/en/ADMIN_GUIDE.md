@@ -1,55 +1,46 @@
-# Administrator workflows — development and planned
+# Administrator guide — development catalogue
 
 [Srpski](../sr/ADMIN_GUIDE.md)
 
-Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
+This is unreleased source for a disposable development site. Read [scope/limits](IMPLEMENTATION_STATUS.md) before using real data. No players/clubs are included.
 
-The current draft slice is described separately below; subsequent screens remain planned.
+## Installation and setup
 
-First-milestone media is delivered from protected storage only after approval. Public snapshot import creates unpublished drafts with explicit identity mappings; it does not restore private approvals or confer source authority. See [storage/restore rules](STORAGE_AND_MIGRATIONS.md) and [readiness](PHASE_0_READINESS.md).
+1. Use the selected development matrix: 64-bit PHP 8.5, WordPress 7.1.3 single-site, MariaDB 10.11/InnoDB; install Composer runtime dependencies. MySQL 8.4 remains unverified.
+2. Activate the plugin; fresh activation creates empty schema and administrator capabilities. Open **LibreTT Registry** and create your own named primary registry.
+3. Existing configured installations: back up database and protected files, then use **Registry schema** to acknowledge your backup and install/resume additive migrations 001–006. The acknowledgement does not create a backup. Restart/retry resumes verified DDL; never edit recorded checksums to bypass errors.
+4. For photo/Custom document uploads, provision a writable directory owned by the PHP user, mode 0700, outside the document root, WordPress directory and every web-server alias. Set `LIBRETT_PRIVATE_STORAGE` in wp-config.php to that absolute directory (or supply the environment variable). Stored files use 0600. No public uploads directory fallback exists; CRUD without uploads needs no private directory.
 
-## Current private-draft administration
+## Private catalogue
 
-The development source adds private draft screens; runtime verification is pending. After fresh activation, create the primary registry in LibreTT Registry. For an existing configured bootstrap, open LibreTT Registry → Private-draft schema and confirm a verified backup before installing/resuming migration 002. This acknowledgement is the operator's responsibility; automated backup/restore is absent.
+Create clubs and players in **Clubs**/**Players**. UUID identifies the record; repeated names are allowed. Choose Active/Archived to restore/archive and save with the displayed revision. A conflict requires reloading and reviewing current data. No automatic name-based merge exists.
 
-Administrators receive `librett_registry_edit_profiles`; authenticated users explicitly granted that capability can use Players and Clubs without gaining settings access. Create a draft, search by name, select a UUID-backed record, edit and save. To archive or restore, select Archived or Active and save. A stale revision returns a conflict; reload and review before resubmitting. Names may repeat, and saving does not merge records or publish them. Club memberships, aliases, media and purge remain pending.
+In **Memberships, aliases and duplicate review**, inspect candidates and their UUID/details. Enter active club UUIDs for a player (maximum 100), or club aliases (maximum 20). Membership changes advance the player revision. Archiving a club removes affected memberships; archive withdraws its approved public copy. Reopening a draft never republishes it automatically.
 
-## Planned later screens
+## License and publication settings
 
-## Initial setup
+Choose ODbL 1.0, CC0 1.0, CC BY 4.0, CC BY-SA 4.0, All rights reserved or Custom explicitly. Standard license links can be supplied automatically after that choice; reserved rights need your terms URL. Custom uses either an HTTPS URL or UTF-8 text/PDF upload up to 1 MiB. Empty Custom inputs retain a previously saved document. Document delivery is a download; no recovery secret or private approval evidence belongs in it.
 
-Activation creates an empty setup state. Choose “Create a new registry” or “Host a replica”. Creating a registry assigns a fresh identity; connecting a replica preserves the source identity. Start with one registry per installation.
+Supply policy version, purpose and media terms HTTPS URL; optional minor policy is required before minor approval. Licenses do not establish publication permission. Change policy version for every policy change: previous publications are withdrawn atomically and require review again.
 
-For a replica, paste a source connection URL or import a trusted connection file. Show name, registry ID, host, trust fingerprint and publication scope before confirmation. A registry ID alone is not a connection address. Verify the source before downloading real profiles.
+## Photos and public approval
 
-## New primary
+**Player photographs** accepts JPEG/PNG up to 5 MiB and 4096 pixels per side. Record public attribution and private rights evidence. GD decodes/re-encodes images, stripping original metadata/trailing bytes. Private previews require editor permission. Save/photo removal does not itself publish the draft.
 
-Provide a name and publication policy, define authorized administrators, and create/download the offline recovery material through the approved ceremony. No default federation/player content appears. Explain the difference between the operational key, the recovery authority and an admin password.
+In **Publication review**, inspect data, select optional public fields, review age and provide a private authorization reference. Publish clubs before approving linked player memberships. Name/UUID are public requirements. Unknown age blocks approval; minor approval needs the configured policy. Saving later edits leaves the last approved copy unchanged. Explicit withdraw/archive closes public access and photo delivery; downloaded copies remain outside server control.
 
-Add clubs before linking players where practical. Forms allow UUID-backed club selection, profile fields and separate publication choices. Moderators review duplicate candidates; do not merge solely by name. Primary CRUD is still subject to capabilities and revision checks.
+## Public site and JSON
 
-Follow the proposed [publication workflow](PUBLICATION_POLICY.md): prepare an unpublished draft, record private authorization, preview selected public fields and explicitly approve publication. Saving edits does not automatically publish them. Archive withdraws public access in the first milestone. Recovery material setup applies only when the later reviewed trust feature exists, not as a prerequisite for the initial single-site milestone.
+Add `[librett_registry]` to a WordPress page for profile/search rendering. GET routes under `/wp-json/librett-registry/v1/`: `manifest`, `snapshot`, `players`, `clubs`, `players/{uuid}`, `clubs/{uuid}`, `media/{uuid}`, `license`. Search uses `q`, `offset`, `limit` (maximum 50). Snapshot JSON is the complete approved public projection, unsigned format v1; save the `snapshot` response for file transfer. It excludes private fields and evidence.
 
-## Public profiles
+**JSON import** validates a file up to 32 MiB, stages a private preview and asks for confirmation. Map existing records only through explicit `player|club source-UUID local-UUID` lines; otherwise new independent UUIDs or saved provenance are used. Review source fields/target revisions before confirming. Supplied fields and links update drafts; omitted optional fields remain local. Imports never approve publication or delete records on source withdrawal. Source photo descriptors are retained without downloads. Previews expire after one hour; cancel unused previews (maximum five per operator).
 
-Provide player/club lists, search, filters and stable-identity profiles at changeable readable URLs. Public fields/photos are curated separately from private information. Show source/freshness on replicas. A federation may add editorial content without modifying mirrored player records.
+PHP/proxy upload settings and database `max_allowed_packet` must accommodate actual accepted JSON and mapping payloads; the protocol bound is not a server capacity promise. Backups must include private tables and the separate protected directory. Database-only recovery cannot recover private photo/license bytes. Automatic private restore, purge and orphan-file cleanup are not implemented.
 
-## Replica
+## Desktop
 
-Sync shows last successful checkpoint, accepted primary, pending status and actionable error. Failed downloads keep the last accepted copy visible with a stale label. Admin controls presentation but cannot directly publish shared changes. “Propose addition/change/removal” records a separate request for primary moderation. Proposal access may require pairing even when public reading is open.
+Open Desktop **Players** and the registry import panel. Use the HTTPS `snapshot` URL or downloaded JSON. Review mappings, complete missing birth years/local field limits, explicitly fetch/crop photos if wanted, then confirm. Local edits and historical registrations remain local. Refresh uses source identity/checkpoint and retained override choices. No local notes, contacts, payments or tournament data are uploaded.
 
-## Import/export and backup
+## Permissions
 
-Public JSON exports are portable publication data. Private organizational backup includes additional administrative data and must be protected separately. Neither contains the offline recovery secret. Media portability requires a verified package/download workflow; a WordPress attachment ID alone is insufficient.
-
-Preview an import's origin, identity and counts/conflicts before confirmation. Copying an existing registry and continuing independently requires a new identity. Deactivation retains data. Never silently delete records during a plugin update/uninstall.
-
-## Recovery
-
-Use a valid backup/replica checkpoint and signed recovery authorization to assign a new primary/key. The former host need not respond. Record potential data loss and distribute the authority claim to peers/operators. The recovery procedure retains normal admin authorization; it does not make edits anonymous.
-
-See [trust and recovery](TRUST_AND_RECOVERY.md). If the key is lost or claims conflict, show an explicit blocked recovery/conflict path rather than silently accepting a new primary.
-
-## Languages and usability
-
-Serbian and English UI, keyboard-accessible forms, readable field spacing, simple confirmation/preview screens, mobile public pages and understandable errors. Support data owned by any country; names and profile content are not automatically translated.
+`librett_registry_manage_settings`: setup/schema/policy. `librett_registry_edit_profiles`: private catalogue/media. `librett_registry_publish_profiles`: publication, with edit permission for inspection. `librett_registry_import` plus edit permission: JSON import. Server-side mutations require POST, capability checks, action nonce and application authorization. Public endpoints serve approved projections only. Deactivation/uninstall retain records and capabilities.

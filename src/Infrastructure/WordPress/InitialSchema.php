@@ -7,7 +7,7 @@ namespace LibreTT\PlayerRegistry\Infrastructure\WordPress;
 
 use LibreTT\PlayerRegistry\RegistryIdentity\Application\RegistryFailure;
 
-final readonly class InitialSchema
+final readonly class InitialSchema implements SchemaMigration
 {
     private const string MIGRATION = '001_identity_setup';
     private const array DEFINITIONS = [
@@ -48,7 +48,7 @@ final readonly class InitialSchema
             $this->verify('migrations');
             $all = $this->db->rows('SELECT migration_id FROM ' . $this->db->table('migrations'));
             foreach ($all as $row) {
-                if (!in_array($row['migration_id'], [self::MIGRATION, DraftSchema::MIGRATION], true)) {
+                if (!in_array($row['migration_id'], MigrationIds::ALL, true)) {
                     throw new RegistryFailure('unsupported_schema_version');
                 }
             }
@@ -106,7 +106,7 @@ final readonly class InitialSchema
         }
         $all = $this->db->rows('SELECT migration_id FROM ' . $this->db->table('migrations'));
         foreach ($all as $row) {
-            if (!in_array($row['migration_id'], [self::MIGRATION, DraftSchema::MIGRATION], true)) {
+            if (!in_array($row['migration_id'], MigrationIds::ALL, true)) {
                 throw new RegistryFailure('unsupported_schema_version');
             }
         }

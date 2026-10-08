@@ -2,6 +2,8 @@
 
 [Srpski](../sr/CONTRACT_VALIDATION.md)
 
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
+
 Status: Phase 0 engineering baseline; schema and examples are documentation artifacts, not an implemented importer. English identifiers are canonical. See the [snapshot contract](SNAPSHOT_CONTRACT.md).
 
 ## Artifacts and validation layers

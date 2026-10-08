@@ -4,7 +4,7 @@
 
 The first Phase 1 bootstrap is implemented. Read [implementation status](IMPLEMENTATION_STATUS.md), [architecture](ARCHITECTURE.md) and the [compatibility matrix](COMPATIBILITY_AND_TOOLING.md) before extending it. Exact dependencies are pinned in composer.lock; install from the lockfile rather than updating dependencies implicitly.
 
-Use PHP 8.5 on a 64-bit runtime with the extensions declared in composer.json. The WordPress adapter also requires GD or Imagick. Run from the repository root:
+Use PHP 8.5 on a 64-bit runtime with the extensions declared in composer.json. The WordPress adapter also requires GD. Run from the repository root:
 
 ```sh
 composer install
@@ -33,7 +33,7 @@ php vendor/bin/phpunit -c phpunit.integration.xml
 
 The installer requires the `librett_registry_test_` database prefix and refuses to overwrite a different wp-config.php. It creates synthetic administrator credentials without printing the password; mail, external WordPress HTTP, cron and automatic updates are disabled. Integration tests require that dedicated database, create isolated table prefixes and remove their test tables. The lifecycle test also exercises the dedicated site's plugin tables. Do not use this environment as a deployable installation.
 
-Unit and integration suites cover the implemented identity/bootstrap behavior; they do not verify planned player CRUD, publication, replication or recovery. No CI workflow or release packaging is implemented. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
+Unit and integration suites cover identities, private CRUD, additive migrations, relationships, protected media, explicit publication, JSON validation/import and privacy. Replication/recovery remain absent. No CI workflow or release packaging is implemented. [Implementation status](IMPLEMENTATION_STATUS.md) records actual versions, results and limits.
 
 Preserve module boundaries, strict types, explicit ports and Composer PSR-4. A future scripted frontend uses strict TypeScript; no framework is selected. Future release ZIPs must include runtime dependencies and [third-party notices](../../THIRD_PARTY_NOTICES.md), while excluding development dependencies, tests, datasets and recovery secrets. No release version is assigned.
 
@@ -65,4 +65,4 @@ Stop the disposable database with `tools/dev/run db-stop`; restart with `db-star
 
 ## Private-draft extension verification pending
 
-The 2026-10-08 Players/Clubs extension has not been verified. PHP/Composer/msgfmt are now available through the rootless container setup above; [implementation status](IMPLEMENTATION_STATUS.md) records the actual installed versions. Earlier bootstrap results do not cover migration 002 or draft forms. Before deployment, authorized verification must cover permission/nonce denial, unconfigured/replica context, Unicode/control/field bounds, optional birth year, duplicate names, stale edits, revision exhaustion, audit rollback, archive/restore, bounded search, fresh/existing activation, migration interruption/checksum/future-schema/lock failures and retention of all seven tables. Existing bootstrap tests have not been changed or rerun.
+[Current verification and limits](VERIFICATION_2026_10_08.md) supersede earlier bootstrap-only coverage. Configure protected storage as described in the [administrator guide](ADMIN_GUIDE.md).

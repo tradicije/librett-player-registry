@@ -43,7 +43,7 @@ final readonly class SetupPage
             $registry = $this->repository->current();
             if ($registry !== null) {
                 echo '<p>' . esc_html__('Primary registry configured.', 'librett-player-registry') . '</p><p>' . esc_html($registry->name) . '</p><code>' . esc_html($registry->id->value) . '</code>';
-                echo '<p>' . esc_html__('Player profiles, publication and imports are still under development.', 'librett-player-registry') . '</p></div>';
+                echo '<p>' . esc_html__('Use Players and Clubs for private drafts, then configure license settings and review publication. JSON import creates private drafts.', 'librett-player-registry') . '</p></div>';
                 return;
             }
             echo '<p>' . esc_html__('Create a new empty independent registry. No players or clubs will be added.', 'librett-player-registry') . '</p>';

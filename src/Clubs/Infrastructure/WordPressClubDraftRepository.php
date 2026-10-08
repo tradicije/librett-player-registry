@@ -20,7 +20,7 @@ final readonly class WordPressClubDraftRepository implements ClubDraftRepository
 
     public function find(EntityId $id): ?ClubDraft
     {
-        $rows = $this->db->rows($this->db->prepare('SELECT * FROM %i WHERE entity_uuid = %s', $this->table(), $id->value));
+        $rows = $this->db->rows($this->db->prepare('SELECT * FROM %i WHERE entity_uuid = %s FOR UPDATE', $this->table(), $id->value));
         return $rows === [] ? null : $this->hydrate($rows[0]);
     }
 

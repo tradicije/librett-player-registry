@@ -23,6 +23,7 @@ final readonly class SavePlayerDraft
         private RegistryContextReader $registry,
         private UnitOfWork $transactions,
         private EntityIdGenerator $ids,
+        private ?\LibreTT\PlayerRegistry\Shared\Application\ArchiveDraft $archive = null,
     ) {}
 
     public function execute(Actor $actor, ?EntityId $id, EditRevision $expected, PlayerData $data, DraftState $state): PlayerDraft
@@ -41,6 +42,9 @@ final readonly class SavePlayerDraft
                 throw new RegistryFailure('registry_unconfigured');
             }
             $this->repository->save($draft, $expected, $actor->id);
+            if ($draft->state === DraftState::Archived) {
+                $this->archive?->execute($actor, 'player', $draft->id);
+            }
         });
         return $draft;
     }

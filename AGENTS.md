@@ -2,7 +2,7 @@
 
 ## Project status
 
-LibreTT Player Registry has an unreleased Phase 1 development bootstrap: identity setup, migrations and original authorized bootstrap tests. Private Players/Clubs create/search/edit/archive/restore are implemented in source but not runtime verified. Memberships, aliases, duplicate mapping, public publication/API, imports, replicas and recovery are not implemented. No production release exists. See docs/en/IMPLEMENTATION_STATUS.md for actual scope. Do not describe planned features as implemented. Read README.md, docs/en/PLAN.md and the relevant architecture/protocol document before changing code or plans. User instructions override this file.
+LibreTT Player Registry has an unreleased single-site development catalogue: identity setup, migrations 001–006, private Players/Clubs, memberships/aliases, operator license settings, protected media, explicit publication, public API and bounded staged JSON import/export. One-way import is implemented in the sibling LibreTT Desktop development checkout. Replicas, proposals, signing/recovery, destructive purge and production release are absent. See docs/en/IMPLEMENTATION_STATUS.md and its verification record for actual scope. Read README.md, docs/en/PLAN.md and relevant architecture/protocol documentation before editing. User instructions override this file.
 
 ## Product boundaries
 

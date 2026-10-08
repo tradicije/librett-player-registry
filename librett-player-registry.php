@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: LibreTT Player Registry
- * Description: Development bootstrap for an independent player registry.
+ * Description: Development player/club registry with public profiles and one-way Desktop imports.
  * Author: Aleksa Dimitrijević
  * License: AGPL-3.0-or-later
  * Text Domain: librett-player-registry

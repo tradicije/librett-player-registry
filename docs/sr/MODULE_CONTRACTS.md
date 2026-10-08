@@ -2,11 +2,13 @@
 
 [English](../en/MODULE_CONTRACTS.md)
 
-Aktuelni kod implementira RegistryContextReader, PlayerDraftReader/SavePlayerDraft i ClubDraftReader/SaveClubDraft sa zasebnim repository portovima. Arhiviranje/vraćanje su izričita čuvanja retention stanja u ovom privatnom koraku; posebni koordinatori arhiviranja/purge-a uz objavu, članstva i mapiranje duplikata ostaju planirani. Granice provere su u statusu implementacije.
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
 
-Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+Implementirani portovi uključuju RegistryContextReader, draft čitače/repository-je, PlayerIdentityLookup, TouchPlayerDraftRevision, MembershipRepository, ClubAliases, PublicationStore, SnapshotValidator, ImportStore, ImportTarget, PhotoCatalogue, PhotoProcessor i ProtectedFiles. ArchiveRelations i DraftImportTarget koordiniraju module u zajedničkoj transakciji. Kasniji interfejsi ispod ostaju predloženi ugovori.
 
-Status: osnova dizajna faze 0. Osim implementiranih interfejsa navedenih iznad, nazivi predstavljaju buduće PHP interfejse. Mali zajednički UUID/counter/error/actor tipovi nemaju infrastrukturne zavisnosti.
+Sledeći odeljci čuvaju dizajn faze 0; konkretan kod i provereni obim imaju prvenstvo za razvojni katalog.
+
+Kasniji trust/storage ugovori ostaju planirani; multisite i netransakcioni engine-i nisu obuhvaćeni.
 
 ## Graf bez ciklusa
 

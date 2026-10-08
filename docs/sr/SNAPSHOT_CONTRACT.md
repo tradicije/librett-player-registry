@@ -2,6 +2,8 @@
 
 [English](../en/SNAPSHOT_CONTRACT.md)
 
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
 Status: inženjerska osnova faze 0 sa priloženom strukturnom JSON Schema; ne objavljen format. `schema_version: 1` je kandidat oznake formata, ne verzija plugina. Nacrt određuje celovit javni snimak za prvi sajt; ne određuje potpisanu replikaciju, privatni backup ili administratorski restore.
 
 Ažuriranje faze 0: usvojeno kao inženjerska osnova kroz [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). [Evidencija spremnosti](PHASE_0_READINESS.md) daje aktuelan status; [šema/primeri validacije](CONTRACT_VALIDATION.md) i [skladište](STORAGE_AND_MIGRATIONS.md) razrađuju dokument. To ne podrazumeva pravno odobrenje, runtime proveru ili odobren autentifikovan format.

@@ -2,11 +2,13 @@
 
 [English](../en/STORAGE_AND_MIGRATIONS.md)
 
-Migracija 002 dodaje privatne players/clubs/audit tabele u vlasništvu modula, bez izmene definicija/checksum-a migracije 001. Svaka tabela je dopunski korak koji može da se nastavi; puna struktura se proverava pre završenog statusa. Podešen registar traži izjavu operatora o bekapu kroz settings capability/nonce formu. Ovo ograničeno proširenje nije provereno i nije opšti upgrade/restore runner.
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
 
-Ažuriranje faze 1: [implementirana osnova](IMPLEMENTATION_STATUS.md) beleži instalirane verzije i stvarne testove. Ostali ugovori ispod su planirani; tvrdnje pregleda faze 0 odnose se na istorijski dokumentacioni zadatak.
+Migracije 001–006 su implementirane: identitet; privatni nacrti/audit; članstva/alias-i; politika/projekcija/ledger/events/audit objave; opisi/veze/audit privatnih medija; pripremljeni uvoz/mapiranja/potvrde/lock. Nova šema ima 22 prazne InnoDB tabele. Definicije/checksum 001/002 su zadržani. Advisory lock, nastavak DDL-a, tačna strukturna provera i izjava operatora o backup-u štite dodatne izmene. Opšti privatni restore/down-migration runner ne postoji.
 
-Status: inženjerska osnova faze 0 za implementaciju faze 1; početna identity migracija je implementirana; ostalo skladište ispod je planirano. Jedan WordPress single-site registar, InnoDB tabele i jedna zajednička transakciona konekcija. Network aktivacija/multisite i netransakcioni engine-i nisu u prvoj matrici.
+Sledeći odeljci čuvaju dizajn faze 0; konkretan kod i provereni obim imaju prvenstvo za razvojni katalog.
+
+Kasniji trust/storage ugovori ostaju planirani; multisite i netransakcioni engine-i nisu obuhvaćeni.
 
 ## Vlasništvo i logički ključevi
 

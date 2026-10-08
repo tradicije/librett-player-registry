@@ -1,54 +1,32 @@
-# Bootstrap faze 1 — implementiran obim
+# Implementirani razvojni obim
 
 [English](../en/IMPLEMENTATION_STATUS.md)
 
-Status: neobjavljena razvojna verzija faze 1 sa prvobitnim proverenim bootstrap-om i neproverenim proširenjem privatnim nacrtima. Cela faza 1 nije završena. Nema produkcionog deployment-a ili objavljenog ZIP-a.
+Ažurirano 2026-10-08. Neobjavljen razvojni kod; nema produkcionog ZIP-a ni tvrdnje o podršci. Ovaj zapis zamenjuje status koji je pokrivao samo bootstrap.
 
-## Prvobitna bootstrap implementacija
+## Šest dogovorenih koraka
 
-- Tanak WordPress ulaz i Composer PSR-4 composition root; RegistryIdentity domen/aplikacija ostaju nezavisni od WordPress-a.
-- Razvojni preflight: 64-bit PHP 8.5, WordPress 7.1.3–7.1.x single-site, MariaDB 10.11 ili MySQL 8.4, potrebne tekst/database/media ekstenzije i InnoDB. Buduće grane/multisite se odbijaju; to je obim razvoja, ne univerzalno obećanje runtime podrške.
-- Aktivacija prvobitnog bootstrap-a pravila je tačno tri custom tabele: migrations, identity setup singleton i privatni identity audit. Ne pravi UUID registra, igrača, klub ili politiku objave i administratoru daje samo implementiran settings capability.
-- Početna migracija koristi connection-scoped advisory lock, checksum/started/completed stanje, proverava kolone/indekse/engine/kolaciju i nastavlja prekinuto početno pravljenje. Odbija drugu/buduću šemu i netransakcione tabele. Upgrade/down-migration okvir i privatni restore još nisu implementirani.
-- POST sa capability/nonce proverom pravi jedan imenovan primary kroz ramsey/uuid v4. Identitet i audit upisuju se zajedno; ponovljen setup daje sukob i čuva prvobitan registar.
-- Engleski source UI i priložen srpski latinični prevod; escape naziva/UUID-a. Replica setup i javni profili ne postoje.
-- Deaktivacija/uninstall čuvaju tabele, identitet i capabilities. Destruktivan purge ne postoji.
+1. Privatni Players/Clubs unos, pretraga, izmena, arhiviranje/vraćanje, revizije, validacija i testovi transakcija/audita.
+2. Članstva po UUID-u, alias-i klubova i pregled duplikata; imena nikada ne spajaju identitete. Arhiviranje uklanja pogođena članstva i povlači odobrene profile.
+3. Izbor licence baze u wp-admin: ODbL 1.0, CC0 1.0, CC BY 4.0, CC BY-SA 4.0, All rights reserved ili Custom. Custom prihvata HTTPS URL ili zaštićen PDF/UTF-8 tekst (1 MiB). Nema podrazumevane licence. Standardni URL uslova može se dopuniti posle izričitog izbora. Svrha, verzija politike, uslovi medija i neobavezna politika maloletnika zasebni su unosi.
+4. Zaštićena obrada JPEG/PNG fotografija i izričito odobravanje izabranih javnih polja uz privatni osnov i pregled uzrasta. Privatne izmene ne menjaju odobrene kopije. Promena politike povlači prethodna odobrenja. Povlačenje zatvara javnu isporuku medija; već preuzete kopije ne mogu se opozvati.
+5. Javni profili i pretraga kroz `[librett_registry]`, GET REST rute i ograničen nepotpisan JSON uvoz/izvoz. Uvoz traži privatni pregled, izričita mapiranja i potvrdu; novi identiteti nisu objavljeni. Potvrde i očekivane revizije sprečavaju duplu/zastarelu primenu. WordPress ne preuzima automatski fotografije izvora.
+6. LibreTT Desktop uvoz izvora/fajla, pregled/dopuna/mapiranje, zadržavanje lokalnih izmena, osvežavanje i evidencija povlačenja. Podaci idu samo registar → Desktop. Istorijski snimci prijava ostaju isti. Desktop šema 22 odvaja mapiranja od lokalnih ID-eva i pamti odvojene veze kada korisnik obriše lokalni profil.
 
-## Privatni nacrti igrača i klubova — aktuelni razvojni korak
+## Arhitektura i migracije
 
-Implementirano u izvornom kodu 2026-10-08; neobjavljeno i bez runtime provere. Odvojeni moduli Players i Clubs omogućavaju privatno pravljenje, pretragu naziva po 50 rezultata, uređivanje, arhiviranje i izričito vraćanje izborom Aktivno. Igrači imaju prikazno ime, ime/prezime, neobavezno godište, državu, region i biografiju kao običan tekst. Klubovi imaju naziv, skraćenicu, državu i region. Ista imena su dozvoljena bez spajanja. Alias-i klubova, članstva, mapiranje duplikata, mediji, objavljivanje i purge još nisu implementirani.
+Nezavisni application/domain portovi; WordPress adapteri poseduju custom tabele. Composition koordinira Players, Clubs, Publication i Media u transakcijama. Replication, Proposals i Recovery ostaju projektovani moduli. Migracije 001–006 stvaraju 22 prazne tabele; definicije 001/002 su sačuvane. Dodatne migracije koriste advisory lock, checksum, nastavak DDL-a i strukturnu proveru. Podešeni sajtovi traže izjavu operatora o backup-u. Deaktivacija/deinstalacija čuvaju podatke; destruktivni purge i privatni restore ne postoje.
 
-Aplikacioni upiti i komande proveravaju `librett_registry_edit_profiles` i podešen primary kontekst. Svaka izmena kroz formu proverava i POST, WordPress capability i nonce radnje. UUID pravi ubrizgani ramsey/uuid v4 generator. Očekivana privatna revizija sprečava prepisivanje novijih izmena; nacrt i audit njegovog modula upisuju se u jednoj transakciji. Svako prihvaćeno čuvanje povećava privatnu reviziju, uključujući neizmenjenu formu. Arhiviranje čuva podatke i UUID; nema javni efekat jer objavljivanje ne postoji.
-
-Migracija `002_private_drafts` dodaje četiri InnoDB tabele (igrači, klubovi i njihovi zasebni privatni auditi), uz checksum, advisory lock, nastavak prekinutog pravljenja i strukturnu proveru. Sveža nepodešena instalacija izvršava obe migracije i pravi sedam praznih/setup tabela bez UUID-a registra i primera profila. Postojeći podešen registar čuva identitet i podatke; administrator na strani **Šema privatnih nacrta**, uz capability/nonce, potvrđuje proverenu rezervnu kopiju baze/medija/konfiguracije i sačuvan odgovarajući kod pre instalacije ili nastavka dopunske migracije. Izjava nije implementacija provere bekapa ili obnove. Nepotpuna/neodgovarajuća šema blokira strane nacrta i izmene kroz forme. Checksum početne migracije ostaje isti. Opšti upgrade/down-migration i backup restore okvir i dalje ne postoje.
-
-Provere u ovoj sesiji ograničene su na pregled izvornog koda/dokumentacije i whitespace-a izmena. U trenutku pisanja proširenja nacrtima PHP, Composer i gettext msgfmt nisu bili dostupni u ovom Linux okruženju; za ovaj korak nisu izvršene PHP syntax, PHPUnit, PHPStan, formatter, WordPress/database ili browser provere. Srpski PO je dopunjen i MO generisan Python standardnom bibliotekom; gettext validacija i runtime pregled prevoda ostaju za proveru. Raniji rezultati ispod pokrivaju samo prvobitan bootstrap i ne proveravaju ovo proširenje. Postojeći bootstrap testovi ostaju neizmenjeni; novi draft/upgrade failure slučajevi zahtevaju posebno odobrenu proveru.
-
-## Razvojni alati instalirani 2026-10-08
-
-Rootless Podman instalacija na Fedora 44 je završena: PHP 8.5.11 CLI (64-bit, mysqli/mbstring/intl/fileinfo/GD/XML/ZIP), Composer 2.10.3, gettext msgfmt 0.21, PHPUnit 13.4.1, PHPStan 2.3.0 i PHP CS Fixer 3.95.27. Composer je instalirao svih 69 zaključanih runtime/dev paketa bez izmene composer.lock-a. Stroga provera manifesta i platform zahteva je prošla; Composer audit u trenutku instalacije nije prijavio poznate bezbednosne probleme. Pozivi verzija alata su uspešni.
-
-Privremeni WordPress 7.1.3 sajt je instaliran i povezan sa ovim repozitorijumom; koristi MariaDB 10.11.19 (`10.11.19-MariaDB-ubu2204`) kroz zajednički UNIX socket. WordPress bootstrap je potvrdio instalaciju i pristup bazi, isključenu mrežu baze/spoljni WordPress HTTP/cron i symlink dodatka. Privatni kontejner baze je dostupan kao `librett-registry-dev-db`; `tools/dev/run db-stop` ga zaustavlja uz čuvanje podataka. Svi lokalni podaci/konfiguracija/keš i vendor paketi ignorisani su u Git-u.
-
-Ovi rezultati proveravaju samo instalaciju alata i WordPress/database okruženja. U ovom instalacionom zadatku nisu izvršeni PHPUnit suite, PHPStan analiza izvornog koda, source formatter, gettext validacija kataloga ili test ponašanja nacrta/migracije. Proširenje nacrtima ostaje neprovereno. [Razvojne komande](DEVELOPMENT.md) opisuju wrapper; ovo ne podrazumeva sistemsku PHP instalaciju ili produkcionu podršku.
+Objava koristi trajnu evidenciju revizija/povlačenja i odobrene kopije, a ne izvoz živih privatnih nacrta. Naziv i UUID su obavezni; ostala polja se izričito odobravaju. Nepoznat uzrast blokira objavu; maloletnici traže dokumentovanu politiku. Kredencijali, privatni osnov, audit i putanje skladišta ne ulaze u javni izvoz.
 
 ## Stvarne provere
 
-Dana 2026-10-07, PHP 8.5.5 CLI, WordPress 7.1.3, MariaDB 10.11.19 InnoDB, macOS/Homebrew, GD:
+Razvojno okruženje: Fedora 44, rootless Podman; PHP 8.5.11, WordPress 7.1.3 single-site, MariaDB 10.11.19/InnoDB/GD. Composer zavisnosti su zaključane. Komande i završni rezultati su u [evidenciji provere](VERIFICATION_2026_10_08.md).
 
-| Provera | Rezultat |
-| --- | --- |
-| PHPUnit 13.4.1 unit | Prošlo 16 testova, 42 assertions |
-| PHPUnit 13.4.1 bootstrapped WordPress integracija | Prošlo 14 testova, 43 assertions |
-| PHPStan 2.3.0 | Level max za sve `src/` klase, bez grešaka; WordPress stubs 7.1.2 |
-| PHP CS Fixer 3.95.27 | 23 PHP fajla, bez preostalih promena prema podržanom `@PER-CS3x0` |
-| Composer 2.10.3 | Stroga validacija manifesta prošla; audit pri instalaciji nije prijavio advisories |
-| gettext msgfmt | Srpski katalog kompajliran/proveren |
+Testovi pokrivaju nacrte, identitet, dodatne šeme, članstva/alias-e, odobrenje/privatnost, povlačenje, fotografije, Custom licence, JSON primere/ograničenja i transakcioni uvoz. Desktop testovi pokrivaju postojeće turnire, migracije/backup i uvoz, lokalne izmene, ponavljanje, zastareli pregled, rollback, povlačenje i istorijske snimke. Sintetički snimak izvezen iz WordPress-a uvozi se u SQLite Desktop i opstaje posle restarta/backup restore-a.
 
-Jezgro pokriva dozvole, dužinu/Unicode/kontrole/kodiranje naziva, UUID i nepodržana okruženja. Integracija pokriva praznu/ponovljenu šemu, sukob setup-a, audit rollback, prekinut DDL, checksum/buduću šemu, MyISAM, ugnježdene transakcije, migration lock, capability/nonce, uspešan POST/escape, aktivaciju/deaktivaciju/uninstall čuvanje. Podaci su izmišljeni; email i spoljni WordPress HTTP su blokirani.
+## Ograničenja
 
-Zaključan PHP CS Fixer nema PER 3.1 preset. Cilj ostaje PER 3.1, ali automatska provera trenutno pokriva podržana 3.0 pravila. Ne tvrdi se potpuna automatska 3.1 pokrivenost. Nema vizuelne/accessibility provere u browser-u, Linux deployment-a, MySQL provere, iscrpne crash/migration vežbe, produkcionog restore-a ili signing/import/media testova.
+Nema potpisa, autentifikovane replikacije, predloga, oporavka autoriteta, automatskog otkrivanja izvora ni garancije svežine pri prvom kontaktu. Nepotpisani UUID/revizije ne uspostavljaju poverenje. MySQL 8.4, multisite, produkcioni kapacitet i macOS/Windows integracija nisu provereni ovde. Interaktivni GUI/browser i javni HTTPS deployment traže operatorov pregled. Prava i objava ostaju odgovornost operatora.
 
-## Preostali rad faze 1
-
-Dovršavanje Players/Clubs članstava, alias-a, izričitog mapiranja duplikata i purge tokova; politika/odobrenja objave; zaštićeni mediji; javna projekcija/pretraga/rute; ograničen JSON parser/šema/uvoz/izvoz; checkpoint-i/zavisna povlačenja; upgrade, izričit purge i release provere. Opis/parser zavisnosti dolaze tek u import koraku; bootstrap dodaje samo ramsey/uuid i njegove runtime zavisnosti. Prazni budući moduli se ne dodaju.
+Zaštićeni fajlovi traže privatno skladište van svih web-served direktorijuma. Baza i privatni fajlovi traže usklađen backup. Neuspeli upis može ostaviti privatni orphan fajl; garbage collection nije implementiran. PHP/server upload i database packet limiti mogu biti niži od protokolskih 32 MiB. Baza saveza nije uključena.

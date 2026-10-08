@@ -2,6 +2,8 @@
 
 [Srpski](../sr/DATA_MODEL.md)
 
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
+
 Private Players/Clubs drafts and separate module audit tables now exist in source (unverified). Player birth year is nullable in domain inputs; private SQL uses zero for absence and maps it back to null. This storage sentinel is never a public birth year. Aliases/memberships/publication remain conceptual.
 
 Status: conceptual model, not a finalized migration/schema.

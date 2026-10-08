@@ -30,3 +30,5 @@ Dokumenti opisuju planirano ponašanje osim kada je izričito označeno kao impl
 Politike: [doprinosi](../../CONTRIBUTING-sr.md), [bezbednost](../../SECURITY-sr.md), [licenca](../../LICENSE), [uputstva agentima](../../AGENTS.md), [changelog](../../CHANGELOG.md).
 
 [ADR 0006: Privatni nacrti (bez provere)](../adr/0006-private-player-club-drafts.md)
+
+- [Razvojne provere, 2026-10-08](VERIFICATION_2026_10_08.md)

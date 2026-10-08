@@ -1,15 +1,18 @@
 {
   "name": "librett/player-registry",
-  "description": "LibreTT Player Registry development bootstrap",
+  "description": "LibreTT Player Registry development catalogue",
   "type": "wordpress-plugin",
   "license": "AGPL-3.0-or-later",
   "require": {
     "php": "~8.5.0",
-    "ext-mysqli": "*",
-    "ext-mbstring": "*",
-    "ext-intl": "*",
     "ext-fileinfo": "*",
-    "ramsey/uuid": "^4.0"
+    "ext-gd": "*",
+    "ext-intl": "*",
+    "ext-mbstring": "*",
+    "ext-mysqli": "*",
+    "opis/json-schema": "^2",
+    "ramsey/uuid": "^4.0",
+    "salsify/json-streaming-parser": "^8.3"
   },
   "autoload": {
     "psr-4": {

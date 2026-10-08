@@ -8,7 +8,7 @@ namespace LibreTT\PlayerRegistry\Infrastructure\WordPress;
 use LibreTT\PlayerRegistry\RegistryIdentity\Application\RegistryFailure;
 
 /** Additive private-draft migration; existing registries require operator backup confirmation. */
-final readonly class DraftSchema
+final readonly class DraftSchema implements SchemaMigration
 {
     public const string MIGRATION = '002_private_drafts';
     private const array DEFINITIONS = [
@@ -65,7 +65,10 @@ final readonly class DraftSchema
             } else {
                 $this->db->execute($this->db->prepare(
                     'INSERT INTO %i (migration_id, checksum, state) VALUES (%s, %s, %s)',
-                    trim($this->db->table('migrations'), '`'), self::MIGRATION, $this->checksum(), 'started',
+                    trim($this->db->table('migrations'), '`'),
+                    self::MIGRATION,
+                    $this->checksum(),
+                    'started',
                 ));
             }
             foreach ($this->definitions() as $table => $columns) {
@@ -80,7 +83,10 @@ final readonly class DraftSchema
             }
             $this->db->execute($this->db->prepare(
                 'UPDATE %i SET state = %s WHERE migration_id = %s AND checksum = %s',
-                trim($this->db->table('migrations'), '`'), 'completed', self::MIGRATION, $this->checksum(),
+                trim($this->db->table('migrations'), '`'),
+                'completed',
+                self::MIGRATION,
+                $this->checksum(),
             ));
             $this->assertComplete();
         } finally {
@@ -120,7 +126,8 @@ final readonly class DraftSchema
     {
         return $this->db->rows($this->db->prepare(
             'SELECT checksum, state FROM %i WHERE migration_id = %s',
-            trim($this->db->table('migrations'), '`'), self::MIGRATION,
+            trim($this->db->table('migrations'), '`'),
+            self::MIGRATION,
         ))[0] ?? null;
     }
 
@@ -145,7 +152,8 @@ final readonly class DraftSchema
     {
         $name = trim($this->db->table($table), '`');
         $status = $this->db->rows($this->db->prepare(
-            'SELECT ENGINE, TABLE_COLLATION FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s', $name,
+            'SELECT ENGINE, TABLE_COLLATION FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = %s',
+            $name,
         ));
         if (count($status) !== 1 || strtolower((string) $status[0]['ENGINE']) !== 'innodb'
             || $status[0]['TABLE_COLLATION'] !== 'utf8mb4_unicode_ci') {

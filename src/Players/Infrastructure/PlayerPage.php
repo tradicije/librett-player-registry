@@ -7,7 +7,7 @@ namespace LibreTT\PlayerRegistry\Players\Infrastructure;
 
 use LibreTT\PlayerRegistry\Infrastructure\WordPress\DraftPage;
 use LibreTT\PlayerRegistry\Infrastructure\WordPress\DraftRequest;
-use LibreTT\PlayerRegistry\Infrastructure\WordPress\DraftSchema;
+use LibreTT\PlayerRegistry\Infrastructure\WordPress\SchemaGate;
 use LibreTT\PlayerRegistry\Infrastructure\WordPress\DraftView;
 use LibreTT\PlayerRegistry\Infrastructure\WordPress\Preflight;
 use LibreTT\PlayerRegistry\Players\Application\PlayerDraftReader;
@@ -21,7 +21,7 @@ use LibreTT\PlayerRegistry\Shared\Domain\EntityId;
 
 final class PlayerPage
 {
-    public static function register(PlayerDraftReader $reader, SavePlayerDraft $save, DraftSchema $schema, Preflight $preflight): void
+    public static function register(PlayerDraftReader $reader, SavePlayerDraft $save, SchemaGate $schema, Preflight $preflight): void
     {
         (new DraftPage(
             'librett-registry-players',
@@ -35,7 +35,7 @@ final class PlayerPage
                 'biography' => ['label' => __('Biography', 'librett-player-registry'), 'limit' => 5000, 'type' => 'textarea'],
                 'birthYear' => ['label' => __('Birth year (optional)', 'librett-player-registry'), 'limit' => 4, 'type' => 'text'],
             ],
-            static fn (Actor $actor, string $query, int $offset): array => array_map(self::view(...), $reader->search($actor, $query, $offset)),
+            static fn(Actor $actor, string $query, int $offset): array => array_map(self::view(...), $reader->search($actor, $query, $offset)),
             static function (Actor $actor, EntityId $id) use ($reader): ?DraftView {
                 $draft = $reader->find($actor, $id);
                 return $draft === null ? null : self::view($draft);

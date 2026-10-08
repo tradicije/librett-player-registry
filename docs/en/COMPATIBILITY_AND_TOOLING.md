@@ -2,6 +2,8 @@
 
 [Srpski](../sr/COMPATIBILITY_AND_TOOLING.md)
 
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
+
 Phase 1 update: the [implemented bootstrap](IMPLEMENTATION_STATUS.md) records installed versions and actual tests. The remaining contracts below are planned; Phase 0 review statements refer to that historical documentation task.
 
 Reviewed: 2026-10-07. Status: selected engineering targets for review and implementation, not tested plugin support or an advertised runtime minimum. Bootstrap dependencies are installed and locked; actual evidence is in implementation status.

@@ -30,7 +30,7 @@ final readonly class DraftPage
         private Closure $search,
         private Closure $find,
         private Closure $save,
-        private DraftSchema $schema,
+        private SchemaGate $schema,
         private Preflight $preflight,
     ) {}
 
@@ -141,11 +141,12 @@ final readonly class DraftPage
             echo '</td></tr>';
         }
         echo '<tr><th><label for="draft-state">' . esc_html__('Status', 'librett-player-registry') . '</label></th><td><select id="draft-state" name="state">';
+        $selectedState = $draft === null ? DraftState::Active : $draft->state;
         foreach (DraftState::cases() as $state) {
             if ($draft === null && $state === DraftState::Archived) {
                 continue;
             }
-            echo '<option value="' . esc_attr($state->value) . '"' . selected(($draft?->state ?? DraftState::Active)->value, $state->value, false) . '>' . esc_html($this->stateLabel($state)) . '</option>';
+            echo '<option value="' . esc_attr($state->value) . '"' . selected($selectedState->value, $state->value, false) . '>' . esc_html($this->stateLabel($state)) . '</option>';
         }
         echo '</select></td></tr></tbody></table>';
         submit_button(__('Save private draft', 'librett-player-registry'));

@@ -3,16 +3,16 @@
 A portable player and club registry with public profiles, WordPress administration, and one-way imports into LibreTT Desktop.
 
 ![License: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL--3.0--or--later-3da639.svg)
-![Status: Design](https://img.shields.io/badge/Status-Development-818cf8.svg)
-![WordPress adapter: planned](https://img.shields.io/badge/WordPress_adapter-bootstrap-21759b.svg)
+![Status: Development](https://img.shields.io/badge/Status-Development-818cf8.svg)
+![WordPress adapter: development](https://img.shields.io/badge/WordPress_adapter-development-21759b.svg)
 
 [Srpski](README-sr.md)
 
-**Status: early implementation.** An unreleased WordPress development build provides migrations, primary registry identity setup and private player/club draft administration (create, search, edit, archive/restore). The draft extension has not been runtime verified. Memberships, public profiles/API, import/export and synchronization remain planned. See [implemented scope and actual verification](docs/en/IMPLEMENTATION_STATUS.md).
+**Status: unreleased development catalogue.** Private player/club administration, memberships/aliases, license settings, protected photos, explicit public approval, search/API, bounded JSON import/export and one-way Desktop import are implemented. See [actual scope and verification](docs/en/IMPLEMENTATION_STATUS.md).
 
 ## What we are building
 
-One plugin named **LibreTT Player Registry** (`librett-player-registry`) can create a new empty registry or host a replica of an existing registry. It includes administration, public searchable profiles and an API; WordPress is the first adapter, rather than part of the domain model.
+One plugin named **LibreTT Player Registry** (`librett-player-registry`) creates a new empty primary registry; hosting a replica is planned. It includes administration, public searchable profiles and an API; WordPress is the first adapter, rather than part of the domain model.
 
 A federation or club in any country can create its own dataset. No Serbian player database is bundled with the plugin. One registry can move between domains or be mirrored by multiple sites without changing player identities.
 
@@ -27,21 +27,21 @@ A federation or club in any country can create its own dataset. No Serbian playe
 - LibreTT Desktop imports records into its local database. Users can edit them locally; no desktop edits are uploaded to the online registry.
 - Public datasets, media and private administrative data have different publication and backup requirements.
 
-## LibreTT Desktop integration — planned
+## LibreTT Desktop integration — development
 
-A LibreTT Desktop user will be able to download a player database from this registry and keep it locally for offline use. The flow is **one way: online registry → LibreTT Desktop**. Subsequent profile edits in Desktop stay on the user's computer; refreshing registry data preserves explicit local overrides and historical tournament snapshots.
+A LibreTT Desktop user can download a player database from this registry and keep it locally for offline use. The flow is **one way: online registry → LibreTT Desktop**. Subsequent profile edits in Desktop stay on the user's computer; refreshing registry data preserves explicit local overrides and historical tournament snapshots.
 
-This import channel sends no local profile edits, private notes, attendance, payments or tournament data back to the registry. It protects the user's local data from being uploaded through this integration and protects the online database from changes made in Desktop. The registry integration is planned and has not been implemented yet.
+This import channel sends no local profile edits, private notes, attendance, payments or tournament data back to the registry. It protects the user's local data from being uploaded through this integration and protects the online database from changes made in Desktop. The integration is implemented in the development Desktop checkout; it is not a published release.
 
-## Dataset license selection — planned
+## Dataset license selection — development
 
-The administrator will choose the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. This settings workflow is planned and is not implemented yet.
+The administrator chooses the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. This workflow is implemented in the development plugin.
 
 Dataset licensing is separate from the plugin's AGPL-3.0-or-later license, personal-data publication authorization and photo permissions.
 
-## Suggested first milestone
+## Current milestone
 
-Create and manage an empty registry on one WordPress site, publish player/club profiles, and validate portable JSON export/import. Next add desktop integration, followed by verified replicas, proposals and recovery. The design accounts for later trust features; they are not present-day guarantees.
+The development catalogue manages an empty single-site registry, public profiles, JSON import/export and Desktop integration. Next are operator acceptance/release readiness, followed by verified replicas, proposals and recovery. The design accounts for later trust features; they are not present-day guarantees.
 
 ## Documentation
 

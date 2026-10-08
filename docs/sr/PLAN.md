@@ -2,7 +2,7 @@
 
 [English](../en/PLAN.md)
 
-Status: bootstrap faze 1 implementiran; naredni koraci ostaju planirani.
+Status: single-site katalog i jednosmerni Desktop uvoz implementirani u razvoju; release i autentifikovana replikacija ostaju za kasnije.
 
 ## Obim
 
@@ -10,7 +10,7 @@ Jedan modularan dodatak podržava prazan nezavisan registar ili repliku, javne p
 
 ## Trenutni rad
 
-Dizajn faze 0 je u evidenciji spremnosti. Faza 1 sada ima [proverenu razvojnu osnovu](IMPLEMENTATION_STATUS.md): preflight, prazne početne migracije, primary identitet i čuvanje podataka. Korisnik je odobrio zavisnosti i implementacione testove. Faza 1 nije završena; privatno pravljenje/pretraga/uređivanje/arhiviranje/vraćanje Players/Clubs nacrta sada su implementirani u kodu bez runtime provere; slede njihova provera, članstva, alias-i i izričito mapiranje duplikata. Objava, JSON uvoz/izvoz, replike i oporavak nisu implementirani.
+Šest dogovorenih koraka kataloga/Desktop integracije implementirano je u razvojnom kodu. Pogledaj [obim i stvarne provere](IMPLEMENTATION_STATUS.md). Release, destruktivni purge/privatni restore i faze 3–5 ostaju za kasnije. Izlazni kriterijumi faza ostaju zahtevi prihvatanja, ne tvrdnja da je sve završeno.
 
 ## Faza 0 — ugovori i tehnička osnova
 

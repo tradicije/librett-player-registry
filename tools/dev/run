@@ -54,7 +54,8 @@ case "$registryCommand" in
         exec "$registryProjectRoot/tools/dev/run" php tools/install-integration-site.php
         ;;
     php|composer|msgfmt)
-        mkdir -p "$registryProjectRoot/local/dev/wordpress" "$registryProjectRoot/local/dev/runtime" "$registryProjectRoot/local/dev/composer-cache"
+        mkdir -p "$registryProjectRoot/local/dev/wordpress" "$registryProjectRoot/local/dev/runtime" "$registryProjectRoot/local/dev/composer-cache" "$registryProjectRoot/local/dev/private"
+        chmod 700 "$registryProjectRoot/local/dev/private"
         registryNetwork=none
         if [[ "$registryCommand" == composer ]]; then
             registryNetwork=private
@@ -64,7 +65,9 @@ case "$registryCommand" in
             --volume "$registryProjectRoot:/workspace:rw" \
             --volume "$registryProjectRoot/local/dev/wordpress:/wordpress:rw" \
             --volume "$registryProjectRoot/local/dev/runtime:/run/mysqld:rw" \
+            --volume "$registryProjectRoot/local/dev/private:/librett-private:rw" \
             --workdir /workspace \
+            --env LIBRETT_PRIVATE_STORAGE=/librett-private \
             --env LIBRETT_WP_ROOT=/wordpress \
             --env LIBRETT_DB_SOCKET=/run/mysqld/mysql.sock \
             --env LIBRETT_TEST_DB=librett_registry_test_podman \

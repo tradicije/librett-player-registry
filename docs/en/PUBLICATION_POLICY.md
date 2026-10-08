@@ -2,6 +2,8 @@
 
 [Srpski](../sr/PUBLICATION_POLICY.md)
 
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
+
 Status: adopted engineering design baseline, not an approved legal policy or implemented control. Exact JSON fields are specified in the bundled snapshot schema. No real dataset is authorized by this document.
 
 Phase 0 update: adopted as the engineering baseline through [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). The [readiness record](PHASE_0_READINESS.md) gives current status; [schema/validation examples](CONTRACT_VALIDATION.md) and [storage rules](STORAGE_AND_MIGRATIONS.md) refine this document. No legal authorization, runtime verification or authenticated format approval is implied.
@@ -14,7 +16,7 @@ Purpose: identify players and clubs for public profiles and optional tournament 
 
 ## Dataset license selection — planned
 
-The administrator will choose the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. This settings workflow is planned and is not implemented yet.
+The administrator chooses the database license in the plugin settings in `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved**, or **Custom**. For Custom, the administrator can provide a license URL or upload a license document. No dataset license is selected automatically. The settings workflow is implemented; the operator must supply lawful publication decisions.
 
 Dataset licensing is separate from the plugin's AGPL-3.0-or-later license, personal-data publication authorization and photo permissions.
 

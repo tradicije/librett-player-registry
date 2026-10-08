@@ -2,6 +2,8 @@
 
 [English](../en/CONTRACT_VALIDATION.md)
 
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
 Status: inženjerska osnova faze 0; šema i primeri su dokumentacioni artefakti, ne implementiran importer. Engleski identifikatori su kanonski. Pogledaj [ugovor snimka](SNAPSHOT_CONTRACT.md).
 
 ## Artefakti i slojevi validacije

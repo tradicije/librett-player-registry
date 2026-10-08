@@ -2,6 +2,8 @@
 
 [English](../en/PUBLICATION_POLICY.md)
 
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
 Status: usvojena inženjerska osnova dizajna, ne odobrena pravna politika niti implementirana kontrola. Tačna JSON polja određuje priložena šema snimka. Ovaj dokument ne odobrava korišćenje stvarne baze.
 
 Ažuriranje faze 0: usvojeno kao inženjerska osnova kroz [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). [Evidencija spremnosti](PHASE_0_READINESS.md) daje aktuelan status; [šema/primeri validacije](CONTRACT_VALIDATION.md) i [skladište](STORAGE_AND_MIGRATIONS.md) razrađuju dokument. To ne podrazumeva pravno odobrenje, runtime proveru ili odobren autentifikovan format.
@@ -14,7 +16,7 @@ Svrha: identifikacija igrača i klubova kroz javne profile i opciono preuzimanje
 
 ## Izbor licence baze — planirano
 
-Administrator će birati licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Ovaj tok podešavanja je planiran i još nije implementiran.
+Administrator bira licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Tok podešavanja je implementiran; operator mora obezbediti zakonit osnov objave.
 
 Licenca baze određuje se odvojeno od AGPL-3.0-or-later licence dodatka, odobrenja za objavu ličnih podataka i dozvola za fotografije.
 

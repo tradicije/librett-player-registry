@@ -14,13 +14,18 @@ use LibreTT\PlayerRegistry\Shared\Domain\DraftState;
 use LibreTT\PlayerRegistry\Shared\Domain\EditRevision;
 use LibreTT\PlayerRegistry\Shared\Domain\EntityId;
 
-final readonly class WordPressPlayerDraftRepository implements PlayerDraftRepository
+final readonly class WordPressPlayerDraftRepository implements PlayerDraftRepository, \LibreTT\PlayerRegistry\Players\Application\PlayerIdentityLookup
 {
     public function __construct(private Database $db) {}
 
+    public function isActive(EntityId $id): bool
+    {
+        return $this->find($id)?->state === DraftState::Active;
+    }
+
     public function find(EntityId $id): ?PlayerDraft
     {
-        $rows = $this->db->rows($this->db->prepare('SELECT * FROM %i WHERE entity_uuid = %s', $this->table(), $id->value));
+        $rows = $this->db->rows($this->db->prepare('SELECT * FROM %i WHERE entity_uuid = %s FOR UPDATE', $this->table(), $id->value));
         return $rows === [] ? null : $this->hydrate($rows[0]);
     }
 

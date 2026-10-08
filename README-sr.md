@@ -3,16 +3,16 @@
 Prenosiv registar igrača i klubova sa javnim profilima, WordPress administracijom i jednosmernim preuzimanjem u LibreTT Desktop.
 
 ![Licenca: AGPL-3.0-or-later](https://img.shields.io/badge/License-AGPL--3.0--or--later-3da639.svg)
-![Status: Planiranje](https://img.shields.io/badge/Status-Development-818cf8.svg)
-![WordPress adapter: planiran](https://img.shields.io/badge/WordPress_adapter-bootstrap-21759b.svg)
+![Status: Razvoj](https://img.shields.io/badge/Status-Development-818cf8.svg)
+![WordPress adapter: razvoj](https://img.shields.io/badge/WordPress_adapter-development-21759b.svg)
 
 [English](README.md)
 
-**Status: rana implementacija.** Neobjavljena WordPress razvojna verzija ima migracije, podešavanje identiteta glavnog registra i administraciju privatnih nacrta igrača/klubova (pravljenje, pretraga, uređivanje, arhiviranje/vraćanje). Proširenje nacrtima nije runtime provereno. Članstva, javni profili/API, uvoz/izvoz i sinhronizacija ostaju planirani. Pogledaj [implementiran obim i stvarne provere](docs/sr/IMPLEMENTATION_STATUS.md).
+**Status: neobjavljen razvojni katalog.** Implementirani su privatna administracija igrača/klubova, članstva/alias-i, licence, zaštićene fotografije, izričita javna objava, pretraga/API, ograničen JSON uvoz/izvoz i jednosmerni Desktop uvoz. Pogledaj [stvarni obim i provere](docs/sr/IMPLEMENTATION_STATUS.md).
 
 ## Šta pravimo
 
-Jedan dodatak **LibreTT Player Registry** (`librett-player-registry`) može da napravi novi prazan registar ili hostuje repliku postojećeg registra. Ima administraciju, pretražive javne profile i API; WordPress je prvi adapter, a ne deo domena.
+Jedan dodatak **LibreTT Player Registry** (`librett-player-registry`) pravi nov prazan glavni registar; hostovanje replike je planirano. Ima administraciju, pretražive javne profile i API; WordPress je prvi adapter, a ne deo domena.
 
 Savez ili klub iz bilo koje države može napraviti svoju bazu. Dodatak ne sadrži srpsku bazu igrača. Isti registar može da se preseli na drugi domen ili prikaže na više sajtova bez promene identiteta igrača.
 
@@ -27,21 +27,21 @@ Savez ili klub iz bilo koje države može napraviti svoju bazu. Dodatak ne sadr�
 - LibreTT Desktop preuzima zapise u lokalnu bazu. Korisnik ih slobodno menja lokalno; te izmene se ne šalju online registru.
 - Javne baze, mediji i privatni administrativni podaci imaju različita pravila objave i bekapa.
 
-## Integracija sa LibreTT Desktop — planirano
+## Integracija sa LibreTT Desktop — razvoj
 
-Korisnik LibreTT Desktop aplikacije moći će da preuzme bazu igrača iz ovog registra i čuva je lokalno za rad bez interneta. Podaci se prenose **u jednom smeru: online registar → LibreTT Desktop**. Kasnije izmene profila u Desktop aplikaciji ostaju na korisnikovom računaru; osvežavanje podataka iz registra čuva izričite lokalne izmene i istorijske snimke turnira.
+Korisnik LibreTT Desktop aplikacije može da preuzme bazu igrača iz ovog registra i čuva je lokalno za rad bez interneta. Podaci se prenose **u jednom smeru: online registar → LibreTT Desktop**. Kasnije izmene profila u Desktop aplikaciji ostaju na korisnikovom računaru; osvežavanje podataka iz registra čuva izričite lokalne izmene i istorijske snimke turnira.
 
-Ovaj kanal za preuzimanje ne šalje izmene lokalnih profila, privatne beleške, dolaske, uplate ni podatke turnira nazad registru. Time štiti lokalne podatke korisnika od slanja kroz ovu integraciju i online bazu od izmena napravljenih u Desktop aplikaciji. Integracija registra je planirana i još nije implementirana.
+Ovaj kanal za preuzimanje ne šalje izmene lokalnih profila, privatne beleške, dolaske, uplate ni podatke turnira nazad registru. Time štiti lokalne podatke korisnika od slanja kroz ovu integraciju i online bazu od izmena napravljenih u Desktop aplikaciji. Integracija je implementirana u razvojnom Desktop kodu; nije objavljen release.
 
-## Izbor licence baze — planirano
+## Izbor licence baze — razvoj
 
-Administrator će birati licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Ovaj tok podešavanja je planiran i još nije implementiran.
+Administrator bira licencu baze podataka u podešavanjima dodatka u `wp-admin`: **ODbL 1.0**, **CC0 1.0**, **CC BY 4.0**, **CC BY-SA 4.0**, **All rights reserved** ili **Custom**. Za Custom administrator može da navede URL licence ili da otpremi dokument licence. Licenca baze se ne bira automatski. Tok je implementiran u razvojnom dodatku.
 
 Licenca baze određuje se odvojeno od AGPL-3.0-or-later licence dodatka, odobrenja za objavu ličnih podataka i dozvola za fotografije.
 
-## Predlog prve etape
+## Aktuelna etapa
 
-Pravljenje i uređivanje praznog registra na jednom WordPress sajtu, javni profili igrača/klubova i proverljiv JSON uvoz/izvoz. Zatim desktop integracija, pa proverene replike, predlozi i oporavak. Dizajn predviđa kasnije bezbednosne funkcije; one još nisu implementirane garancije.
+Razvojni katalog obuhvata prazan single-site registar, javne profile, JSON uvoz/izvoz i Desktop integraciju. Slede operatorov pregled i release spremnost, pa proverene replike, predlozi i oporavak. Dizajn predviđa kasnije bezbednosne funkcije; one još nisu implementirane garancije.
 
 ## Dokumentacija
 

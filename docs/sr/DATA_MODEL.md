@@ -2,6 +2,8 @@
 
 [English](../en/DATA_MODEL.md)
 
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
 Privatni Players/Clubs nacrti i zasebne audit tabele modula sada postoje u kodu (bez provere). Godište je nullable u domenskom ulazu; privatni SQL koristi nulu za odsustvo i vraća je u null. Ova vrednost skladišta nikada nije javno godište. Alias-i/članstva/objava ostaju konceptualni.
 
 Status: konceptualni model, ne završena šema/migracija.

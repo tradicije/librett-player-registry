@@ -2,7 +2,9 @@
 
 [English](../en/ARCHITECTURE.md)
 
-Proširenje privatnim nacrtima implementira i Players/Clubs domain/application/infrastructure direktorijume i male Shared value tipove. Nije provereno; prazni runtime Publication/Replication/Recovery moduli se ne dodaju.
+**Razvojno ažuriranje (2026-10-08):** [Implementirani obim](IMPLEMENTATION_STATUS.md) beleži migracije 001–006, privatni katalog, objavu/medije, nepotpisan REST/JSON i Desktop uvoz. Kasniji trust/replika/recovery ugovori i predlozi pravne politike ispod ostaju predlozi. Ranije izjave faze 0/bootstrap-a su istorijske i ne opisuju sadašnji katalog.
+
+Runtime moduli su RegistryIdentity, Players, Clubs, Publication i Media sa ubrizganim Shared portovima i composition koordinatorima članstva/fotografija/uvoza. Replication, Proposals i Recovery ostaju projektovane granice. Domain/application kod ne poziva WordPress, SQL, HTTP ili filesystem funkcije.
 
 Vlasništvo interfejsa i graf bez ciklusa određuju [ugovori modula](MODULE_CONTRACTS.md), a transakcije/migracije [skladište](STORAGE_AND_MIGRATIONS.md). Razrađuju konceptualnu listu ispod.
 

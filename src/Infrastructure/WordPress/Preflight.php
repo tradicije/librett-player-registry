@@ -23,7 +23,7 @@ final class Preflight
                 throw new RegistryFailure('missing_extension');
             }
         }
-        if (!extension_loaded('gd') && !extension_loaded('imagick')) {
+        if (!extension_loaded('gd')) {
             throw new RegistryFailure('missing_image_backend');
         }
     }

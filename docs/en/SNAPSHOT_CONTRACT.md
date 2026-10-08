@@ -2,6 +2,8 @@
 
 [Srpski](../sr/SNAPSHOT_CONTRACT.md)
 
+**Development update (2026-10-08):** [Implemented scope](IMPLEMENTATION_STATUS.md) records migrations 001–006, private catalogue, publication/media, unsigned REST/JSON and Desktop import. Later trust/replica/recovery contracts and legal-policy proposals below remain proposals. Earlier Phase 0/bootstrap statements are historical; they do not describe current catalogue coverage.
+
 Status: Phase 0 engineering baseline with a bundled structural JSON Schema; not a shipped format. `schema_version: 1` is a candidate format identifier, not a plugin release. This draft specifies a full public snapshot for the single-site milestone; it does not specify signed replication, private backup or administrative restore.
 
 Phase 0 update: adopted as the engineering baseline through [ADR 0004](../adr/0004-phase-0-engineering-baseline.md). The [readiness record](PHASE_0_READINESS.md) gives current status; [schema/validation examples](CONTRACT_VALIDATION.md) and [storage rules](STORAGE_AND_MIGRATIONS.md) refine this document. No legal authorization, runtime verification or authenticated format approval is implied.
